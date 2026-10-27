@@ -1,6 +1,6 @@
 ---
 for: sponsor, domain owner, platform owner, security lead, delivery lead
-produces: the domain brief, the access list proved, named owners with hours, the agent architecture, a working trace export
+produces: the domain brief, the access list proved, named owners, the agent architecture, a working trace export
 ---
 
 # Phase 0: before the clock {#ch03}
@@ -10,7 +10,7 @@ produces: the domain brief, the access list proved, named owners with hours, the
 
 ::: {.tldr}
 - **Short version.** Pick one domain and the people who own its numbers, write a one-page brief, and prove every access item works before the clock starts. Then build the smallest harness that records every step the agent takes.
-- **Do this.** Name the domain owner and eval owner, with hours per week, in the brief.
+- **Do this.** Name the domain owner and eval owner in the brief.
 - **Skip if** the domain, owners and access are already settled. Go to [Phase 1](#ch04) once the minimum harness exists.
 :::
 
@@ -77,7 +77,7 @@ Read more: [the full domain brief template](#r2-2)
 This is the checklist for Phase 0: the system access and the named people. Most delays in Phase 0 come from access, so request every item on the first day. Each item is done when its test passes. A statement that access "should work" is not a signature.
 
 ::: {.diagram #access-checklist}
-What you need before Phase 1: five access items, each with its test, and a name and weekly hours for every role.
+What you need before Phase 1: five access items, each with its test, and a named owner for every role.
 :::
 
 Trace export is the item most often left until last, and the one the hill climb depends on. In Phase 3 the trace is where you see which decision the agent guessed. A nightly summary does not count, because it reports what the agent said it did. You need a record of every call, with what was served and what SQL ran.
@@ -86,7 +86,7 @@ Read more: [What you need before you start](#c11)
 
 ## People and hours {#hours}
 
-[]{#ownership}Each role owns one part of the work. Adjust the hours to your domain, but never to zero.
+[]{#ownership}Each role owns one part of the work. The hours are indicative; adjust them to your domain.
 
 | Role | Owns and decides | Phases 1-4 | After launch |
 |---|---|---|---|
@@ -150,7 +150,7 @@ The delivery lead shows the sponsor the brief, the access tests and the named ow
 > - [ ] The brief written: users, problem, owners, governed and exploratory questions, out of scope
 > - [ ] One pass rate for the exploratory lane, written before any result
 > - [ ] Every access item proved by its test, including one trace read end to end
-> - [ ] A name and weekly hours next to every role
+> - [ ] A named owner for every role
 > - [ ] The agent architecture recorded: platform-native or custom, and which model
 > - [ ] If data leaves your environment: security has walked the data-flow diagram and approved it
 > - [ ] The minimum harness has an owner and is due before the baseline

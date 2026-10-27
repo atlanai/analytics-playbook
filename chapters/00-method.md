@@ -50,7 +50,7 @@ Phase 0 runs before the clock: the clock is the build, and it starts with Phase 
 Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch, each ending at its gate. The golden set starts at 20 questions in Phase 1 and reaches 50 by launch.
 :::
 
-Before Phase 1 you need read-only warehouse access, query history and BI reports. You also need your agent harness set up to record a trace of every run, so that your first test runs are traced. Last, you need named owners with hours: [What you need before you start](#c11).
+Before Phase 1 you need read-only warehouse access, query history and BI reports. You also need your agent harness set up to record a trace of every run, so that your first test runs are traced. Last, you need a named owner for each role, so responsibility is clear: [What you need before you start](#c11).
 
 ## Find your task {#lc-tasks}
 

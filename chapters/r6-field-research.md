@@ -1,6 +1,6 @@
 # What others found {#r6}
 
-Other teams have shipped talk-to-data agents and written up what worked, and researchers have tested the same ideas on public benchmarks. Read that work for its mechanisms. Each source ran on a different warehouse, with different questions and its own definition of a right answer, so its scores won't transfer to yours. The last section shows what happened when we rebuilt eight of these methods on our own benchmark.
+Other teams have shipped analytics agents and written up what worked, and researchers have tested the same ideas on public benchmarks. Read that work for its mechanisms. Each source ran on a different warehouse, with different questions and its own definition of a right answer, so its scores won't transfer to yours. The last section shows what happened when we rebuilt eight of these methods on our own benchmark.
 
 ## Past queries and examples {#r6-examples}
 
