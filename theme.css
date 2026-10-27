@@ -46,7 +46,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .top{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}
 .topbar{padding-inline:24px;gap:8px}
 .topbar .brand{font:500 15px/1.2 var(--mono);gap:12px;letter-spacing:-.04em}
-.topbar .brand::before{width:18px;height:18px;border-radius:0;background:none;box-shadow:none;content:"✳";font:25px/18px var(--body);color:var(--ink)}
+.topbar .brand::before{width:18px;height:18px;border-radius:0;background:url("assets/atlan-mark.svg") center/contain no-repeat;box-shadow:none}
 .tb-where{font-size:12px;border-left-color:var(--line);margin-left:12px;padding-left:16px}
 .topbar button{font:400 12px/1.2 var(--mono);min-height:34px;padding:8px 12px;border:1px solid var(--line);border-radius:999px}
 .topbar button:hover{background:var(--plate);border-color:var(--line-2)}

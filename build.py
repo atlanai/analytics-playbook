@@ -1279,12 +1279,18 @@ def diagram_css():
     return "\n".join(f"/* diagrams/{f.name} */\n" + f.read_text() for f in sorted(DIAG.glob("*.css")))
 
 
+def atlan_mark():
+    """The Atlan mark (assets/atlan-mark.svg) as a data URI, for the favicon and the top-left brand."""
+    return "data:image/svg+xml;base64," + base64.b64encode((ROOT / "assets/atlan-mark.svg").read_bytes()).decode("ascii")
+
+
 def theme_css():
     """Keep the web reader and standalone HTML on the same self-contained theme."""
     css = (ROOT / "theme.css").read_text()
     for name in ("geist-latin", "geist-mono-latin", "geist-pixel-latin"):
         font = base64.b64encode((ROOT / "assets/fonts" / f"{name}.woff2").read_bytes()).decode("ascii")
         css = css.replace(f'url("assets/fonts/{name}.woff2")', f'url("data:font/woff2;base64,{font}")')
+    css = css.replace('url("assets/atlan-mark.svg")', f'url("{atlan_mark()}")')
     license_text = (ROOT / "assets/fonts/OFL.txt").read_text()
     return f"/* Bundled Geist fonts: {license_text} */\n{css}"
 
@@ -1299,7 +1305,7 @@ def render(template, body, nav, home, idx, mode, articles):
            .replace("{{HOME}}", home).replace("{{BODY}}", body).replace("{{MODE}}", mode)
            .replace("{{IDX}}", json.dumps(idx, ensure_ascii=False).replace("</", "<\\/"))
            .replace("{{CHAPTERS}}", chapter_list.replace("</", "<\\/"))
-           .replace("{{SITE_URL}}", esc(SITE_URL)).replace("{{MD}}", json.dumps(md, ensure_ascii=False).replace("</", "<\\/"))
+           .replace("{{SITE_URL}}", esc(SITE_URL)).replace("{{FAVICON}}", atlan_mark()).replace("{{MD}}", json.dumps(md, ensure_ascii=False).replace("</", "<\\/"))
            .replace("{{PODCASTS}}", json.dumps(podcast_catalog(), ensure_ascii=False).replace("</", "<\\/")))
     return out
 
