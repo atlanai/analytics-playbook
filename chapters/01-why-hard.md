@@ -14,7 +14,7 @@ produces: the four problems this book solves, and where each fix lives
 - **Skip if** you already know why your agent's numbers miss. Go to [The method at a glance](#start).
 :::
 
-The talk-to-data pilots we see stall between the demo and the tenth real question. The demo question was picked because it works. The tenth comes from a finance analyst on a Tuesday, touches two tables and a house rule, and gets back a confident number that is wrong. Nothing about the answer looks wrong, so nobody catches it. The business decides whether to trust the agent on misses like that one.
+The analytics agent pilots we see stall between the demo and the tenth real question. The demo question was picked because it works. The tenth comes from a finance analyst on a Tuesday, touches two tables and a house rule, and gets back a confident number that is wrong. Nothing about the answer looks wrong, so nobody catches it. The business decides whether to trust the agent on misses like that one.
 
 ## Five steps, and the hard one {#lc-steps}
 

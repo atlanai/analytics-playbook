@@ -46,7 +46,7 @@ ORDER = [
       ("08-after-launch", [], False)]),
     ("Toolkit", "cards",
      [("00-start", [], False), ("cards", [], False), ("r2-templates", [], False),
-      ("10-straight-answers", ["12-straight-answers"], False), ("videos", [], False), ("podcasts", [], False)]),
+      ("videos", [], False), ("podcasts", [], False)]),
     ("Research", "research",
      [("r0-results", [], False), ("r3-evidence", [], False), ("r6-field-research", [], False)]),
     ("Reference", "ref",
@@ -917,7 +917,7 @@ NAV_GROUPS = [
                           ("Principles", ["ch-evals", "ch02", "ch-retrieval"]),
                           ("Phases", ["ch03", "ch04", "ch05", "ch06", "ch07"]),
                           ("After launch", ["ch-run"])]),
-    ("Toolkit", ["assess", "cards", "r2", "ch10", "videos", "listen"]),
+    ("Toolkit", ["assess", "cards", "r2", "videos", "listen"]),
     ("Research and reference", ["results", "r3", "r6", "r1", "r4", "r5", "r7"]),
 ]
 NAV_BADGE = {"ch-evals": "1", "ch02": "2", "ch-retrieval": "3"}
@@ -1220,10 +1220,11 @@ def landing(articles, ladder, collected=()):
                               f'<h2 class="home-h">{strip_tags(h2)}</h2>{body}</section>')
     start = "start" if "start" in by else next((a["id"] for a in articles), "")
     first_ch = next((a["id"] for a in articles if a["part_key"] == "part1"), "")
-    links = ((f'<p class="home-links"><a href="#lifecycle">The lifecycle in one picture →</a> <a href="#{start}">The method at a glance →</a>' if "lifecycle" in by
-              else f'<p class="home-links"><a href="#{start}">The method at a glance →</a>')
-             + (' <a href="#assess">Where are you starting? →</a>' if "assess" in by else "")
-             + (f' <a href="#{first_ch}">Or read from the beginning →</a>' if first_ch else "") + "</p>")
+    links = ('<p class="home-links">'
+             + (f'<a href="#{first_ch}">Why analytics agents are hard →</a> ' if first_ch else "")
+             + ('<a href="#lifecycle">The lifecycle in one picture →</a> ' if "lifecycle" in by else "")
+             + f'<a href="#{start}">The method at a glance →</a>'
+             + (' <a href="#assess">Where are you starting? →</a>' if "assess" in by else "") + "</p>")
     nch = sum(1 for a in articles if a["part_key"] in ("part1", "part2", "part3", "part4"))
     ncards = len(collected)
     return (f'<article class="ch home" id="home"><header class="cover"><div class="kicker"><span>Atlan</span>'
@@ -1764,7 +1765,7 @@ def md_pages(chapters, articles):
 
 def llms_txt(articles, pages):
     """The index, in the llms.txt layout: title, one-line summary, then each page by part with its one-line lede."""
-    out = [f"# {TITLE}\n", "> How to build an analytics (talk-to-data) agent that answers business questions correctly: "
+    out = [f"# {TITLE}\n", "> How to build an analytics agent that answers business questions correctly: "
            "write the evals first, seal each business rule into a metric, and improve the agent from its traces."]
     part = None
     for a in articles:
