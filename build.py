@@ -1624,30 +1624,6 @@ def video_theater(vids, by):
             f'<ol class="vt-list">{"".join(items)}</ol></div>')
 
 
-FUN_DIR = ROOT / "fun"
-
-
-def copy_fun(dest):
-    """Copy the Just for fun pages (fun/*.html, self-contained games) next to a built site.
-    Not called while the Just for fun page is out of the book; to bring it back, add `fun` to ORDER and
-    NAV_GROUPS and call this in the --site step."""
-    if not FUN_DIR.exists():
-        return
-    d = Path(dest) / "fun"
-    d.mkdir(parents=True, exist_ok=True)
-    for f in FUN_DIR.glob("*.html"):
-        html = f.read_text()
-        for name in ("geist-latin", "geist-mono-latin", "geist-pixel-latin"):   # the site ships no assets/fonts: inline them
-            src = ROOT / "assets/fonts" / f"{name}.woff2"
-            if f'url("../assets/fonts/{name}.woff2")' in html:
-                if not src.exists():
-                    WARN.append(f"fun/{f.name}: {src.name} missing; the page falls back to system fonts")
-                    continue
-                font = base64.b64encode(src.read_bytes()).decode("ascii")
-                html = html.replace(f'url("../assets/fonts/{name}.woff2")', f'url("data:font/woff2;base64,{font}")')
-        (d / f.name).write_text(html)
-
-
 def copy_videos(dest):
     """Copy media/videos/ (mp4, posters, thumbs) next to a built site, skipping files already up to date."""
     if not VIDEO_DIR.exists():
