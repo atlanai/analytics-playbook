@@ -1,0 +1,42 @@
+<div class="d rt">
+  <div class="rt-flow">
+    <div class="rt-step">
+      <span class="rt-n">1</span>
+      <b>The user asks</b>
+      <span class="rt-sub">In Slack, a BI chat or an IDE</span>
+      <q>How many deals slipped last quarter?</q>
+    </div>
+    <div class="rt-step">
+      <span class="rt-n">2</span>
+      <b>The agent asks first</b>
+      <span class="rt-sub">One context call, before any SQL</span>
+      <code>get_context("deals slipped last quarter")</code>
+    </div>
+    <div class="rt-step rt-mcp">
+      <span class="rt-n">3</span>
+      <b>The MCP server searches live</b>
+      <span class="rt-sub">Over the one store, never a copy</span>
+      <ul>
+        <li><em>Exact lookup</em> a metric by name or alternate label</li>
+        <li><em>Search</em> trusted past queries by field names and business terms</li>
+        <li><em>Attach</em> the rules and terms the matches depend on</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rt-back">
+    <div class="rt-pack">
+      <header><span class="rt-n">4</span><b>What comes back</b><span class="rt-sub">A handful of items, ranked and labelled, each with complete SQL</span></header>
+      <ol>
+        <li><span class="rt-tag gov">Metric</span> none covers this question, so the governed lane says so</li>
+        <li><span class="rt-tag">Trusted past query</span> "Deals pushed past quarter end" · run by many analysts, recently</li>
+        <li><span class="rt-tag">Business term</span> "slipped" means pushed past quarter end; links to the query</li>
+        <li><span class="rt-tag">Rule</span> "quarter means fiscal quarter" · set by the RevOps lead</li>
+      </ol>
+    </div>
+    <div class="rt-end">
+      <div class="rt-step slim"><span class="rt-n">5</span><b>The agent writes and runs SQL</b><span class="rt-sub">Read-only, against the warehouse</span></div>
+      <div class="rt-step slim"><span class="rt-n">6</span><b>It answers with its sources</b><span class="rt-sub">The SQL, the items it used, the lane</span></div>
+      <div class="rt-trace"><b>Trace</b> every call, what it returned, every statement and the answer</div>
+    </div>
+  </div>
+</div>

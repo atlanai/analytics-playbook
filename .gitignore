@@ -95,3 +95,9 @@ logs/
 *.tgz
 *.rar
 *.7z
+
+# ─── Build output ──────────────────────────────────────────────────────────
+_site/
+PLAYBOOK.md
+playbook.html
+__pycache__/

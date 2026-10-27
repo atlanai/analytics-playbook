@@ -1,0 +1,19 @@
+By the first afternoon, the metrics agent had drafted candidate metrics... from the analysts' past SQL and their sales dashboards. Most of the conflicts settled on provenance. But one wouldn't. This is Phase 2, generating certified metrics. Phase 1 left the agent at 7 of 20.
+
+Here's the question. On multi-year deals, did the amount mean first-year ARR... or total contract value? It went to the sales team's CRO, who answered, ARR... the figure the board pack uses.
+
+So how do you get there? Five steps take you from past SQL to certified metrics. First, gather past SQL and BI reports... always together. Generate candidates. Witness each one. Resolve the conflicts. Then certify what survives.
+
+Generating them needs no product. A script groups the statements by shape, and a model names each group. It writes no new SQL... and it never sees the golden set.
+
+Nothing's certified until it's run. Every candidate gets five checks. Did it run, and how many rows came back? Does each row count once? Does the prose match the SQL? And is there a literal nobody can explain? If a candidate's uncertain, keep it out entirely. An agent can't weigh a warning.
+
+So how do conflicts settle? On provenance... who ran it, how often, how recently, and whether it matches the warehouse. Win rate, for example, settled on recency. The dashboard version predated the Disqualified stage.
+
+Then certify. Each metric becomes a file, governed like code... with an owner, a version, its provenance, and its SQL. Every house rule goes inside the SQL, where the harness runs it.
+
+Serve it per question... in the form that runs. Does the form matter? In one test, we stripped parts out of each metric. The full metric scored 83.2%. Its name and SQL alone scored 84.1%... the same, within the noise. But its prose alone? That fell 8 points, to 74.8%.
+
+Back to the sales team. Those first-afternoon drafts are now certified metrics. And the agent scores 14 of 20, up from 7. That's Gate 2.
+
+So here's the rule. Write each business rule into a metric's SQL. The agent follows a query... but it skims a paragraph. Next, Phase 3, hill-climb from traces. That's where the definitions nobody raised show up.

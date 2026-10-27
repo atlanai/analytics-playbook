@@ -1,0 +1,14 @@
+.misses .ms-grid,.ablate{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.misses section,.ablate section{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:11px 14px 12px;min-width:0}
+.misses header,.ablate header{display:grid;gap:1px;margin-bottom:8px}
+.misses header b,.ablate header b{font:600 14px/1.3 var(--display);color:var(--ink)}
+.misses header span,.ablate header span{font-size:12px;line-height:1.35;color:var(--muted)}
+.misses .ms-row{display:grid;gap:3px;padding:5px 0}
+.misses .ms-l{font-size:12.5px;line-height:1.35;color:var(--text)}
+.misses .ms-bar{display:flex;align-items:center;gap:8px}
+.misses .ms-bar i{display:block;height:10px;border-radius:3px;background:var(--accent);width:calc((100% - 28px) * var(--v) / 100);min-width:2px}
+.misses .ms-row.o .ms-bar i{background:var(--line-2)}
+.misses .ms-row.zero .ms-bar i{background:transparent;box-shadow:inset 0 0 0 1px var(--line-2);width:2px}
+.misses .ms-bar b{font:600 12px/1 var(--body);color:var(--ink);font-variant-numeric:tabular-nums}
+.misses .ms-foot{grid-column:1/-1}
+@media (max-width:640px){.misses .ms-grid,.ablate{grid-template-columns:1fr}}

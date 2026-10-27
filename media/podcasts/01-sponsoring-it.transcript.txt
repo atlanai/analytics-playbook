@@ -1,0 +1,94 @@
+Sponsoring it — The Number Before the Board Meeting
+27 October 2026 · 9:34
+
+Transcribed from the recording with NotebookLM; names and technical terms have light spelling corrections. See editorial-notes.txt for factual clarifications.
+
+The board meeting is tomorrow. The analytics agents pipeline answer looks perfectly plausible and finance disagrees. So, who can sign off?
+Oh man. Yeah, that is the absolute nightmare scenario, right? And um it's something that happens constantly when teams just sort of blindly unleash AI onto their data.
+Yeah, it really is. And that exact dilemma, that scenario is the jumping off point for our deep dive today. We are looking at the October 27th revision of Atlan's FDE playbook for analytics agents,
+right? Which is just such a great resource.
+It really is. And we're going to follow their composite sales example today. Just to set the baseline for you listening, their findings are grounded in this 107 question internal warehouse benchmark. So, you know, this isn't some guaranteed outcome for every single company, but it's a very real grounded look at how these tools actually break in practice.
+Exactly. And you know, the scariest part about that failure mode is that it's practically invisible,
+right?
+Because an agent uh it can write flawless SQL. The syntax is perfect. The query executes without a hitch, but it completely misses a private business role. So like taking that sales example, maybe your company always excludes early stage deals from the pipeline,
+right? Because they're too risky to forecast.
+Exactly. But the AI doesn't know that. It doesn't have that context. So it just guesses. The numbers come back looking totally reasonable and nobody realizes there's a problem. until, you know, finance flags it the day before the board meeting.
+Okay, wait. I'm stuck on this right out of the gate because the immediate push back is always, well, why can't we just use a better model?
+Yeah, the next update will fix it argument,
+right? Won't the newest, most advanced AI just, I don't know, figure it out.
+Well, no, because a smarter model doesn't magically absorb your company's unwritten secrets. Uh, it's like, think of it like baking a cake.
+Okay,
+you follow this incredibly complex recipe. perfectly. The cake looks amazing and tastes great, but you didn't know the person you baked it for has a peanut allergy.
+Oh, wow.
+Right.
+Yeah.
+The execution was flawless, but missing that one piece of unwritten, totally private context, causes a complete disaster. Models, no matter how advanced, will always have to guess at unwritten rules.
+So, if you ask what seems like a simple pipeline question, it might actually hide like five different unwritten business decisions. like what even counts as a top customer or or which fiscal calendar you're using.
+Exactly. And the AI has to guess all five of those correctly to give you a true answer. They have this great mathematical illustration in the playbook for this.
+The 80% thing, right?
+Yeah. The 80% to the fifth power. So if a really powerful model gets each of those unwritten rules right, say 80% of the time, which sounds pretty good, right?
+Yeah. A B minus,
+right? But 80% to the fifth power means it only gets the entire question right about one time in three.
+Oh man.
+Yeah. The compounding guesses just completely destroy your accuracy. And they proved this with their scoped benchmark data. When they tested bare schema models, so meaning the AI only gets to see the raw database structure, no historical context, the accuracy maxed out at uh I think it was between 31.8 and 42.1%.
+Wow. So worse than a coin flip.
+Much worse. But when they fed the model's past SQL, basically showing the AI the context of how humans at the company historically queried that data. The accuracy jumped past 66% on every single model they tested.
+Oh, that's huge.
+Yeah, it is. So, it proves the issue isn't that the AI isn't smart enough, it's the context. It needs to know how you actually operate.
+Okay. So, if context is the problem, the tempting fix, and I see companies do this all the time, is just writing a massive glossary. You know, just dumping all your business rules, all your definitions into a massive text. file and shoving it into the AI's prompt.
+Yes, the giant text dump,
+right? Problem solved, right?
+You would think so, but the playbook pushes back really hard on that approach. Just dumping text into a prompt barely moves the needle.
+Really? Yeah.
+Why not?
+Because prose is too ambiguous for a machine trying to do exact math. You don't need a glossary of terms. What you need is a complete business decision sealed inside an owned, versioned metric.
+Okay, break that down for me. What does that actually mean in practice? What is a versioned metric?
+It means you were pulling the exact logic from your past SQL into your BI tools. Because SQL always beats prose, it's executable logic.
+Right. There's no ambiguity.
+Exactly. It mathematically defines the population, the exact time frames, the specific exclusions. And this naturally leads to what the playbook calls a two lanes strategy.
+Yes, the two lanes. I loved this part. So lane one is for exploratory work. This is where An analyst is just digging around, right? And in this lane, the agent writes visible SQL. Like the user has to physically read and verify the code before they actually do anything with the data,
+right? It's safe because there's a human in the loop checking the math.
+But then lane two is for the governed board numbers, the really high stake stuff.
+Precisely. And in lane two, for those governed numbers, the AI is explicitly not allowed to generate SQL from scratch. It's just banned. It must pull from a certified metric or it has to say I can't answer that.
+So, it's basically just retrieving a pre-approved block of logic instead of improvising.
+Yes. And because of that, the accuracy shoots way up. In their shipping configuration, that certified layer hit 83.2% accuracy.
+That is a massive jump.
+It really is.
+But, okay, I have to play devil's advocate here for a second.
+Go for it.
+A certified metric can still be perfectly consistently wrong.
+Oh, 100%.
+Right. Because what if sales defines a top customer by their deal count, but finance defines it by current ARR. The AI is just going to confidently hand the wrong answer to one of those departments, right? It's certified, but it's still wrong.
+Yeah. And that brings us right back to your opening dilemma. Who actually signs off,
+right?
+Because you can't just build a certified metric and cross your fingers. The solution to that specific problem is building a sealed golden set of test questions. And you have to do this before you even give the AI context. Okay. Meaning you literally map out a set of real crucial business questions and attach them to their verified correct answers.
+Yes. And no answer leakage. The AI can't see the answers beforehand. And those correct answers have to be reviewed independently by the people who actually own that data,
+the department heads, the VPs.
+Exactly. Which is why when an executive sponsor funds an AI project like this, they really need to understand what they're paying for. They aren't buying a magical guaranteed software timetable. Right. It's not a turnkey SAS product.
+No, not at all.
+Right.
+What they are actually buying are five distinct phase gates. And more importantly, they are buying named owner hours.
+Named owner hours. So specific humans.
+Specific humans who have to carve out time to test, access, and verify the logic. You are buying a pre-agreed bar for quality. And you are buying an operating loop.
+Okay, let's clarify that operating loop because I think people assume you launch the agent and you're done.
+Oh, launch. is just the beginning,
+right? So, we're talking about things like the weekly trace hour where actual humans sit down and audit the AI steps and these drift reruns.
+Yes, drift reruns are critical
+because your underlying data structure is inevitably going to change, right? Someone adds a column, changes a tag. So, you have to rerun that golden test set continuously to make sure the AI hasn't just lost its mind.
+Exactly. It's a continuous process of proposing corrections to the owners, rolling back when things break, and running an improvement round that the team does entirely on their own. Takes intense discipline
+and part of that discipline is knowing what not to ask the AI, right?
+Oh, absolutely. The playbook has this explicit warning, which I thought was fascinating. They say you have to practice deferring the why questions,
+like why did pipeline drop in Q3,
+right? You have to defer those entirely until you can prove that the agent consistently answers the what questions correctly.
+Because the why is unmeasured.
+It's totally unmeasured. If it can't tell you accurately, what the pipeline was. Asking it why it changed is just asking it to hallucinate an answer for you.
+That makes total sense. You really have to crawl before you can sprint with this stuff.
+You do.
+So, keeping all of this in mind, the unwritten rules, the two lanes, the named owner hours, what does this mean for you listening right now?
+Yeah. How do we make this practical?
+Well, we want to give you a concrete action that you can take tomorrow morning.
+Do it.
+So, tomorrow, take one weekly leadership question that you heavily rely on. Just one. Identify two unwritten rules behind that question. Figure out the exact names of the owners of those rules and then find exactly where those rules are actually recorded.
+I love that because I mean if they aren't recorded anywhere, if it's just institutional knowledge, you have a massive context problem,
+right? You're setting the AI up to fail
+completely. And it leaves you with this really uncomfortable question to ponder. If your company's most critical definitions and business rules only exist inside a single analyst's head, Do you actually own your data or do you just own the infrastructure holding it?

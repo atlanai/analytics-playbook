@@ -1,0 +1,172 @@
+<div class="d mm">
+<p class="mm-why"><b>Why this exists.</b> An agent can write clean SQL and still give the wrong number, because it guesses business rules nobody wrote down. The method writes those rules down, tests them on real questions and keeps them true, one business area at a time. Open any box to see what is inside it.</p>
+<div class="mm-src">
+<div class="mm-n" data-kind="center"><span class="mm-k">At the centre</span><b>The golden set</b><span class="mm-s">Real questions with checked answers. Every step is scored against it.</span> <a href="#ch-evals">Evals first →</a></div>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">Phase 0 · Scope</span><b>Before the clock</b><span class="mm-s">Owners, brief, access proved</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 0.1</span><b>Pick one domain</b><span class="mm-s">One business area, its users and its numbers</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Choose an area with real questions, known users and an owner who has time. Sales pipeline is a good first one.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Exec sponsor and domain owner</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Three areas at once give you three half-built answer keys and no owner with time for any.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 0.2</span><b>Write the brief</b><span class="mm-s">One page everyone agrees on</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Users, the problem, the owners, and which numbers must be exact every time and which only need to point the right way.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Domain owner and sponsor, at a 90-minute kickoff</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-2">Domain brief</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 0.3</span><b>Name owners, with hours</b><span class="mm-s">A person and weekly hours for every role</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>The domain owner gives 2-3 hours a week to settle definitions. A co-owner joins when another team owns part of a number.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Exec sponsor</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>"RevOps" can't settle a conflict. The RevOps lead can. An owner with only minutes a week stalls everything.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 0.4</span><b>Prove every access item</b><span class="mm-s">Each one is done when its test passes</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Read-only warehouse access, query history, BI reports and a record of every agent step. Ask for all of it on day one.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Platform owner; security lead if data leaves your environment</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c11">What you need before you start</a></div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>The record of agent steps (the trace) usually arrives last. Start it first.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 0.5</span><b>Build the minimum harness</b><span class="mm-s">The smallest agent loop you can measure</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>One lookup for context before any SQL, one read-only SQL tool, a cap of about ten steps, and a trace of every call.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Agent builder, in your own environment</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-22">Context call and trace record</a></div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch03">Read the chapter →</a></div>
+</div></details>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">Phase 1 · Write the tests</span><b>Build the golden set</b><span class="mm-s">Real questions, verified answers</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 1.1</span><b>Harvest real questions</b><span class="mm-s">From what the business already asks</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Collect two or three times more than you need, from the board pack, dashboards, tickets and the sponsor. Write each the way a user asks it.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-15">Question-harvest sheet</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 1.2</span><b>Write the answer key</b><span class="mm-s">The right answer, and how you know</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>For each question: the correct SQL, its answer, the source it was checked against, and the decisions the question hides.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Two graders who know the domain</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-3">Golden-set item</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 1.3</span><b>Agree how to grade</b><span class="mm-s">Before any result exists</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Check the returned numbers first, then the SQL. Allow more than one valid answer. A refusal counts as a miss.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner and domain owner</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-4">Grading rubric</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 1.4</span><b>Seal it from the builders</b><span class="mm-s">So the agent can't learn the answers</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Store it where the agent and the people building its context can't read it, and remove matching past queries from the context.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c3">The eval owner's week</a></div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>If answers leak into the context, scores look great and mean nothing.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 1.5</span><b>Run the baseline</b><span class="mm-s">Where the agent starts, with no help</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Run each question once on the bare tables, and note which decision the agent guessed on every miss.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Agent builder runs it; eval owner grades it</div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch04">Read the chapter →</a></div>
+</div></details>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">Phase 2 · Build</span><b>Generate metrics</b><span class="mm-s">Business rules written as SQL</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 2.1</span><b>Gather past SQL and reports</b><span class="mm-s">What your company already knows</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>The queries analysts actually ran, with who ran them and how often, plus the dashboards and semantic models leaders read.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Context engineer, with the platform owner</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Leave out the agent's own queries and scheduled machine traffic.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 2.2</span><b>Generate candidate metrics</b><span class="mm-s">Drafted from real queries</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Group queries that share one shape and name the metric inside each. A script or a tool can do it.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Context engineer</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>The generator never sees the golden set, and every candidate keeps the real SQL it came from.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 2.3</span><b>Test each against the warehouse</b><span class="mm-s">Nothing counts until it has run</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Run each candidate read-only. Does it run? How many rows? Is each thing counted once? Hold back anything you can't explain.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Context engineer</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 2.4</span><b>Settle conflicts</b><span class="mm-s">Two versions of the same number</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>The version most analysts ran recently, that matches the warehouse, usually wins. The owner decides the rest.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Domain owner; both owners when two teams share a number</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c5">How to resolve a conflict</a></div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Never let the agent pick between two definitions.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 2.5</span><b>Approve and serve</b><span class="mm-s">Approved, versioned, handed to the agent</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>The owner approves each metric with a version. Per question, the agent gets a handful of items as complete SQL.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Domain owner approves; agent builder serves</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-5">Metric spec</a></div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch05">Read the chapter →</a></div>
+</div></details>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">Phase 3 · Debug</span><b>Hill-climb from traces</b><span class="mm-s">Read the trace of every miss</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.1</span><b>Read the raw trace</b><span class="mm-s">Every step the agent took</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>For each wrong answer, open the step-by-step record: what it was given, and every query it ran. A summary hides the guess.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Context engineer and agent builder</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-7">Trace review sheet</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.2</span><b>Find the kind of miss</b><span class="mm-s">Three kinds, one fix each</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">Never written</span>The rule exists nowhere. Write it down; the owner decides it.</div>
+    <div class="mm-n" data-kind="how"><span class="mm-k">Written, not found</span>The rule exists but never reached the agent. Fix how it is looked up.</div>
+    <div class="mm-n" data-kind="how"><span class="mm-k">Found, ignored</span>The agent took a simpler path. Make the rule one it must follow.</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c6">Why did this miss?</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.3</span><b>Make the smallest fix</b><span class="mm-s">One metric, rule or word at a time</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Write down which questions the fix should repair, then change one metric, one rule or one word link.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Context engineer drafts; its owner approves</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Fix the rule, never the answer. No sealed value may enter the context.</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.4</span><b>Rerun everything</b><span class="mm-s">A fix can break something else</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Rerun the whole set after every change. Keep the change only if nothing that passed has broken, and log it.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-8">Iteration ledger</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.5</span><b>Grow the set to 50</b><span class="mm-s">Fresh questions for the launch test</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Graders add new real questions that the people building the context never see.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner and graders</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 3.6</span><b>Know when to stop</b><span class="mm-s">Decided before the first round</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Stop when two rounds in a row barely move the score, or after five rounds, and report the ceiling honestly.</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Giving the agent more steps turns honest refusals into confident wrong answers.</div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch06">Read the chapter →</a></div>
+</div></details>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">Phase 4 · Release</span><b>Release and hand over</b><span class="mm-s">Unseen questions, a solo pass</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 4.1</span><b>Run the launch test</b><span class="mm-s">All 50 questions, several runs each</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Board numbers must be right on every run. Everything else must clear the bar the sponsor set in Phase 0.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Eval owner and agent builder</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c12">Is it ready to launch?</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 4.2</span><b>Go or no-go</b><span class="mm-s">The business decides</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Go, no-go, or go with conditions. Each condition gets an owner and a date. Never lower the bar to fit the score.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Exec sponsor</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-9">Release note</a></div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 4.3</span><b>Connect where people ask</b><span class="mm-s">The chat or BI tool they already use</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Wire the agent in, and check in the traces that it looks up context before every query.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Agent builder and platform owner</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 4.4</span><b>Hand over</b><span class="mm-s">One round together, one alone</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Run one improvement round with the delivery team watching, then one your team runs alone within two weeks.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Domain owner, eval owner, agent builder</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Template</span><a href="#r2-19">Handover checklist</a></div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch07">Read the chapter →</a></div>
+</div></details>
+
+<details class="mm-n" data-kind="phase"><summary><span class="mm-k">After launch · Operate</span><b>Keep it running</b><span class="mm-s">Real usage in, drift caught</span></summary><div class="mm-kids">
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 5.1</span><b>Weekly trace hour</b><span class="mm-s">Learn from real questions</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Read the traces of flagged answers. A user's correction becomes a proposed change; nothing changes on its own.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Agent builder; the domain owner decides the queue</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 5.2</span><b>Rerun on every change</b><span class="mm-s">Catch drift before users do</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>A changed table, rule, metric or model triggers a rerun of the answer key. Keep the last version ready to restore.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Platform owner and eval owner</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 5.3</span><b>Start the next domain</b><span class="mm-s">From what this one built</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Reuse the house rules, shared words and grading method. It still builds its own answer key and metrics.</div>
+    <div class="mm-n" data-kind="who"><span class="mm-k">Who</span>Exec sponsor and delivery lead</div>
+    <div class="mm-n" data-kind="watch"><span class="mm-k">Watch out</span>Name one person who decides words both areas use, such as "customer".</div>
+  </div></details>
+  <details class="mm-n" data-kind="task"><summary><span class="mm-k">Step 5.4</span><b>Explain why numbers move</b><span class="mm-s">Only once the numbers hold</span></summary><div class="mm-kids">
+    <div class="mm-n" data-kind="how"><span class="mm-k">How</span>Add a map of how the business works and a dated record of what changed in it.</div>
+    <div class="mm-n" data-kind="tpl"><span class="mm-k">Checklist</span><a class="card-ref" href="#c8">Is an ontology worth it?</a></div>
+    <div class="mm-n" data-kind="read"><a href="#ch08">Answer why →</a></div>
+  </div></details>
+  <div class="mm-n" data-kind="read"><a href="#ch-run">Read the chapter →</a></div>
+</div></details>
+</div>
+</div>

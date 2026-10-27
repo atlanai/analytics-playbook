@@ -1,0 +1,22 @@
+<div class="d d-tree">
+<ol>
+  <li class="q">Sources, read-only
+    <ol>
+      <li><b>Past SQL (query history)</b> · what analysts ran, who, how often, when</li>
+      <li><b>BI reports and semantic models</b> · the numbers leaders already see</li>
+    </ol></li>
+  <li class="q">Governed lane
+    <ol>
+      <li><span class="yn">1</span><b>Generate metrics</b> · a metrics generator: your script or a product</li>
+      <li><span class="yn">2</span><b>Witness against the warehouse</b> · runs clean, one row per key, matches its report</li>
+      <li><span class="yn">3</span><b>Resolve conflicts</b> · provenance first (who ran it, how often, how recently, does it match), then the domain owner</li>
+      <li class="leaf"><span class="yn">4</span><b>Metrics</b> · SQL, owner, version, provenance</li>
+    </ol></li>
+  <li class="q">Exploratory lane
+    <ol>
+      <li>Keep what analysts trust: machine traffic out, duplicates merged, ranked by who ran it.</li>
+      <li class="leaf"><b>Trusted-query library</b> · complete past SQL; the agent writes its own SQL from it.</li>
+    </ol></li>
+  <li><span class="yn">→</span>Both lanes served to your agent from one context layer.</li>
+</ol>
+</div>

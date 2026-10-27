@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Same questions: bare schema 31.8%; descriptions and documentation 39.3% (measured on another model, where bare schema scored 33.6%); usage patterns 43.9%; AI-generated metrics and queries 83.2%.">
+<rect width="1200" height="290" rx="14" fill="#FFFFFF" stroke="#E1E1EC"/>
+<text x="36" y="42" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#6E6E88">SAME QUESTIONS · BARE SCHEMA PLUS ONE KIND OF CONTEXT</text>
+<text x="36" y="90" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#3A3B4F">Bare schema</text>
+<rect x="430" y="72" width="660" height="28" rx="5" fill="#F1F1F7"/>
+<rect x="430" y="72" width="209.9" height="28" rx="5" fill="#2026D2"/>
+<text x="651.9" y="92" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#141517">31.8%</text>
+<text x="36" y="138" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#3A3B4F">Descriptions and documentation</text>
+<rect x="430" y="120" width="660" height="28" rx="5" fill="#F1F1F7"/>
+<rect x="430" y="120" width="259.4" height="28" rx="5" fill="#2026D2"/>
+<text x="701.4" y="140" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#141517">39.3%</text>
+<text x="36" y="186" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#3A3B4F">Usage patterns</text>
+<rect x="430" y="168" width="660" height="28" rx="5" fill="#F1F1F7"/>
+<rect x="430" y="168" width="289.7" height="28" rx="5" fill="#2026D2"/>
+<text x="731.7" y="188" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#141517">43.9%</text>
+<text x="36" y="234" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#3A3B4F">AI-generated metrics and queries</text>
+<rect x="430" y="216" width="660" height="28" rx="5" fill="#F1F1F7"/>
+<rect x="430" y="216" width="549.1" height="28" rx="5" fill="#62E1FC"/>
+<text x="991.1" y="236" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#141517">83.2%</text>
+<text x="36" y="276" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#6E6E88">Descriptions and documentation were measured on another model, where bare schema scored 33.6%. Every other bar: one model, the same questions.</text></svg>

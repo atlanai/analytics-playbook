@@ -1,0 +1,5 @@
+.mc-phone .mc-take{font:600 15px/1.35 var(--display);color:var(--ink);margin:0;max-width:none}
+.mc-phone .mc-take b{display:block;font-weight:600}
+.mc-phone .mc-take .mc-acc{color:var(--accent)}
+.mc-phone .mc-bare .d-bar-t i{background:var(--line-2);box-shadow:inset 0 0 0 1px var(--muted)}
+.mc-phone .mc-band{margin:12px 0 0;font-size:12.5px;padding:8px 10px;background:var(--accent-soft);border-radius:4px;max-width:none}

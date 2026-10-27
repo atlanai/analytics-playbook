@@ -1,0 +1,94 @@
+<svg viewBox="0 0 704 494" role="img" aria-label="After launch: real usage becomes proposed edits and conflicts that the domain owner settles weekly; a schema change triggers a regression run and a witness rerun">
+<title>The production loop</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<text x="8" y="20" class="m" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">EVERY WEEK AFTER LAUNCH · THE TRACE HOUR</text>
+<g class="t" style="font-size:12px">
+  <rect x="8" y="32" width="163" height="138" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="19" y="52" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">FOUR SIGNALS</text>
+  <text x="19" y="72" style="fill:var(--text)">traces of every answer</text>
+  <text x="19" y="88" style="fill:var(--text)">steps logged as</text>
+  <text x="19" y="104" style="fill:var(--text)">"context not enough"</text>
+  <text x="19" y="120" style="fill:var(--text)">user corrections</text>
+  <text x="19" y="136" style="fill:var(--text)">runs that disagree</text>
+  <rect x="183" y="32" width="163" height="138" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="194" y="52" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">FILED, NOT APPLIED</text>
+  <text x="194" y="72" style="fill:var(--text)">a correction becomes a</text>
+  <text x="194" y="88" style="fill:var(--text)">proposed edit; a split</text>
+  <text x="194" y="104" style="fill:var(--text)">between runs, a</text>
+  <text x="194" y="120" style="fill:var(--text)">conflict; both go to</text>
+  <text x="194" y="136" style="fill:var(--text)">the queue</text>
+  <text x="194" y="160" class="m" style="font-size:11.5px;fill:var(--muted)">A WEEK AFTER LAUNCH</text>
+  <rect x="358" y="32" width="163" height="138" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+  <text x="369" y="52" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">THE OWNER DECIDES</text>
+  <text x="369" y="72" style="fill:var(--text)">read the raw traces,</text>
+  <text x="369" y="88" style="fill:var(--text)">classify with the tree,</text>
+  <text x="369" y="104" style="fill:var(--text)">then the domain owner</text>
+  <text x="369" y="120" style="fill:var(--text)">settles each queue item</text>
+  <text x="369" y="160" class="m" style="font-size:11.5px;fill:var(--muted)">TEN MINUTES</text>
+  <rect x="533" y="32" width="163" height="138" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="544" y="52" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">NEXT VERSION</text>
+  <text x="544" y="72" style="fill:var(--text)">approved changes</text>
+  <text x="544" y="88" style="fill:var(--text)">batched into a release</text>
+  <text x="544" y="104" style="fill:var(--text)">candidate; the gate</text>
+  <text x="544" y="120" style="fill:var(--text)">runs; the eval run</text>
+  <text x="544" y="136" style="fill:var(--text)">ships with it</text>
+  <text x="544" y="160" class="m" style="font-size:11.5px;fill:var(--muted)">EVAL OWNER</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4">
+  <path d="M171 97 L181 97" marker-end="url(#arr)"/>
+  <path d="M346 97 L356 97" marker-end="url(#arr)"/>
+  <path d="M521 97 L531 97" marker-end="url(#arr)"/>
+</g>
+<path d="M614 170 L614 192 L90 192 L90 172" style="fill:none;stroke:var(--accent);stroke-width:1.5" marker-end="url(#arr)"/>
+<text x="352" y="210" text-anchor="middle" class="m" style="font-size:11.5px;fill:var(--accent)">SERVED TO USERS; THEIR QUESTIONS ARE THE NEXT SIGNALS ↻</text>
+<g class="t" style="font-size:12px;fill:var(--text)">
+  <text x="8" y="236">A regional VP called a pipeline number wrong. Their tracker counts renewals and early stages;</text>
+  <text x="8" y="252">the metric excludes both. The owner kept the metric, added a note to it, and put a renewal-pipeline</text>
+  <text x="8" y="268">metric on the backlog.</text>
+</g>
+<!-- trigger track -->
+<line x1="8" y1="284" x2="696" y2="284" style="stroke:var(--line);stroke-width:1"/>
+<text x="8" y="306" class="m" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">ON A TRIGGER · A SCHEMA CHANGE, CLEARED IN THREE DAYS</text>
+<g class="t" style="font-size:12px">
+  <rect x="8" y="318" width="128" height="112" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+  <text x="18" y="338" class="m" style="font-size:11px;fill:var(--stop)">ALERT · DAY 1</text>
+  <text x="18" y="358" style="fill:var(--text)">a source column</text>
+  <text x="18" y="374" style="fill:var(--text)">will be retired</text>
+  <text x="18" y="390" style="fill:var(--text)">next week</text>
+  <text x="18" y="420" class="m" style="font-size:11px;fill:var(--muted)">PLATFORM OWNER</text>
+  <rect x="148" y="318" width="128" height="112" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="158" y="338" class="m" style="font-size:11px;fill:var(--accent)">REGRESSION RUN</text>
+  <text x="158" y="358" style="fill:var(--text)">45 always-right</text>
+  <text x="158" y="374" style="fill:var(--text)">items, 3 runs each,</text>
+  <text x="158" y="390" style="fill:var(--text)">on staging</text>
+  <text x="158" y="408" style="font-size:16px;fill:var(--stop);font-weight:600">43 of 45</text>
+  <rect x="288" y="318" width="128" height="112" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="298" y="338" class="m" style="font-size:11px;fill:var(--accent)">WITNESS RERUN</text>
+  <text x="298" y="358" style="fill:var(--text)">38 trusted</text>
+  <text x="298" y="374" style="fill:var(--text)">queries: 36 OK,</text>
+  <text x="298" y="390" style="fill:var(--text)">2 fail and are</text>
+  <text x="298" y="406" style="fill:var(--text)">quarantined</text>
+  <text x="298" y="422" style="fill:var(--text)">metrics: 6 of 6 OK</text>
+  <rect x="428" y="318" width="128" height="112" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="438" y="338" class="m" style="font-size:11px;fill:var(--accent)">RE-ISSUE · DAY 2</text>
+  <text x="438" y="358" style="fill:var(--text)">their author moves</text>
+  <text x="438" y="374" style="fill:var(--text)">both to the new</text>
+  <text x="438" y="390" style="fill:var(--text)">column; the owner</text>
+  <text x="438" y="406" style="fill:var(--text)">approves each one</text>
+  <rect x="568" y="318" width="128" height="112" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+  <text x="578" y="338" class="m" style="font-size:11px;fill:var(--accent)">RERUN · DAY 3</text>
+  <text x="578" y="360" style="font-size:16px;fill:var(--ink);font-weight:600">45 of 45</text>
+  <text x="578" y="380" style="fill:var(--text)">change cleared;</text>
+  <text x="578" y="396" style="fill:var(--text)">result logged</text>
+  <text x="578" y="420" class="m" style="font-size:11px;fill:var(--muted)">EVAL OWNER</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4">
+  <path d="M136 374 L146 366" marker-end="url(#arr)"/>
+  <path d="M276 374 L286 366" marker-end="url(#arr)"/>
+  <path d="M416 374 L426 366" marker-end="url(#arr)"/>
+  <path d="M556 374 L566 366" marker-end="url(#arr)"/>
+</g>
+<text x="8" y="454" class="m" style="font-size:11.5px;fill:var(--muted)">THE BREAK WAS SILENT: THE AGENT REWROTE EACH FAILED QUERY FROM THE SCHEMA</text>
+<text x="8" y="470" class="m" style="font-size:11.5px;fill:var(--muted)">AND DROPPED THE EARLY-STAGE RULE</text>
+<text x="8" y="486" class="m" style="font-size:11.5px;fill:var(--muted)">NO CALL TO THE DELIVERY TEAM</text>
+</svg>

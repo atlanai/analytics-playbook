@@ -1,0 +1,17 @@
+Here's the question: how much open pipeline do we have with our top 100 customers? The summary said the agent used the certified metric... and it had. But the raw trace showed something else. It ranked them by number of deals. Finance ranks them by current ARR. This is Phase 3, hill-climbing from traces. Phase 2 got it to 14 of 20. So why do the rest still miss?
+
+It's one loop, run in short rounds. Freeze the context... and predict what'll change. Run it, grade it, then read every miss. Make the smallest fix. Then rerun everything, and record it.
+
+Teams skip two steps. The first: predict before you run. Which questions should each change fix? The second: rerun the whole set. Here's why. A rule meant to drop internal accounts also dropped a partner account... and only the full rerun caught it.
+
+So what's in a trace worth reading? Each served item, by name and version... each tool call, every SQL statement, the answer, and what it cost in tokens, steps and time. Why not just ask again? Because a metric that's wrong the same way every time... never disagrees with itself.
+
+Before you fix a miss, check two things. Is the sealed answer itself wrong? Or did the agent just run out of steps? If not, it's one of three kinds. It was never written. It was written, but not served. Or it was served... and ignored. Our top-100 ranking was never written. Slipped deals was written... but never served.
+
+So how often does this happen? On our benchmark, the configuration we ship, certified metrics with their SQL, missed 18 of 107. 11 of those were about which rows belong. And 4 landed within 1% of the sealed answer.
+
+Then make the smallest fix. Slipped deals took 2 edits to 1 business term... the synonyms "pushed" and "rolled", plus a link to the analyst's query. The top 100 took a 20-minute decision from its 2 owners: rank by ARR. And record the fixes you reverted, too.
+
+Write the stop rule down first. Stop when two rounds in a row move the score less than the run-to-run variation. And don't raise the step budget to cut refusals. Why not? On our ontology setup, a bigger budget cut refusals from 46 to 31. But wrong answers jumped from 27 to 40. A refusal is telling you a decision's missing.
+
+Back to the pipeline question. Ranked by ARR, it now returns $412 million. And Phase 3 closed at 18 of 20. So read the raw trace of every miss. The summary hides the step where the agent guessed. Next, Phase 4: release and hand over, on fresh questions nobody's climbed against.

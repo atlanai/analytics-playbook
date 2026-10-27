@@ -1,0 +1,20 @@
+.wex{display:grid;gap:12px}
+.wex .wx{border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+.wex .wx header{padding:12px 14px 11px;background:var(--panel);border-bottom:1px solid var(--line);display:grid;gap:5px}
+.wex .wx-k{font-size:11.5px;font-weight:600;color:var(--muted)}
+.wex .wx.still .wx-k{color:var(--stop)}
+.wex .wx q{font:600 14.5px/1.4 var(--display);color:var(--ink);quotes:"\201C" "\201D"}
+.wex .wx header p{margin:0;font-size:12.5px;line-height:1.45;color:var(--text);max-width:none}
+.wex .wx header p b{color:var(--ink);margin-right:4px}
+.wex .wx-cells{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.wex .wx-c{display:grid;gap:2px;align-content:start;padding:10px 12px 11px;border-right:1px solid var(--line);min-width:0}
+.wex .wx-c:last-child{border-right:0}
+.wex .wx-n{font-size:11.5px;color:var(--muted)}
+.wex .wx-c b{font:700 15px/1.25 var(--display);font-variant-numeric:tabular-nums}
+.wex .wx-c.ok b{color:var(--ok)}
+.wex .wx-c.no b{color:var(--stop)}
+.wex .wx-c.ref b{color:var(--warn)}
+.wex .wx-c.ok{background:color-mix(in srgb,var(--ok) 7%,var(--bg))}
+.wex .wx-w{font-size:12px;line-height:1.4;color:var(--text)}
+.wex .wx-foot{margin:0;font-size:12.5px;line-height:1.5;color:var(--muted);max-width:none}
+@media (max-width:640px){.wex .wx-cells{grid-template-columns:repeat(2,minmax(0,1fr))}.wex .wx-c:nth-child(2){border-right:0}.wex .wx-c:nth-child(-n+2){border-bottom:1px solid var(--line)}}

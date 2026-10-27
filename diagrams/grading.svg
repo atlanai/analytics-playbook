@@ -1,0 +1,54 @@
+<svg viewBox="0 0 704 512" role="img" aria-label="How one item is graded: the returned data first, then the SQL, then consistency across k runs">
+<title>How an answer is graded</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<g class="t" style="font-size:13.5px">
+<!-- 1: data -->
+<rect x="8" y="8" width="316" height="106" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="30" style="fill:var(--ink);font-weight:600">1 · Does the returned data match?</text>
+<text x="22" y="49" style="fill:var(--text);font-size:12px">the expected result or a valid alternative,</text>
+<text x="22" y="65" style="fill:var(--text);font-size:12px">within its tolerance: counts exact,</text>
+<text x="22" y="81" style="fill:var(--text);font-size:12px">amounts 0.5%</text>
+<text x="22" y="103" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">GRADER: CODE · FAST, NO JUDGMENT</text>
+<path d="M324 61 L368 61" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="346" y="54" text-anchor="middle" class="m" style="font-size:11.5px;fill:var(--muted)">NO</text>
+<rect x="372" y="8" width="324" height="106" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="386" y="30" style="fill:var(--ink);font-weight:600">Wrong on this run</text>
+<text x="386" y="49" style="fill:var(--text);font-size:12px">no valid alternative matched either;</text>
+<text x="386" y="65" style="fill:var(--text);font-size:12px">a total and a breakdown that sums to it</text>
+<text x="386" y="81" style="fill:var(--text);font-size:12px">are both right</text>
+<text x="386" y="101" style="fill:var(--stop);font-size:12px">declined to answer: its own verdict, never right</text>
+<path d="M166 114 L166 136" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="176" y="131" class="m" style="font-size:11.5px;fill:var(--muted)">YES</text>
+<!-- 2: SQL -->
+<rect x="8" y="140" width="316" height="104" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="162" style="fill:var(--ink);font-weight:600">2 · Does the SQL make the item's</text>
+<text x="22" y="179" style="fill:var(--ink);font-weight:600">decisions?</text>
+<text x="22" y="198" style="fill:var(--text);font-size:12px">read against the item's decisions field</text>
+<text x="22" y="219" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">DOMAIN GRADER · A JUDGE ONLY</text>
+<text x="22" y="234" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">ONCE CALIBRATED</text>
+<path d="M324 192 L368 192" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="346" y="185" text-anchor="middle" class="m" style="font-size:11.5px;fill:var(--muted)">NO</text>
+<rect x="372" y="140" width="324" height="104" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="386" y="168" style="fill:var(--ink);font-weight:600">Wrong on this run</text>
+<text x="386" y="188" style="fill:var(--text);font-size:12px">a wrong query can land near the right</text>
+<text x="386" y="204" style="fill:var(--text);font-size:12px">number by luck; a near-match of data</text>
+<text x="386" y="220" style="fill:var(--text);font-size:12px">alone never passes</text>
+<path d="M166 244 L166 266" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="176" y="261" class="m" style="font-size:11.5px;fill:var(--muted)">YES</text>
+<!-- 3: consistency -->
+<rect x="8" y="270" width="316" height="88" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="292" style="fill:var(--ink);font-weight:600">3 · Right on all k runs?</text>
+<text x="22" y="311" style="fill:var(--text);font-size:12px">the same configuration, run k times</text>
+<text x="22" y="332" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">CODE COMPARES VALUES AND SQL</text>
+<text x="22" y="347" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">ACROSS RUNS</text>
+<path d="M324 314 L368 314" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="346" y="307" text-anchor="middle" class="m" style="font-size:11.5px;fill:var(--muted)">NO</text>
+<rect x="372" y="270" width="324" height="88" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="386" y="296" style="fill:var(--ink);font-weight:600">Not consistent: fails pass^k</text>
+<text x="386" y="316" style="fill:var(--text);font-size:12px">right on at least one of k runs is pass@k;</text>
+<text x="386" y="333" style="fill:var(--stop);font-size:12px">never quote pass@k as accuracy</text>
+<path d="M166 358 L166 380" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="176" y="375" class="m" style="font-size:11.5px;fill:var(--muted)">YES</text>
+<!-- leaf -->
+<rect x="8" y="384" width="688" height="96" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="22" y="405" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.06em">PASS^K · THE ITEM COUNTS</text>
+<text x="22" y="425" style="fill:var(--ink);font-weight:600">Report pass^k for the governed lane: a board number right on two runs of three is wrong.</text>
+<text x="22" y="444" style="fill:var(--text);font-size:12px">An item right on every run joins the regression set, and leaves it if it fails.</text>
+<text x="22" y="467" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">WHY SEVERAL RUNS: THE SAME SETUP, RUN TWICE, CAN DISAGREE ON A FEW QUESTIONS</text>
+<text x="8" y="502" class="m" style="font-size:11.5px;fill:var(--muted)">TOLERANCES, VALID ALTERNATIVES AND GRADERS ARE FIXED AT SEALING, BEFORE ANY RESULT EXISTS</text>
+</g>
+</svg>

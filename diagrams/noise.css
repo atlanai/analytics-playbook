@@ -1,0 +1,5 @@
+.noise{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.noise .nz-card{display:grid;gap:3px;align-content:start;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px 14px 13px;min-width:0}
+.noise .nz-card b{font:700 22px/1.15 var(--display);color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.noise .nz-t{font-size:13px;font-weight:600;line-height:1.35;color:var(--ink)}
+.noise .nz-s{font-size:12.5px;line-height:1.4;color:var(--muted)}

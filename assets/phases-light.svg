@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 190" width="1200" height="190" role="img" aria-label="Phase 0, then Phases 1-4, each ending at a gate">
+<rect width="1200" height="190" rx="14" fill="#FFFFFF" stroke="#E1E1EC"/>
+<rect x="24" y="24" width="222" height="104" rx="10" fill="#E9E9FA"/>
+<text x="42" y="54" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#2026D2">PHASE 0</text>
+<text x="42" y="88" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#141517">Before the clock</text>
+<path d="M42 150 l10 -10 l10 10 l-10 10 z" fill="#2026D2"/>
+<text x="64" y="155" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#3A3B4F">The checklist signed</text>
+<path d="M247 76 l10 0" stroke="#6E6E88" stroke-width="2"/>
+<rect x="258" y="24" width="222" height="104" rx="10" fill="#E9E9FA"/>
+<text x="276" y="54" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#2026D2">PHASE 1</text>
+<text x="276" y="88" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#141517">Build the golden set</text>
+<path d="M276 150 l10 -10 l10 10 l-10 10 z" fill="#2026D2"/>
+<text x="298" y="155" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#3A3B4F">20+ sealed, baseline run</text>
+<path d="M481 76 l10 0" stroke="#6E6E88" stroke-width="2"/>
+<rect x="492" y="24" width="222" height="104" rx="10" fill="#E9E9FA"/>
+<text x="510" y="54" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#2026D2">PHASE 2</text>
+<text x="510" y="88" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#141517">Generate metrics</text>
+<path d="M510 150 l10 -10 l10 10 l-10 10 z" fill="#2026D2"/>
+<text x="532" y="155" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#3A3B4F">Metrics, scored</text>
+<path d="M715 76 l10 0" stroke="#6E6E88" stroke-width="2"/>
+<rect x="726" y="24" width="222" height="104" rx="10" fill="#E9E9FA"/>
+<text x="744" y="54" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#2026D2">PHASE 3</text>
+<text x="744" y="88" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#141517">Hill-climb from traces</text>
+<path d="M744 150 l10 -10 l10 10 l-10 10 z" fill="#2026D2"/>
+<text x="766" y="155" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#3A3B4F">Score clears the bar</text>
+<path d="M949 76 l10 0" stroke="#6E6E88" stroke-width="2"/>
+<rect x="960" y="24" width="222" height="104" rx="10" fill="#E9E9FA"/>
+<text x="978" y="54" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#2026D2">PHASE 4</text>
+<text x="978" y="88" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#141517">Release and hand over</text>
+<path d="M978 150 l10 -10 l10 10 l-10 10 z" fill="#2026D2"/>
+<text x="1000" y="155" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#3A3B4F">Launch gate on 50</text>
+</svg>

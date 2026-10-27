@@ -1,0 +1,21 @@
+.tsplit .ts-key,.areas .ar-key{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.tsplit .ts-key span,.areas .ar-key span{display:inline-flex;align-items:center;gap:6px}
+.tsplit .ts-axis,.tsplit .ts-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:14px;align-items:center}
+.tsplit .ts-row{padding:9px 0;border-top:1px solid var(--line)}
+.tsplit .ts-l{font-size:13px;line-height:1.35;color:var(--text)}
+.tsplit .ts-row.hi .ts-l{font-weight:600;color:var(--ink)}
+.tsplit .ts-scale,.tsplit .ts-track{position:relative;display:block;height:16px;margin:0 12px}
+.tsplit .ts-track{height:30px}
+.tsplit .ts-scale em{position:absolute;left:calc(var(--x) * 1%);transform:translateX(-50%);font:11px/16px var(--body);font-style:normal;color:var(--muted);white-space:nowrap}
+.tsplit .ts-line{position:absolute;top:9px;height:2px;left:calc(var(--a) * 1%);width:calc((var(--b) - var(--a)) * 1%);background:var(--line-2)}
+.tsplit .ts-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.tsplit .ts-track .ts-dot{position:absolute;top:4px;left:calc(var(--x) * 1%);transform:translateX(-50%);box-sizing:border-box}
+.tsplit .ts-dot.s{background:var(--line-2);border-color:var(--line-2)}
+.tsplit .ts-dot.m{border-color:var(--ink)}
+.tsplit .ts-row.hi .ts-dot.m{border-color:var(--accent);background:var(--accent)}
+.tsplit .ts-row.hi .ts-line{background:var(--accent-soft)}
+.tsplit .ts-v{position:absolute;top:18px;left:calc(var(--x) * 1%);transform:translateX(-50%);font:600 11px/12px var(--body);color:var(--ink);font-variant-numeric:tabular-nums}
+.tsplit .ts-v.s{color:var(--muted)}
+.tsplit .ts-row.hi .ts-v.m{color:var(--accent)}
+.tsplit .ts-foot,.areas .ar-foot,.misses .ms-foot,.ablate .ab-foot{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted);max-width:none}
+@media (max-width:560px){.tsplit .ts-axis,.tsplit .ts-row{grid-template-columns:1fr;gap:4px}.tsplit .ts-axis > span:first-child{display:none}}

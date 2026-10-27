@@ -1,0 +1,123 @@
+Running it — The Launch Gate That Had to Wait
+27 October 2026 · 15:18
+
+Transcribed from the recording with NotebookLM; names and technical terms have light spelling corrections. See editorial-notes.txt for factual clarifications.
+
+So, uh, picture this. It is Friday afternoon. It's your launch date.
+Oh, boy.
+Yeah. You are sitting there. You're looking at a dashboard and the score is just bright green,
+right?
+Everyone on the team is ready to pop the champagne. But, and this is a big butt, there's a hidden critical failure. Nobody can export the raw trace of what the analytics agent actually did,
+which is terrifying because you have a system telling you, you know, It works, but you have absolutely no visibility into the actual mechanics of how it arrived at that success.
+Exactly. So, put yourself in the hot seat. You're the delivery lead. Do you move the launch date?
+I mean,
+spoiler alert for everyone listening. Yes, you absolutely move the date
+100%.
+Today's deep dive pulls directly from an illustrative scenario in Atlan's FDE playbook for analytics agents. And our mission today is to make the delivery leads decisions incredibly concrete. No fluff. We are jumping straight into the trenches of running an analytics agent project.
+Yeah. And that Friday crisis scenario we just talked about, it really exposes the illusion of those uh green scores because relying solely on a summary is essentially flying blind,
+right?
+The summary only tells you what the agent claimed it did. It's like it's the agent narrating its own success story. What you actually need to see is the raw trace.
+I always think of it like um going to a restaurant where the chef promises they made you this magnificent meal, but the kitchen doors are locked.
+Yeah.
+And you can't see any of the ingredients they used.
+A summary looks reassuring on a dashboard, sure, but it hides the actual context that was served to the agent. And more importantly, it completely hides the raw SQL that ran under the hood to fetch that data from your warehouse.
+Exactly. Because to prove the system works, you must have hard evidence. And that evidence is the raw trace itself. It shows the literal strings of code and the exact data chunks it retrieved.
+Yeah.
+Moving forward, Without that visibility, I mean, you're basically building your entire analytics infrastructure while wearing a blindfold.
+But, okay, let's play devil's advocate. If the deadline is looming, right, and the sponsor is just breathing down your neck, the temptation to just trust the summary for now.
+Oh, it's massive,
+right? To say, "Let's verify the traces later in phase one." But based on this playbook, phase zero fundamentals are completely non-negotiable.
+They have to be.
+Before the project clock even starts, you need those raw traces working. Plus, you need verified access to the systems. You need named owners with committed weekly hours. And this is a big one, you must isolate the project to exactly one domain.
+One domain only. Yes. Attempting three to sort of hedge your bets is just a recipe for organizational chaos,
+right?
+Because the phase order in these projects is fixed. That is the iron rule of scheduling here. Your calendar depends entirely on passing dates, not, you know, hitting arbitrary dates on the wall.
+So, No rushing it.
+No, there is no such thing as a guaranteed 5we project just because an executive wants it. A looming deadline does not substitute for actual evidence.
+So that sets up a fascinating tension. Let's say you hold the line. You get those raw traces working. You have your phase zero fundamentals locked in. You finally open up one of those raw traces to look at the underlying sequel and you find a ticking time bomb inside.
+Yeah, the summary just glossed over a massive internal contradiction.
+Right. The trace reveals this fundamental business conflict. The agent scored itself green because hey, it successfully provided an answer. But when you inspect the SQL, you see it ranked the top customers by deal count,
+which is a standard sales definition.
+Exactly. But finance expects top customers to be ranked by current annual recurring revenue or ARR.
+Right. So we have two departments both utterly convinced their definition is the universal truth.
+Yeah.
+And as a delivery lead, this is the exact moment you can completely derail the project if you step out of your lane. We really need to be incredibly precise about who does what here.
+Let's lay it out.
+Okay. So, the delivery lead owns the calendar, the ceremonies, and the gates. You direct the traffic.
+Got it?
+The domain owner, so the person from the business side. They decide the business definitions and approve the context. And finally, the eval owner and the graders, they seal the expected answers and grade the runs.
+And maintaining those boundaries is crucial, right? Like for the long-term integrity of the agent. The delivery lead absolutely cannot patch the definition just to preserve a launch date.
+Never. You also never let the domain owner grade the evaluation and the delivery lead never grades it either.
+It's like uh it's like air traffic control. The delivery lead directs the planes. They manage the holding patterns, but the domain owner is the airline CEO deciding where the planes are actually flying.
+That's a great way to put it
+because it's so tempting for a delivery lead to just go in manually select current ARR in the code to unblock the build and hit that Friday launch. But if they cross that line, the numbers no longer belong to the business. The moment the delivery team leaves, nobody in the actual company owns the accuracy of those answers,
+which leaves you with a blocked dependency. Sales and finance disagree, and the build is paused on the specific metric,
+right? So to resolve this without breaking your timeline, you route the dispute through the project's four ceremonies. You share the conflict with the domain owners, but and this is critical, you must keep the sealed expected answers completely. completely protected from the builders.
+I want to dig into the mechanics of that for a second because keeping the answers sealed means the context engineer like the person actually tuning the agents prompts and knowledge base, they cannot see the final exam.
+No, absolutely not.
+Because if they see the exact questions and the expected answers, they'll just overfit the agent to pass the test rather than building a robust reasoning engine.
+Precisely. They end up just teaching to the test. So, you rely on the four ceremonies to handle the definition dispute transparently.
+Walk us through those.
+Sure. First is the kickoff. That's where you establish these strict role boundaries in the first place. Second is the working session. This is where the actual mechanics of the dispute are laid bare.
+So in a working session, you're literally physically putting that conflicting SQL on a screen in front of the business leaders.
+Yeah. A domain owner looks at the raw code and realizes, oh, the agent translated my vague request for top customers into a literal command to count deals rather than sum up revenue.
+Right? And seeing that translation. It forces the business to acknowledge the ambiguity in their own language.
+Exactly. Then third is the sponsor readout. This is a brief check-in where you report the status of the block to the executive sponsor. And fourth is the gate review where you formally record a pass, a hold, or a stop based on the evidence.
+I can easily picture a scenario uh at that sponsor readout where the executive sponsor gets uh you know impatient and they just dictate a temporary fix. They say, "Look, for this launch, we're only going to support the sales definition of top customers. They move the bar.
+Yep, that happens. And if the sponsor moves the bar, you date that decision in your logs. From that point forward, the agent is scored against both bars in your records.
+Ah, so you maintain the history of the original goal.
+Exactly. Meanwhile, independent work continues. The rest of the build doesn't just grind to a halt because one specific metric dependency is blocked.
+Right. So, you navigate the dispute, you hold your boundaries, and the build continues. That brings us to phase four. four the final release gate and the handover. This is where we really have to look closely at how the testing evolves because it's not static, is it?
+No, not at all. The golden set of questions, the master test, it undergoes a very specific evolution. It starts with at least 20 questions during the early phases of the project, but by the time you reach the launch gate, it grows to 50 questions.
+And the critical detail here is that the additional 30 questions aren't just slightly rewarded versions of the first 20,
+right?
+They are fresh. questions that have been kept completely unseen by the context engineer.
+Yes. Again, preventing that whole teaching to the test scenario. You're evaluating the agent on scenarios nobody tuned it against. And at launch, that full grown set of 50 questions is run three to five times.
+Okay. Running it three to five times. That's where you separate a true capability from just a lucky guess. Right.
+Exactly. A really common misconception is that if an AI model gets an answer right once, it has somehow learned the answer.
+I think a lot of people assume that like if I ask a calculator for the roo[unclear] of 144, it gives me 12. It doesn't need to prove it to me five times.
+But an analytics agent is not a deterministic calculator. It's a probabilistic reasoning engine. There is a massive difference between agent consistency and statistical luck.
+That makes sense.
+If it is right every single time across three to five runs, the agent actually knows the decision. pathway. If it's right only some of the time, it's just guessing at a decision structure that nobody explicitly provided in the context. A right answer once is not a capability.
+Wow. That sets up an incredibly strict rule for passing the launch gate. Governed questions, so the critical metrics that end up on board slides, they must be right on every single launch gate run. Furthermore, they must use a certified metric or the agent must refuse to answer entirely.
+Yeah, and we should probably define what a certified metric actually is in this environment.
+Go for it.
+It's a pre-calculated governed aggregation living in the semantic layer of your data stack. It's the agreed upon mathematical definition of current ARR that we discussed earlier. If the agent cannot map the user's question to that specific certified metric, it is far safer for it to just refuse the prompt than to try and hallucinate a SQL join on the fly.
+No certified metric, no answer. That's a brilliant safety valve. But it's also vital to remember what passing this final gate actually means. This gate is evidence of current performance. It's a snapshot in time, right? It is not a magical guarantee that all future questions will be correct because data environments drift, right? Business definitions change.
+They absolutely do. Which brings up the challenge of missing data. During these final tests, you'll often uncover questions that simply cannot be answered because the underlying warehouse just lacks the history.
+Like what?
+Well, for For example, a VP asks for the pipeline created this quarter, but when you look at the data architecture, the warehouse doesn't actually keep a snapshot record of deals that were created and then closed within the exact same quarter. The history just isn't there.
+And you can't just let the agent fail silently, but you also can't stall a million dollar launch for a single missing table,
+right? So, the playbook handles this really cleanly. That specific question type is held back by name. It is assigned to a specific owner and it's given a firm date for resolution.
+So you launch the rest of the agent with that one capability visibly and intentionally carved out.
+Exactly. And once you pass that final gate, you initiate the handover. Now, a successful handover is not just tossing a PDF manual over the fence and wishing the business luck.
+I've seen that happen too many times.
+We all have. But handover here means exactly one round of the testing harness run together with the delivery team and the organization side by side. Then The organization must run one round completely alone within two weeks.
+Crucially, they must do it using their own harness.
+Yes.
+Harness being the automated testing infrastructure that actually runs these evaluations. Because if the organization relies on the delivery team's proprietary testing environment, you haven't really handed anything over, have you?
+No. You've just built a permanent dependency. If they can't run the improvement loop independently on their own infrastructure, the project is not truly delivered.
+And that independ is what makes life after launch sustainable because without active maintenance the agents context degrades rapidly. So a weekly trace hour is established to combat this,
+right? The weekly trace hour. This is a dedicated hour where real user corrections and failures are reviewed and fed back to the domain owner.
+But they're fed back as proposals, right? Never applied automatically to the system.
+Correct. Because what sounds like a simple bug reported by a user is often just that user holding a completely different undocumented Ed business definition
+uh of course
+so the domain owner has to approve the change to the context. Furthermore any changes to the database schema the context guidelines or the testing harness they automatically trigger regression tests on the golden set. You have to verify that teaching the agent a new trick didn't cause it to forget and governed a metric.
+And if a change does break something horribly the architecture demands that the previous release remains deployable at all times. You always have a one-click roll back available. And you know as the organization builds muscle memory with domain one they will inevitably want to expand like moving from sales over to finance for example
+right
+when domain 2 starts it is treated as a completely fresh ecosystem. It gets its own distinct named owners and its own separate evaluations.
+It inherits the certified metrics from domain one. So you aren't reinventing the wheel. Sure. But it builds its own golden set of test questions.
+Exactly.
+The most critical addition though is the arbiter. You must name and arbiter for contested definitions before domain 2 even begins
+because the moment domain two overlaps with domain one they will disagree. You need an executive who has authority over both sales and finance to settle the tie when they fundamentally clash over what a word means.
+Which brings us all the way back to our opening scenario. It is Friday. The launch is ready. The score in the dashboard is green. But you cannot export the production traces to prove how the agent got its answers.
+Yeah,
+the decision is entirely concrete now. You hold the affected gate until those production traces actually work. You do not launch on a summary.
+If you enforce the gates, the calendar will take care of itself. The entire playbook is designed to force evidence-based decisions rather than schedule-based panics.
+We want to leave you with one strict action for tomorrow morning. When you sit down at your desk, pull up your project calendar, inspect the actual evidence required for your very next gate. Don't just look at the date. Look at the proof requ required,
+right?
+Identify the decision owner for that gate by name and meticulously check your decisions log for any dated, unresolved conditions that are quietly lowering your bar without you even realizing it.
+Operating an analytics agent really exposes the hidden fault lines in a company's data culture. By demanding raw traces and certified metrics, you force the business to actually agree on its own reality.
+And that is the ultimate takeaway here. We often treat AI as this purely technical deployment, but It is actually an organizational forcing function. It's dragging decades of unresolved corporate disagreements out into the light.
+Very true.
+The long-term impact of these agents isn't just faster dashboards. It's that they are going to force companies to completely restructure their corporate governance just to survive the transition.

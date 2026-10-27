@@ -1,0 +1,13 @@
+figure[data-diagram="lifecycle"] a{cursor:pointer;text-decoration:none}
+figure[data-diagram="lifecycle"] a.lc-node:hover rect,figure[data-diagram="lifecycle"] a.lc-node:focus-visible rect{stroke:var(--accent)!important;fill:var(--tint)!important}
+figure[data-diagram="lifecycle"] a.lc-core:hover circle{fill:var(--accent-soft)!important}
+figure[data-diagram="lifecycle"] a.lc-spur:hover text{text-decoration:underline}
+figure[data-diagram="lifecycle"] .lc-go{opacity:.45;transition:opacity .15s}
+figure[data-diagram="lifecycle"] a.lc-node:hover .lc-go{opacity:1}
+.lc-list ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:lc}
+.lc-list li a{display:grid;gap:2px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;padding:10px 12px;text-decoration:none;color:var(--text);background:var(--bg)}
+.lc-list li a:hover{background:var(--tint)}
+.lc-list .lc-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.lc-list b{font:600 15px/1.25 var(--display);color:var(--ink)}
+.lc-list li a > span:last-child{font-size:13px;color:var(--muted)}
+.lc-list .lc-foot{margin:10px 0 0;font-size:13px;display:grid;gap:4px}

@@ -1,0 +1,59 @@
+<svg viewBox="12 4 706 458" role="img" aria-label="Ontology fragment for the EMEA question: five entities, five relationships, two dated changes, two tested paths">
+<title>Ontology fragment for the EMEA question</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<g class="t" style="font-size:12.5px">
+<!-- dated flag on Opportunity -->
+<rect x="248" y="10" width="330" height="40" rx="6" style="fill:var(--bg);stroke:var(--stop);stroke-width:1.2;stroke-dasharray:4 3"/>
+<text x="260" y="27" class="m" style="font-size:10.5px;fill:var(--stop);letter-spacing:.06em">MID-QUARTER · FINANCE</text>
+<text x="260" y="42" style="font-size:11.5px;fill:var(--text)">Enterprise pricing change: open deals re-signed</text>
+<path d="M413 50 L413 78" style="fill:none;stroke:var(--stop);stroke-width:1.2;stroke-dasharray:3 3"/>
+<!-- entities -->
+<rect x="60" y="80" width="150" height="58" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="135" y="104" text-anchor="middle" style="fill:var(--ink);font-weight:600">Rep</text>
+<text x="135" y="123" text-anchor="middle" class="m" style="font-size:10.5px;fill:var(--muted)">crm.rep</text>
+<rect x="338" y="80" width="150" height="58" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.8"/>
+<text x="413" y="104" text-anchor="middle" style="fill:var(--ink);font-weight:600">Opportunity</text>
+<text x="413" y="123" text-anchor="middle" class="m" style="font-size:10.5px;fill:var(--muted)">crm.opportunity</text>
+<text x="413" y="156" text-anchor="middle" class="m" style="font-size:10px;fill:var(--accent)">metrics: open pipeline, top accounts · win rate</text>
+<rect x="560" y="80" width="150" height="58" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="635" y="104" text-anchor="middle" style="fill:var(--ink);font-weight:600">Stage history</text>
+<text x="635" y="123" text-anchor="middle" class="m" style="font-size:10.5px;fill:var(--muted)">crm.stage_history</text>
+<rect x="60" y="262" width="150" height="58" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="135" y="286" text-anchor="middle" style="fill:var(--ink);font-weight:600">Territory</text>
+<text x="135" y="305" text-anchor="middle" class="m" style="font-size:10.5px;fill:var(--muted)">crm.territory</text>
+<rect x="338" y="262" width="150" height="58" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="413" y="286" text-anchor="middle" style="fill:var(--ink);font-weight:600">Account</text>
+<text x="413" y="305" text-anchor="middle" class="m" style="font-size:10.5px;fill:var(--muted)">crm.account</text>
+<!-- edges -->
+<path d="M210 109 L330 109" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/>
+<text x="270" y="102" text-anchor="middle" style="font-size:11px;fill:var(--muted)">works</text>
+<path d="M413 165 L413 254" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/>
+<text x="422" y="215" style="font-size:11px;fill:var(--muted)">belongs to</text>
+<path d="M338 291 L218 291" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/>
+<text x="278" y="284" text-anchor="middle" style="font-size:11px;fill:var(--muted)">sits in</text>
+<path d="M135 262 L135 146" style="fill:none;stroke:var(--accent);stroke-width:1.6" marker-end="url(#arr)"/>
+<text x="146" y="196" text-anchor="start" style="font-size:11px;fill:var(--ink);font-weight:600">owned by</text>
+<text x="146" y="211" text-anchor="start" style="font-size:10.5px;fill:var(--accent)">rule: owner change →</text>
+<text x="146" y="225" text-anchor="start" style="font-size:10.5px;fill:var(--accent)">new rep re-qualifies deals</text>
+<path d="M488 109 L552 109" style="fill:none;stroke:var(--accent);stroke-width:1.6" marker-end="url(#arr)"/>
+<text x="520" y="102" text-anchor="middle" style="font-size:11px;fill:var(--ink);font-weight:600">moves</text>
+<text x="708" y="156" text-anchor="end" style="font-size:10.5px;fill:var(--accent)">rule: a re-signed deal</text>
+<text x="708" y="170" text-anchor="end" style="font-size:10.5px;fill:var(--accent)">goes back to the first stage</text>
+<!-- dated flag on Territory -->
+<rect x="20" y="340" width="320" height="40" rx="6" style="fill:var(--bg);stroke:var(--stop);stroke-width:1.2;stroke-dasharray:4 3"/>
+<text x="32" y="357" class="m" style="font-size:10.5px;fill:var(--stop);letter-spacing:.06em">START OF QUARTER · SALES OPS</text>
+<text x="32" y="372" style="font-size:11.5px;fill:var(--text)">EMEA territory realignment: new owning reps</text>
+<path d="M135 320 L135 340" style="fill:none;stroke:var(--stop);stroke-width:1.2;stroke-dasharray:3 3"/>
+<!-- tested paths with answers -->
+<rect x="20" y="398" width="330" height="58" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="34" y="418" class="m" style="font-size:10.5px;fill:var(--accent);letter-spacing:.06em">FIRST CAUSE · TERRITORY → REP → OPPORTUNITY</text>
+<text x="34" y="437" style="fill:var(--ink);font-weight:600;font-size:15px">$31M</text>
+<text x="92" y="437" style="fill:var(--text);font-size:11.5px">41 deals changed owner, not moved since</text>
+<text x="34" y="451" style="fill:var(--muted);font-size:10.5px">tested in SQL: owner changed, no stage change since</text>
+<rect x="366" y="398" width="344" height="58" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="380" y="418" class="m" style="font-size:10.5px;fill:var(--accent);letter-spacing:.06em">SECOND CAUSE · OPPORTUNITY → STAGE HISTORY</text>
+<text x="380" y="437" style="fill:var(--ink);font-weight:600;font-size:15px">$19M</text>
+<text x="438" y="437" style="fill:var(--text);font-size:11.5px">9 deals re-signed, back to the first stage</text>
+<text x="380" y="451" style="fill:var(--muted);font-size:10.5px">EMEA fell $53M ($214M → $161M); NA and APAC held</text>
+</g>
+</svg>

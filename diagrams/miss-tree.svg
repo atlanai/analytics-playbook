@@ -1,0 +1,70 @@
+<svg viewBox="0 0 700 670" role="img" aria-label="Why did this miss? Two pre-checks, three kinds of miss, then a data check">
+<title>Why did this miss?</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<g class="t" style="font-size:13.5px">
+<!-- pre-check 1 -->
+<rect x="8" y="8" width="280" height="70" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="31" style="fill:var(--ink);font-weight:600">Is the key wrong?</text>
+<text x="22" y="50" style="fill:var(--muted);font-size:12.5px">the agent's answer is defensible</text>
+<text x="22" y="66" style="fill:var(--muted);font-size:12.5px">and the key is not</text>
+<path d="M288 43 L382 43" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="36" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="386" y="8" width="306" height="70" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="400" y="35" style="fill:var(--ink);font-weight:600">Eval owner corrects and reseals the key</text>
+<text x="400" y="55" style="fill:var(--stop);font-size:12.5px">never edit the question to fit the agent</text>
+<path d="M148 78 L148 100" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="95" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<!-- pre-check 2 -->
+<rect x="8" y="104" width="280" height="70" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="127" style="fill:var(--ink);font-weight:600">Did the step budget run out?</text>
+<text x="22" y="146" style="fill:var(--muted);font-size:12.5px">hit the step or query limit</text>
+<text x="22" y="162" style="fill:var(--muted);font-size:12.5px">partway through</text>
+<path d="M288 139 L382 139" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="132" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="386" y="104" width="306" height="70" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="400" y="127" style="fill:var(--ink);font-weight:600">Read the steps, supply the decision</text>
+<text x="400" y="146" style="fill:var(--stop);font-size:12.5px">never raise the budget: fewer</text>
+<text x="400" y="162" style="fill:var(--stop);font-size:12.5px">abstentions, more wrong answers</text>
+<path d="M148 174 L148 196" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="191" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<!-- question 1 -->
+<rect x="8" y="200" width="280" height="88" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="223" style="fill:var(--ink);font-weight:600">Does the decision exist anywhere</text>
+<text x="22" y="240" style="fill:var(--ink);font-weight:600">in the layer?</text>
+<text x="22" y="260" style="fill:var(--muted);font-size:12.5px">metric, rule, business term or</text>
+<text x="22" y="276" style="fill:var(--muted);font-size:12.5px">trusted query</text>
+<path d="M288 244 L382 244" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="237" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="200" width="306" height="88" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="400" y="221" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.04em">NEVER WRITTEN · MOST COMMON MISS</text>
+<text x="400" y="241" style="fill:var(--ink);font-weight:600">Write the definition into a metric.</text>
+<text x="400" y="261" style="fill:var(--text);font-size:12.5px">context engineer drafts, domain owner</text>
+<text x="400" y="277" style="fill:var(--text);font-size:12.5px">settles it</text>
+<path d="M148 288 L148 310" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="305" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<!-- question 2 -->
+<rect x="8" y="314" width="280" height="88" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="346" style="fill:var(--ink);font-weight:600">Was it served for this question?</text>
+<text x="22" y="366" style="fill:var(--muted);font-size:12.5px">look for it in the trace's context call</text>
+<path d="M288 358 L382 358" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="351" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="314" width="306" height="88" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="400" y="335" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.04em">WRITTEN, NOT SERVED</text>
+<text x="400" y="355" style="fill:var(--ink);font-weight:600">Fix retrieval so the right item arrives.</text>
+<text x="400" y="375" style="fill:var(--text);font-size:12.5px">context engineer · term links, ranking,</text>
+<text x="400" y="391" style="fill:var(--text);font-size:12.5px">slots; no new definition</text>
+<path d="M148 402 L148 424" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="419" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<!-- question 3 -->
+<rect x="8" y="428" width="280" height="88" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="460" style="fill:var(--ink);font-weight:600">Was it used?</text>
+<text x="22" y="480" style="fill:var(--muted);font-size:12.5px">the SQL follows the definition</text>
+<text x="22" y="496" style="fill:var(--muted);font-size:12.5px">that was served</text>
+<path d="M288 472 L382 472" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="465" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="428" width="306" height="88" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="400" y="449" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.04em">SERVED, IGNORED</text>
+<text x="400" y="469" style="fill:var(--ink);font-weight:600">Make it a rule the agent must follow,</text>
+<text x="400" y="489" style="fill:var(--text);font-size:12.5px">or make the SQL a metric ·</text>
+<text x="400" y="505" style="fill:var(--text);font-size:12.5px">context engineer and agent builder</text>
+<path d="M148 516 L148 538" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="533" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<!-- leaf: data -->
+<rect x="8" y="542" width="684" height="80" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="22" y="564" class="m" style="font-size:12px;fill:var(--stop);letter-spacing:.06em">STILL WRONG ON EVERY RUN · A DATA GAP</text>
+<text x="22" y="585" style="fill:var(--ink);font-weight:600">The state the answer needs does not exist, or the grain is wrong.</text>
+<text x="22" y="605" style="fill:var(--text);font-size:12.5px">platform owner fixes the table or its grain</text>
+<text x="8" y="644" class="m" style="font-size:11.5px;fill:var(--muted)">READ THE RAW TRACE FIRST · CLASSIFY EVERY MISS · APPLY ONE FIX PER KIND ·</text>
+<text x="8" y="660" class="m" style="font-size:11.5px;fill:var(--muted)">RECORD IT ON THE TRACE-REVIEW SHEET</text>
+</g>
+</svg>

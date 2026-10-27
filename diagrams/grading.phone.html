@@ -1,0 +1,12 @@
+<div class="d d-tree">
+<ol>
+  <li class="q">1 · Does the returned data match? <span class="d-mono">code grades it</span>
+    <ol><li>Against the expected result or a valid alternative, within tolerance: counts exact, amounts within 0.5%. A total or a breakdown summing to it both pass.</li>
+    <li class="stop"><span class="yn">no</span>Wrong on this run. Declined to answer is its own verdict, never right, reported apart from wrong.</li></ol></li>
+  <li class="q">2 · Does the SQL make the item's decisions? <span class="d-mono">domain grader; a judge only once calibrated</span>
+    <ol><li class="stop"><span class="yn">no</span>Wrong on this run. A wrong query can land near the right number by luck; a near-match of data alone never passes.</li></ol></li>
+  <li class="q">3 · Right on all k runs of the same configuration? <span class="d-mono">code compares values and SQL</span>
+    <ol><li class="stop"><span class="yn">no</span>Fails pass^k. Right on at least one run is pass@k; never quote it as accuracy.</li></ol></li>
+  <li class="leaf"><span class="yn">yes</span><b>Pass^k · the item counts.</b> Report pass^k for the governed lane: a board number right on two runs of three is wrong. An item right on every run joins the regression set, and leaves it if it fails. The same setup, run twice, can disagree on a few questions.</li>
+</ol>
+</div>

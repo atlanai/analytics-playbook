@@ -1,0 +1,13 @@
+<div class="d aa-phone">
+<div class="aa-layers">
+  <div class="aa-l"><b>UI</b><span>where users ask</span></div>
+  <div class="aa-l aa-yours"><b>Harness</b><span>the loop, tools, prompts, traces</span></div>
+  <div class="aa-l"><b>Model</b><span>the LLM it calls</span></div>
+  <div class="aa-mcp">↕ MCP or API: context served, traces back</div>
+  <div class="aa-l aa-ctx"><b>Context layer</b><span>metrics, trusted past queries, rules and terms</span></div>
+  <div class="aa-l aa-sealed"><b>Golden set</b><span>sealed, never served: the eval owner keeps it apart and scores the agent against it</span></div>
+</div>
+<div class="d-box" style="margin-top:12px"><h5>Platform-native</h5><p>Databricks Genie, Snowflake CoWork. The platform supplies the chat and the model; you configure its agent: instructions, data scope, tools.</p></div>
+<div class="d-box" style="margin-top:8px"><h5>Custom</h5><p>Google ADK, LangGraph or your own code. You build the harness, pick the model and put it in Slack, Teams, a BI tool or your app.</p></div>
+<p class="d-mono" style="margin:10px 0 0">Both reach the same context layer over MCP or API. It serves the context and takes the traces back; the harness runs the agent and the SQL.</p>
+</div>

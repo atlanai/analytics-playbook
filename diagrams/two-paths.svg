@@ -1,0 +1,65 @@
+<svg viewBox="0 0 720 500" role="img" aria-label="Two ways into phase 2: with no agent yet, generate metrics from past SQL and BI; with an agent running, import its context; both meet at the phase 2 gate">
+<title>Two ways into phase 2</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<g class="t">
+  <!-- Path A -->
+  <rect x="16" y="16" width="336" height="62" rx="8" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+  <text x="30" y="36" class="m" style="font-size:10px;fill:var(--accent);letter-spacing:.06em">NO AGENT YET</text>
+  <text x="30" y="55" style="font-size:13px;fill:var(--ink);font-weight:600">Generate metrics from past SQL and BI</text>
+  <text x="30" y="70" style="font-size:10.5px;fill:var(--muted)">the sales team</text>
+  <text x="30" y="100" class="m" style="font-size:10px;fill:var(--muted)">BASELINE: 7 OF 20 ON BARE SCHEMA</text>
+  <rect x="16" y="112" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="30" y="131" style="font-size:12px;fill:var(--ink);font-weight:600">Keep what analysts trust</text>
+  <text x="30" y="148" style="font-size:10.5px;fill:var(--text)">machine traffic out, duplicates merged, golden SQL purged</text>
+  <rect x="16" y="170" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="30" y="189" style="font-size:12px;fill:var(--ink);font-weight:600">Generate candidate metrics</text>
+  <text x="30" y="206" style="font-size:10.5px;fill:var(--text)">A metrics generator: your script or a product</text>
+  <rect x="16" y="228" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="30" y="247" style="font-size:12px;fill:var(--ink);font-weight:600">Keep the rest as trusted past queries</text>
+  <text x="30" y="264" style="font-size:10.5px;fill:var(--text)">complete SQL, indexed on identifiers and literals</text>
+  <!-- Path B -->
+  <rect x="368" y="16" width="336" height="62" rx="8" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+  <text x="382" y="36" class="m" style="font-size:10px;fill:var(--accent);letter-spacing:.06em">YOU ALREADY HAVE ONE</text>
+  <text x="382" y="55" style="font-size:13px;fill:var(--ink);font-weight:600">Import its context, report the gaps</text>
+  <text x="382" y="70" style="font-size:10.5px;fill:var(--muted)">the support-analytics team</text>
+  <text x="382" y="100" class="m" style="font-size:10px;fill:var(--muted)">BASELINE: 11 OF 20 EXISTING CONTEXT · 6 BARE</text>
+  <rect x="368" y="112" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="382" y="131" style="font-size:12px;fill:var(--ink);font-weight:600">Load what the domain already has</text>
+  <text x="382" y="148" style="font-size:10.5px;fill:var(--text)">templates as candidates; descriptions stay the floor</text>
+  <rect x="368" y="170" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="382" y="189" style="font-size:12px;fill:var(--ink);font-weight:600">Trace the agent and write the gap report</text>
+  <text x="382" y="206" style="font-size:10.5px;fill:var(--text)">60 traced context calls; one row per decision type</text>
+  <rect x="368" y="228" width="336" height="46" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+  <text x="382" y="247" style="font-size:12px;fill:var(--ink);font-weight:600">Ask each question more than once</text>
+  <text x="382" y="264" style="font-size:10.5px;fill:var(--text)">6 of 20 came back different; each filed as a conflict</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4">
+  <path d="M184 158 L184 168" marker-end="url(#arr)"/>
+  <path d="M184 216 L184 226" marker-end="url(#arr)"/>
+  <path d="M536 158 L536 168" marker-end="url(#arr)"/>
+  <path d="M536 216 L536 226" marker-end="url(#arr)"/>
+  <path d="M184 274 L184 304" marker-end="url(#arr)"/>
+  <path d="M536 274 L536 304" marker-end="url(#arr)"/>
+</g>
+<!-- shared band -->
+<rect x="16" y="306" width="688" height="92" rx="8" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="30" y="326" class="m" style="font-size:10px;fill:var(--accent);letter-spacing:.06em">THE SAME ON BOTH PATHS</text>
+<g class="t">
+  <rect x="30" y="336" width="212" height="50" rx="6" style="fill:var(--bg);stroke:var(--accent);stroke-width:1"/>
+  <text x="42" y="356" style="font-size:12px;fill:var(--ink);font-weight:600">Witness, read-only</text>
+  <text x="42" y="373" style="font-size:10.5px;fill:var(--text)">every candidate, generated or imported</text>
+  <rect x="254" y="336" width="212" height="50" rx="6" style="fill:var(--bg);stroke:var(--accent);stroke-width:1"/>
+  <text x="266" y="356" style="font-size:12px;fill:var(--ink);font-weight:600">One review queue</text>
+  <text x="266" y="373" style="font-size:10.5px;fill:var(--text)">provenance first, then the owner</text>
+  <rect x="478" y="336" width="212" height="50" rx="6" style="fill:var(--bg);stroke:var(--accent);stroke-width:1"/>
+  <text x="490" y="356" style="font-size:12px;fill:var(--ink);font-weight:600">Served per question</text>
+  <text x="490" y="373" style="font-size:10.5px;fill:var(--text)">one context call, complete SQL</text>
+</g>
+<path d="M360 398 L360 420" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/>
+<!-- Gate 2 -->
+<rect x="150" y="422" width="420" height="52" rx="8" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+<rect x="166" y="438" width="10" height="10" transform="rotate(45 171 443)" style="fill:var(--accent);stroke:none"/>
+<text x="186" y="442" class="t" style="font-size:12.5px;fill:var(--ink);font-weight:600">Phase 2 gate: metrics scored on the same 20</text>
+<text x="186" y="461" class="m" style="font-size:10px;fill:var(--muted)">NO AGENT YET 14 OF 20 · EXISTING AGENT 15 OF 20</text>
+<text x="360" y="494" text-anchor="middle" class="m" style="font-size:10px;fill:var(--muted)">FROM HERE: THE SAME HILL CLIMB, THE SAME GATES, THE SAME HANDOVER</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg viewBox="0 0 640 214" role="img" aria-label="The same metric served as SQL scored 16 points higher than served as prose on multi-table questions">
+<title>SQL beats a sentence</title>
+<text x="16" y="24" class="d" style="font-size:15.5px;font-weight:600;fill:var(--ink)">A metric served as SQL beat the same metric as prose</text>
+<text x="16" y="44" class="t" style="font-size:12px;fill:var(--muted)">Same metric, same questions. Only the form changed.</text>
+<text x="16" y="70" class="m" style="font-size:10px;letter-spacing:.08em;fill:var(--muted)">MULTI-TABLE QUESTIONS · SHARE ANSWERED CORRECTLY</text>
+<line x1="150" x2="150" y1="80" y2="172" style="stroke:var(--line-2);stroke-width:1"/>
+<line x1="590" x2="590" y1="80" y2="172" style="stroke:var(--line);stroke-width:1;stroke-dasharray:3 3"/>
+<text x="16" y="105" class="t" style="font-size:12.5px;font-weight:600;fill:var(--ink)">Metric as SQL</text>
+<rect x="150" y="86" width="360.8" height="30" rx="2" style="fill:var(--accent);stroke:none"/>
+<text x="16" y="153" class="t" style="font-size:12.5px;font-weight:600;fill:var(--ink)">Metric as prose</text>
+<rect x="150" y="134" width="288.6" height="30" rx="2" style="fill:var(--line-2);stroke:var(--muted);stroke-width:1"/>
+<line x1="510.8" x2="510.8" y1="116" y2="164" style="stroke:var(--accent);stroke-width:1.2;stroke-dasharray:3 2"/>
+<path d="M444 156 L505 156" style="fill:none;stroke:var(--accent);stroke-width:1.5"/>
+<path d="M444 152 L438.6 156 L444 160 Z M505 152 L510.8 156 L505 160 Z" style="fill:var(--accent);stroke:none"/>
+<text x="474.7" y="148" text-anchor="middle" class="m" style="font-size:12px;font-weight:500;fill:var(--accent)">16 points</text>
+<g class="m" style="font-size:10px;fill:var(--muted)" text-anchor="middle"><text x="150" y="186">0%</text><text x="590" y="186">100%</text></g>
+<text x="624" y="206" text-anchor="end" class="m" style="font-size:10px;fill:var(--muted)">Source: internal benchmark</text>
+</svg>

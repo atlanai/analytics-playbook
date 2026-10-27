@@ -1,0 +1,15 @@
+Every question your agent answers... goes through five steps. Intent. Context. SQL. Execute. Insight. And only one of them is still an open problem. This is the playbook in two minutes... how to solve that one.
+
+The open one is context, what a question really means. Ask for our Q3 pipeline... and three rules apply. Fiscal Q3 starts in January. Early stages never count. And test accounts are out. Nobody wrote them down, so the agent guesses. The SQL runs clean... but the number's wrong.
+
+So does fixing context actually work? We tested it on 107 real questions, graded by code. Given bare schema, just the tables, the model scored 31.8%. Then we gave it certified metrics as context... and the same model reached 83.2%.
+
+So where's the gap? The hard half is joins. On bare schema, single-table questions came back right 64.3% of the time. Multi-table ones? Just 11.5%. With certified metrics, the same model got 82.0% of them right. So it's not a model problem... it's a context problem.
+
+And software teams already run the loop that fixes this. Write the tests. Build. Debug. Release. Operate. For an agent, the golden set is the test suite. And certified metrics? They're the context you improve on.
+
+Phase 0 happens before the clock starts. You prove access, and put a name in every role. Phase 1 seals 20+ real questions... and runs a baseline. Phase 2 generates certified metrics, and scores them on the same set. Phase 3 hill-climbs from traces. It runs until the set grows to 50... and nothing that passed has broken. Phase 4 releases, hands over, and books a first solo pass. After that, you keep it running... and the next domain starts from what this one certified.
+
+Along the way, there are eight rules. First, fix the context before you change the model. Then write each business rule into a metric's SQL. Build the golden set before any context. Settle conflicts before the agent ever sees them... provenance first, then the owner. Choose the lane by the use, exploratory or governed. Start with one domain, and the people who own its numbers. Read the raw trace of every miss, and feed real usage back. Last, make the agent reliable on what happened... before you ask it why.
+
+So now context has a test... and a loop around it. Write the tests first, and run every domain through the same loop. Eight short videos take each part, one at a time. Up next... what we learned on our benchmark. That's the evidence behind these rules.

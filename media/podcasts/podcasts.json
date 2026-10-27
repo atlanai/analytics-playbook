@@ -1,0 +1,88 @@
+{
+  "generator": "NotebookLM Audio Overview",
+  "language": "English",
+  "format": "Two-host conversation",
+  "source_repository": "https://github.com/atlanai/analytics-playbook",
+  "source_revision": "b0d905c13c1a5299cf3a433a2b93c14842eb952d",
+  "encoding": "MP3, mono, 96 kbps; original full-length audio, no content cuts",
+  "episodes": [
+    {
+      "track": "Sponsoring it",
+      "title": "The Number Before the Board Meeting",
+      "file": "01-sponsoring-it.mp3",
+      "duration": "9:34",
+      "duration_seconds": 574.693878,
+      "bytes": 6897091,
+      "sha256": "686cabbcaf79e8bb8554b64ba88790eef59378083f06d81385a2d8bd1b828baa",
+      "source_chapters": [
+        "00-method",
+        "01-why-hard",
+        "02a-evals-first",
+        "02b-metric-unit",
+        "03-phase-0",
+        "07-week-4",
+        "08-after-launch",
+        "10-straight-answers",
+        "r0-results"
+      ],
+      "id": "listen-sponsor",
+      "transcript": "01-sponsoring-it.transcript.txt",
+      "transcript_sha256": "4eab8be53f9791a5be9a15d2f941ba8ed5a8cc8fdbfd710b329d4f3649b585f5"
+    },
+    {
+      "track": "Building it",
+      "title": "The Certified Query That Was Wrong",
+      "file": "02-building-it.mp3",
+      "duration": "19:35",
+      "duration_seconds": 1175.138685,
+      "bytes": 14102498,
+      "sha256": "2990b8ccdeb7444195b9f70af653229d74812c326332434ac5ecafaaa5021c1c",
+      "source_chapters": [
+        "01-why-hard",
+        "02a-evals-first",
+        "02b-metric-unit",
+        "02c-serve-per-question",
+        "03-phase-0",
+        "04-week-1",
+        "05-week-2",
+        "06-week-3",
+        "07-week-4",
+        "08-after-launch",
+        "r0-results",
+        "r7-semantic-layers"
+      ],
+      "id": "listen-builder",
+      "transcript": "02-building-it.transcript.txt",
+      "transcript_sha256": "860920a95bed2948b73bf215131f6f8891f9bceb3425b15bc958d81b1ffcfae5"
+    },
+    {
+      "track": "Running it",
+      "title": "The Launch Gate That Had to Wait",
+      "file": "03-running-it.mp3",
+      "duration": "15:18",
+      "duration_seconds": 918.279546,
+      "bytes": 11020154,
+      "sha256": "b66d9e9901d10bbcc42aeb183945e9c4d6fe13a864fa33e96a90b50c9d04df6f",
+      "source_chapters": [
+        "00-method",
+        "01-why-hard",
+        "02a-evals-first",
+        "03-phase-0",
+        "04-week-1",
+        "05-week-2",
+        "06-week-3",
+        "07-week-4",
+        "08-after-launch",
+        "10-straight-answers",
+        "cards"
+      ],
+      "id": "listen-runner",
+      "transcript": "03-running-it.transcript.txt",
+      "transcript_sha256": "0102c9e451a06de40f4cf4214eec0fdddd95f1af683e7fa69aa642bf401087a3"
+    }
+  ],
+  "generated_on": "2026-10-27",
+  "transcript_method": "NotebookLM audio import; source transcript extracted from each recording",
+  "editorial_notes": "editorial-notes.txt",
+  "review_status": "Recording-derived transcripts reviewed against key guide claims; known wording issues are documented in editorial-notes.txt."
+}

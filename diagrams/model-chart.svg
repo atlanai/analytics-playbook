@@ -1,0 +1,31 @@
+<svg viewBox="0 0 720 388" role="img" aria-label="Bare schema versus with past SQL, per model: GLM-5.2 31.8% to 70.1%, GPT-5.6 40.2% to 66.4%. Bare schema across five models sits between 31.8% and 42.1%.">
+<title>Context moves every model more than switching models does</title>
+<text x="16" y="24" class="d" style="font-size:15.5px;font-weight:600;fill:var(--ink)">Switching models moves bare schema about 10 points.</text>
+<text x="16" y="44" class="d" style="font-size:15.5px;font-weight:600;fill:var(--accent)">Context moved both paired models 26 points or more.</text>
+<rect x="16" y="58" width="12" height="12" rx="2" style="fill:var(--line-2);stroke:var(--muted);stroke-width:1"/>
+<text x="34" y="68" class="t" style="font-size:11.5px;fill:var(--text)">Bare schema</text>
+<rect x="124" y="58" width="12" height="12" rx="2" style="fill:var(--accent);stroke:none"/>
+<text x="142" y="68" class="t" style="font-size:11.5px;fill:var(--text)">With context: past SQL served to the agent</text>
+<g style="stroke:var(--line);stroke-width:1"><line x1="56" x2="560" y1="80.0" y2="80.0"/><line x1="56" x2="560" y1="140.0" y2="140.0"/><line x1="56" x2="560" y1="200.0" y2="200.0"/><line x1="56" x2="560" y1="260.0" y2="260.0"/></g>
+<g class="m" style="font-size:10.5px;fill:var(--muted)" text-anchor="end"><text x="48" y="84.0">100%</text><text x="48" y="144.0">75%</text><text x="48" y="204.0">50%</text><text x="48" y="264.0">25%</text><text x="48" y="324.0">0%</text></g>
+<rect x="56" y="218.96" width="504" height="24.72" style="fill:var(--accent-soft);stroke:none"/>
+<line x1="56" x2="560" y1="218.96" y2="218.96" style="stroke:var(--accent);stroke-width:1;stroke-dasharray:3 3;opacity:.7"/>
+<line x1="56" x2="560" y1="243.68" y2="243.68" style="stroke:var(--accent);stroke-width:1;stroke-dasharray:3 3;opacity:.7"/>
+<path d="M566 218.96 L572 218.96 L572 243.68 L566 243.68" style="fill:none;stroke:var(--accent);stroke-width:1.2"/>
+<text x="580" y="228.5" class="t" style="font-size:11px;fill:var(--ink);font-weight:600">Bare schema,</text>
+<text x="580" y="241.5" class="t" style="font-size:11px;fill:var(--ink);font-weight:600">five models:</text>
+<text x="580" y="255.5" class="m" style="font-size:11px;fill:var(--accent)">31.8-42.1%</text>
+<rect x="130" y="243.7" width="64" height="76.3" style="fill:var(--line-2);stroke:var(--muted);stroke-width:1"/>
+<rect x="204" y="151.8" width="64" height="168.2" style="fill:var(--accent);stroke:none"/>
+<text x="162" y="237.7" text-anchor="middle" class="m" style="font-size:12px;font-weight:500;fill:var(--ink)">31.8%</text>
+<text x="236" y="145.8" text-anchor="middle" class="m" style="font-size:12px;font-weight:500;fill:var(--ink)">70.1%</text>
+<text x="199" y="340" text-anchor="middle" class="t" style="font-size:12.5px;fill:var(--ink);font-weight:600">GLM-5.2</text>
+<rect x="360" y="223.5" width="64" height="96.5" style="fill:var(--line-2);stroke:var(--muted);stroke-width:1"/>
+<rect x="434" y="160.6" width="64" height="159.4" style="fill:var(--accent);stroke:none"/>
+<text x="392" y="217.5" text-anchor="middle" class="m" style="font-size:12px;font-weight:500;fill:var(--ink)">40.2%</text>
+<text x="466" y="154.6" text-anchor="middle" class="m" style="font-size:12px;font-weight:500;fill:var(--ink)">66.4%</text>
+<text x="429" y="340" text-anchor="middle" class="t" style="font-size:12.5px;fill:var(--ink);font-weight:600">GPT-5.6</text>
+<line x1="56" x2="560" y1="320" y2="320" style="stroke:var(--ink);stroke-width:1.5"/>
+<text x="56" y="372" class="t" style="font-size:11px;fill:var(--muted)">Same questions for every bar. Models shown in pairs had both runs.</text>
+<text x="704" y="372" text-anchor="end" class="m" style="font-size:10px;fill:var(--muted)">Source: internal benchmark</text>
+</svg>

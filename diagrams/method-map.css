@@ -1,0 +1,67 @@
+/* the method map: an outline in the source (phones, print, no JS), drawn by template.html as an explorer:
+   a rail of stages, the stage's numbered steps, and the selected step's detail. */
+.mm .mm-why{margin:0 0 14px;padding:12px 16px;background:var(--band);border-left:3px solid var(--accent);border-radius:4px 10px 10px 4px;font-size:14.5px;line-height:1.55;color:var(--text);max-width:none}
+.mm .mm-why b{color:var(--ink)}
+.mm .mm-k{display:block;font:500 10.5px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.mm .mm-s{display:block;font-size:12.5px;line-height:1.4;color:var(--muted)}
+/* ---- the outline ---- */
+.mm .mm-src details,.mm .mm-src > .mm-n{margin:0 0 8px}
+.mm .mm-src summary{cursor:pointer;list-style:none;padding:10px 14px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg)}
+.mm .mm-src summary::-webkit-details-marker{display:none}
+.mm .mm-src summary::before{content:"+";float:right;font:600 15px/1 var(--mono);color:var(--accent);margin-left:8px}
+.mm .mm-src details[open] > summary::before{content:"−"}
+.mm .mm-src summary b,.mm .mm-src > .mm-n b{display:block;font:600 14.5px/1.3 var(--display);color:var(--ink)}
+.mm .mm-src details[data-kind="phase"] > summary{border:1.5px solid var(--ink);border-left:4px solid var(--accent)}
+.mm .mm-src .mm-kids{margin:8px 0 4px 12px;padding-left:12px;border-left:2px solid var(--line-2)}
+.mm .mm-src .mm-kids > div.mm-n{margin:0 0 6px;padding:7px 11px;font-size:13px;line-height:1.45;color:var(--text);border-radius:8px;background:var(--plate)}
+.mm .mm-src > .mm-n[data-kind="center"]{padding:12px 14px;border:1.5px solid var(--accent);border-radius:12px;background:var(--tint);font-size:13px}
+
+figure.fig[data-diagram="method-map"] .fig-body{border:0!important;background:none!important;padding:4px 0!important;cursor:default}
+figure.fig[data-diagram="method-map"] .fig-body::after{display:none}
+/* ---------- method map, explorer: a stage rail, the stage's steps, the step's detail ---------- */
+.mm.mx-on .mm-src{display:none}
+.mm.mx-on .mm-why{display:none}
+.mx{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
+.mx-rail{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:0;padding:16px 14px 0}
+.mx-rail::before{content:"";position:absolute;left:calc(14px + 100% / var(--n) / 2 - 14px / var(--n));right:calc(14px + 100% / var(--n) / 2 - 14px / var(--n));top:31px;height:2px;background:var(--line-2)}
+.mx-st{all:unset;box-sizing:border-box;position:relative;display:grid;justify-items:center;gap:4px;padding:0 4px 12px;cursor:pointer;text-align:center;min-width:0}
+.mx-dot{position:relative;z-index:1;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--bg);border:2px solid var(--line-2);font:600 12.5px/1 var(--body);color:var(--muted)}
+.mx-st .mx-k{font:600 11px/1.25 var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.mx-st .mx-t{font:600 13.5px/1.3 var(--display);color:var(--ink)}
+.mx-st:hover .mx-t{color:var(--accent)}
+.mx-st:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:8px}
+.mx-st.done .mx-dot{border-color:var(--accent);color:var(--accent)}
+.mx-st.on .mx-dot{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mx-st.on .mx-k,.mx-st.on .mx-t{color:var(--accent)}
+.mx-gate{position:absolute;right:-6px;top:10px;z-index:2;width:10px;height:10px;transform:rotate(45deg);background:var(--bg);border:2px solid var(--line-2)}
+.mx-gold{margin:4px 14px 0;padding:8px 12px;border-radius:8px;background:var(--tint);color:var(--text);font-size:13px;line-height:1.4;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.mx-gold b{color:var(--accent)}
+.mx-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.25fr);gap:0;margin-top:14px;border-top:1px solid var(--line)}
+.mx-steps{list-style:none;margin:0;padding:10px;border-right:1px solid var(--line);display:grid;gap:4px;align-content:start}
+.mx-steps li{margin:0}
+.mx-sb{all:unset;box-sizing:border-box;display:grid;grid-template-columns:28px 1fr;gap:1px 10px;width:100%;padding:9px 10px;border-radius:8px;cursor:pointer}
+.mx-sb:hover{background:var(--plate)}
+.mx-sb:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.mx-sb .mx-no{grid-row:span 2;display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--panel);font:600 12px/1 var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.mx-sb b{font:600 14px/1.3 var(--display);color:var(--ink)}
+.mx-sb span.mx-s{font-size:12.5px;line-height:1.35;color:var(--muted)}
+.mx-sb.on{background:var(--tint)}
+.mx-sb.on .mx-no{background:var(--accent);color:var(--accent-ink)}
+.mx-sb.on b{color:var(--accent)}
+.mx-detail{padding:16px 18px 14px;display:grid;gap:10px;align-content:start;min-width:0}
+.mx-dk{font:600 11px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.mx-dt{font:600 18px/1.3 var(--display);color:var(--ink);margin:-4px 0 0}
+.mx-row{display:grid;grid-template-columns:86px 1fr;gap:10px;font-size:14px;line-height:1.5;color:var(--text)}
+.mx-row > span:first-child{font-size:12px;font-weight:600;color:var(--muted);padding-top:2px}
+.mx-row.watch{padding:8px 10px;border-radius:8px;background:color-mix(in srgb,var(--stop) 8%,var(--bg));border-left:3px solid var(--stop)}
+.mx-row.watch > span:first-child{color:var(--stop)}
+.mx-row.kind{grid-template-columns:1fr}
+.mx-row.kind b{display:block;color:var(--ink)}
+.mx-nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px;padding-top:10px;border-top:1px solid var(--line)}
+.mx-nav button{all:unset;cursor:pointer;padding:7px 12px;border-radius:8px;border:1px solid var(--line-2);font:600 13px/1 var(--body);color:var(--ink)}
+.mx-nav button:hover{border-color:var(--accent);color:var(--accent)}
+.mx-nav button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mx-nav button[disabled]{opacity:.4;cursor:default}
+.mx-nav .mx-ch{margin-left:auto;font-size:13px}
+@media (max-width:760px){.mx-rail{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px}.mx-rail::before,.mx-gate{display:none}.mx-body{grid-template-columns:1fr}.mx-steps{border-right:0;border-bottom:1px solid var(--line)}}
+@media print{.mx{display:none}.mm.mx-on .mm-src{display:block}}

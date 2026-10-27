@@ -1,0 +1,47 @@
+{
+ "00-overview": {
+  "floor": true,
+  "key": "00-overview:8460552",
+  "seconds": 175
+ },
+ "01-benchmark": {
+  "floor": true,
+  "key": "01-benchmark:11897869",
+  "seconds": 263
+ },
+ "02-evals": {
+  "floor": true,
+  "key": "02-evals:8460524",
+  "seconds": 194
+ },
+ "03-semantic-views": {
+  "floor": true,
+  "key": "03-semantic-views:7207012",
+  "seconds": 156
+ },
+ "04-phase0": {
+  "floor": true,
+  "key": "04-phase0:7340272",
+  "seconds": 135
+ },
+ "05-phase1": {
+  "floor": true,
+  "key": "05-phase1:8872672",
+  "seconds": 161
+ },
+ "06-phase2": {
+  "floor": true,
+  "key": "06-phase2:8244086",
+  "seconds": 160
+ },
+ "07-phase3": {
+  "floor": true,
+  "key": "07-phase3:8528221",
+  "seconds": 179
+ },
+ "08-phase4": {
+  "floor": true,
+  "key": "08-phase4:6940480",
+  "seconds": 139
+ }
+}

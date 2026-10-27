@@ -1,0 +1,230 @@
+Building it — The Certified Query That Was Wrong
+27 October 2026 · 19:35
+
+Transcribed from the recording with NotebookLM; names and technical terms have light spelling corrections. See editorial-notes.txt for factual clarifications.
+
+Picture this. Um, you're plunging directly into a really high stakes debugging mystery.
+Oh, the best kind,
+right? So, you pull up the raw trace of your brand new analytics agent because, you know, a user complained and you check the logs
+and the agent ran the exact like fully certified SQL query it was supposed to run. It didn't hallucinate a single line of code.
+Okay, so the code is good.
+Perfect. It actually ran the query three times. But here is the kicker. All three times the answer it spit out was completely unequivocally wrong.
+Man, for an analytics engineer or an agent builder, this is the exact moment the floor just drops out from under you.
+It's terrifying.
+It really is. I mean, the syntax is flawless. The database returned the data perfectly, but the business reality is just broken.
+And that is the exact scenario we are tracing today in this deep dive.
+Yeah,
+we're actually following this illustrative sales engagement detailed in the Atlan FDE playbook for analytics agents. So, if you're building these systems right now, our mission today is to investigate this exact problem alongside you
+step by step.
+Exactly. We are going to trace this silent failure from the raw logs through the concrete engineering decisions all the way to a final launch protocol
+because we really need to figure out what you should change when the math is perfect but the answer is just completely wrong.
+Right. So uh I guess the first step is isolating the disconnect, right?
+Yeah. You have to find out what actually happened. So in this specific trace, the agent was asked to pull a list of top customers.
+Simple enough.
+You think so it grabbed a certified statement that ranked those customers by their deal count and it executed that logic without a single error.
+But and here's the massive disconnect. The finance department doesn't evaluate top customers by deal count.
+No, they don't.
+They evaluate them by current ARR. So annual recurring revenue,
+right? And the critical failure point here is that the finance rule didn't actually live in a database schema anywhere.
+Wait, really?
+It wasn't in a data dictionary. It lived in a spreadsheet.
+Oh. Oh wow.
+Yeah. A spreadsheet managed by someone in RevOps. It was this totally unwritten rule, completely invisible to the agent.
+Oh, here's where it gets really interesting to me. It's um it's like following a perfect baking recipe, but someone swapped the salt for sugar in the pantry without telling you.
+It's a great way to put it.
+Like the execution was flawless. You followed the steps, but the inputs were sabotaged by an unwritten assumption.
+And that distinction between consistency and correctness is where so many agent builds just completely fall apart
+because People think if it's consistent, it's right.
+Exactly. Just because your agent confidently gives you the same wrong answer three times in a row doesn't mean it's right. It just means it's reliably executing a flawed assumption.
+A very confident mistake,
+right? You cannot rely on an LLM to magically deduce business logic from thin air. The metric itself requires an owner approved correction.
+So the human definition basically has to be repaired before the code can be fixed
+100%.
+Okay. So if The agent thought its sugar recipe was completely correct. We have a massive blind spot here. Catching the error is only half the battle.
+Yeah, you have to prevent it,
+right? How do we actually build a system to catch these silent business logic failures before, I don't know, the CEO spots them in a live board meeting?
+Well, you construct a representative golden set of real questions.
+A golden set.
+Yeah. But there is an absolute non-negotiable rule here for builders. You must seal this golden set before you build any context for the agent
+before building the context. Okay,
+you pull real questions from passport packs or uh old Slack threads using the messy ambiguous words the business actually uses out in the wild,
+right?
+Then you fiercely protect the expected answers and the expected SQL like you hide them from the generator and you definitely hide them from the agent.
+Okay, let's unpack this for a second because if I'm building one of these agents, my very first instinct is to feed it everything so it can learn
+naturally.
+If we strict hide the expected SQL from the agent. How on earth does it learn what to do?
+Well, the golden set is not training data.
+Oh, I see.
+It is a test suite. Its entire purpose is to prove that the agent can successfully navigate the semantic context you provided,
+not just memorize the answers.
+Exactly. If you feed the expected SQL into the agents context window, you aren't testing its reasoning or its retrieval capabilities. You're just teaching it to cheat on the test by memorizing the answer key,
+which I mean, that gives you a completely false sense of security. until a user asks a slightly different question in production
+and then the agent completely collapses.
+Yikes.
+And the contamination can actually come from the agent itself, too.
+What do you mean?
+You have to actively exclude the agents own query history from its context window during testing.
+Oh, because it remembers what it did before.
+Right. If an agent hallucinates a really bad query on Tuesday and you don't clear its history on Wednesday, it will read its own past mistake. Assume it's a trusted query and just repeat the hallucination with absolute confidence.
+Whoa. So, it's basically a closed loop system of accountability.
+It has to be.
+And managing that loop, I imagine requires a really strict division of labor.
+It does. The technical team, so the EVEL owner and the graders, they are grading the execution
+like checking the code.
+Yeah. They look at the code. Uh they check the query efficiency, but they do not decide what the numbers actually mean.
+That's a crucial distinction.
+The domain owners like the head of finance or the revops lead, they're the only ones who can actually settle the definitions.
+So if finance says top customers means ARR and sales says it means deal count,
+the engineers shouldn't be the ones breaking that tie,
+right? They're just the messengers.
+Exactly. So once those domain owners break the tie and agree that ARR is the metric, the builder has to translate that agreement into something the agent can actually use.
+And what does that look like?
+The required artifact is called a complete metric. Complete metric. Complete is doing a lot of heavy lifting there, right? What actually makes it complete?
+It's a lot. It has to include the target population, the specific exclusions like uh dropping internal test accounts, the row grain, the time logic, and all the necessary joints.
+That is comprehensive.
+And all of this must be written in runnable SQL. Like a descriptive paragraph and a company wiki just doesn't cut it,
+right? It has to be code.
+And it also requires a named owner and a version number.
+So what does this all mean? We aren't just writing a math formula here. We are essentially drafting a binding legal contract for a number where every single clause is a SQL line.
+That's a brilliant way to think about it. That contract forces the agent's hand. But you know, builders don't have to write these from scratch.
+Oh, thank goodness. How do they do it?
+The most efficient way to build this is to generate candidate metrics from what already exists in your ecosystem,
+like old query. Yeah. You pull the past SQL that your human analysts have actually run in the warehouse. You pull the definitions from your existing BI tools
+because they've already solved these problems.
+Exactly. The filters the analysts physically type out every single day contain the real unwritten rules of the business.
+But I mean, you can't just blindly trust a query an analyst ran 6 months ago. Though people make mistakes all the time,
+which is exactly why the builder must witness the readonly execution of these candidate metrics against the actual warehouse.
+So you have to run them. you run them and you check the row grain. If you carelessly join, say an account table to a transaction table, you might end up fan trapping.
+Fan trapping.
+Yeah. It's where you accidentally multiply revenue rows and artificially inflate the ARR number by millions of dollars.
+Oh, that would be a bad day.
+A very bad day. So, you have to prove the math works on the live data. And while you're doing that, you also have to hunt for unexplained literals.
+Okay, let's define that for anyone who hasn't been deep in the weeds of a massive SQL script recently. An unexplained literal is essentially just a hard-coded filter, right? Like seeing where account type equals 7.
+That is the perfect example. Like what is account type seven,
+right? Who decided we exclude it?
+Exactly. If you see a random string of text or a hard-coded list of account IDs filtered out in a query, that is a massive red flag
+because there's a reason for it,
+right? It means there is a rule somewhere, probably in that RevOps spread. spreadsheet dictating who those accounts are. You have to trace that literal back to its human source and get the underlying rule written into the complete metric dynamically.
+Wow. And I imagine when you start pulling from all these different sources, you're going to find a lot of contradictions.
+Oh, absolutely.
+Like the executive dashboard might say one thing about win rates while the analyst queries from last week say something entirely different.
+Very common. So you resolve those conflicts by providence first.
+Providence.
+Yeah.
+So Looking at the history,
+yeah, you look at the metadata. Who ran the query? How often did they run it? How recently?
+Okay, that makes sense.
+If the RevOps team ran a specific version of win rate 140 times this quarter, and the dashboard version hasn't been refreshed in 14 months.
+Yeah. Then Providence tells you the recent frequently used query is probably the working definition.
+Exactly. But if Providence doesn't settle the debate, that's when you escalate back to the domain owners.
+Bring in the humans again.
+Right. And I should note existing IC layers, things like your DBT metrics, they are highly useful inputs to this process, but the actual business meaning must stay owned and versioned as a complete metric within this new system.
+Okay, so we've done the hard work. We have this robust legally binding SQL contract for current ARR.
+We do.
+But having the perfect metric is useless if the agent ignores it or, you know, if it gets confused because the user typed a weird internal acronym.
+Oh, the acronyms will get you every time. Right. So, we have to route the question correctly.
+Context routing is literally where these projects live or die.
+Really?
+Yeah. You can have a pristine semantic layer, but if the agent doesn't pick it up, the user still gets a hallucination.
+So, what's the fix?
+The absolute unbreakable rule for your harness here is this. Make exactly one live context call before writing any SQL.
+Wait, only one? If I have a massive data dictionary, my instinct is to just load everything up into the prompt so the agent has all the context it could possibly need.
+I know it feels counterintuitive, but large language models suffer from attention dilution.
+Attention dilution.
+Yeah. If you load the whole semantic layer into the prompt or, you know, even just 50 similar metrics, the agent gets completely overwhelmed by near variance.
+Oh, like it sees too many options,
+right? It might look at ARR v1, ARR finance final, and ARR sales adjusted, totally panic, and stitch together. this Frankenstein query using pieces of all three.
+That sounds like a disaster.
+It is. So, you make one live call. The system should perform an exact certified lookup first. If a certified metric matches the intent perfectly, it grabs it.
+And if it doesn't,
+then it falls back to searching using business terms.
+Business terms are so tricky, though, because every company has its own bizarre dialect.
+Oh, yeah.
+It's like if our marketing team aggressively calls them leads, but the database strictly labels them prospects. Exactly. And the context server acts as the translator for that dialect.
+Okay.
+Let's say a user asks a question about deals that slipped. If you don't have a metric specifically named slipped deals, an unguided agent might just invent a time filter to guess what slipped means,
+which could be totally wrong,
+right? But if you have a vocabulary routing rule, the system can route the user's word slipped to a trusted past query that your analyst actually labeled as pushed.
+Ah, so it maps it Yes, the user's messy vocabulary connects to the business's rigorous SQL. And critically, the context server must return a few complete SQL statements to the agent, not just chopped up snippets or column definitions.
+Full statements. Okay, but what if the agent still misses the mark despite all this? Because it will, right?
+It definitely will.
+How do we diagnose what went wrong? It can't always be a failure of the metric itself.
+It's not.
+You have to categorize the miss before you add a single new rule to the system. categorize it. How
+you look at the trace and ask a few things. Was the rule never written? Meaning the business completely failed to define it in the system.
+Okay, so it just wasn't there,
+right?
+Or was it written not served? Meaning the complete metric exists but the context call failed to retrieve it because the vocabulary routing was too narrow.
+Oh, like the slipped versus pushed issue.
+Exactly. Or, and this is the most dangerous one, was it served ignored?
+Served ignored.
+Mm. Mhm.
+That sounds like the agent had the perfect sequel right in front of it, looked at it, and just decided to go rogue.
+That is exactly what it means.
+Okay. And it happens way more often than you'd think.
+Why would it do that?
+The LLM just gets overconfident and writes its own logic. Anyway,
+this is exactly why we have to enforce two distinct lanes for answers.
+Two lanes.
+Yeah. Governed answers and exploratory answers.
+Okay. Tell me about governed.
+Governed answers are your board level metrics. Pipeline ARR win rate. For these, the agent must execute the matching certified metric exactly as it was served to it.
+No deviations,
+no adapting, no improvising, absolutely no creativity. If it can't find a matching certified metric, it is required to refuse to answer.
+Wow. Okay. So, if the governed answers only run exact pre-certified SQL, aren't the builders essentially just turning into high-tech SQL librarians? Like, they're just pulling pre-written books off a shelf.
+I mean, it feels restrictive. to a builder who really wants to show off the AI, but this exactness is actually the superpower of the system.
+Really?
+Yes. Board level numbers cannot be subjected to a language model's creativity. The LLM's job here is simply to match the user's messy intent to the certified contract.
+Okay, that makes sense for board metrics. What about the other lane?
+For the exploratory lane, so these are the longtail diagnostic questions where a user is just kind of digging around in the data. The agent has a lot more freedom.
+So, it can write its own code. You can it uses trusted pass queries as a foundation to write its own SQL but and this is key it must explicitly show that generated SQL and its assumptions to the user so the human can verify the logic
+so there's transparency
+exactly
+okay so we've built the metric we've routed it perfectly we've disciplined the agent into these two lanes and we fixed our original bug the ARR is accurate
+mission accomplished
+well almost because anyone who has built software knows that debugging can turn into this endless neurotic spiral.
+Oh, the spiral is real.
+You tweak one prompt, fix one query, and suddenly three other things break somewhere else. How do we know when it's actually time to stop tweaking and ship the thing?
+You need a strictly defined stop rule.
+Stop rule.
+Yeah. Without it, your engineering team will literally chase edge cases until they burn out.
+I've been there. So, how does the protocol work?
+It works like this. Then you end an investigation round by making a small predicted correction based on the trace.
+Just a small run,
+right? Then you do a full regression rerun of your entire golden set to ensure your new fix didn't break a previously working query and you log the result in your change ledger.
+Wait, a full regression rerun every single time you make a tweak. That requires a lot of discipline.
+It does, but it prevents you from playing whack-a-ole. So, the formal stop rule is this. You stop the investigation when two consecutive rounds of testing fall within the measured run-to-run variation.
+So, you're just seeing statistical noise.
+Exactly. The overall accuracy score or is just flickering by a percent or two due to the LLM's natural non-determinism and none of the specific fixes you predicted are actually moving the needle anymore.
+So, you've hit a plateau.
+You've hit a plateau and you cap the effort at five rounds.
+Five rounds. That's it.
+That's it. If you hit five rounds of tweaks and there's still a gap between the agents performance and the business's expectation, you don't just keep guessing. You escalate it to the domain owners.
+What happens if you just keep going?
+If you go to six or seven rounds, You weren't fixing the system anymore. You are overfitting your context layer to pass a specific test suite,
+right? You're just teaching to the test again. Okay. So, hitting that stop rule means we are finally ready for the launch gate. This is where the training wheels come off.
+They do. And to pass the launch gate, your golden set has to grow from your initial 20 questions to at least 50 questions.
+Oh, a bigger test.
+A much bigger test. And this is the most vital part of the entire bill. These new questions must be entirely fresh.
+Fresh meaning unseen. The context engineer cannot have seen them during the build phase. You are testing against the unknown.
+Well, yeah. If you only test the agent on the questions you spent three weeks studying for, you're just flattering yourself. The real world doesn't ask the questions you prepped for.
+Exactly. So, you run all 50 of those fresh questions three to five times each. And the bar to pass is absolute.
+How absolute?
+Governed answers must be exactly right on every single run. No flickering, no occasional hallucinations. cloud 100%.
+And exploratory
+exploratory answers just need to clear whatever pre-agreed pass rate you established with your executive sponsor at the very beginning of the project.
+Okay. And even after you pass that gate and launch, you can't just walk away and consider the project finished, right?
+Not at all. The maintenance is continuous. You have to retest the system with your golden set whenever there are changes to the semantic context or the routing harness, the underlying LLM model or to the warehouse schema itself.
+Yeah. Schema. change constantly.
+They do. If an upstream data engineer changes a column name from rev current to current revenue, your agent will break silently. The automated regression tests are your only defense against organizational drift.
+So, if you're listening and you're about to build one of these agents, here is the really fascinating reality of day two. The job isn't done at the launch party.
+No, it's really just starting.
+Tomorrow morning, you are going to open up a raw trace and you will be looking for the very first unsupported business decision. Your users ask for because they will immediately ask for something you never anticipated.
+Launch day is just the day you switch from climbing the hill to maintaining the summit.
+I love that
+real usage from your business teams feeds directly back into your context layer every single week. If you stop updating those metrics and routing rules, the whole system goes stale in a quarter.
+It really is an incredible journey from that first terrifying raw trace where the math was right but the answer was wrong all the way to a fully governed launching agent.
+It's hard. work, but it's worth it.
+You can engineer the most advanced, perfectly routed analytics agent in the world. You can build the slickest context layer and the most rigorous testing harness, but if your business departments haven't actually agreed on what a number means in reality, like if finance and sales are still fighting over spreadsheet definitions, your AI isn't solving problems.
+It's really not.
+It's just automating and accelerating your company's internal disagreements. Which leaves us with one final thought for you to mull over today as you build Are your company's unwritten rules ready to survive the harsh light of an automated trace?

@@ -1,0 +1,19 @@
+In software, QA decided what shipped. For agents... the eval does. Without one, saying "it works" is just an opinion, held by whoever built it. In this video... why evals come first, and how you'd know the agent works.
+
+An agent changes every time you edit a metric, a rule, the model, or the prompt. So the eval reruns on every change, before users ever see it. Think of it like a test suite before a release.
+
+And here's the thing... a demo can't settle three questions. Is it working? Did that change help, or did it just move the failures? And where, exactly, does it break?
+
+A right answer, once, isn't a capability. So run each question three to five times. Right every time? It knows. Right some of the time? It's guessing. Never right... it can't.
+
+On our benchmark, two runs of the same setup scored 86 and 80... out of 107. Now look across 154 runs, of every setup we tried. 105 of 107 questions got answered right at least once. Yet the best single run got 90. So the knowledge is there... the consistency isn't.
+
+So what goes in one row of the golden set? Three parts. First, the question, in the business's own words. That's the only part the agent sees. Then the SQL, which is evidence for diagnosis. And the sealed answer, $412M... that's the grade.
+
+An eval worth trusting has four properties. First, it's representative... keep the hard half. On bare schema, just the tables, single-table questions scored 64.3%. Multi-table? 11.5%. With certified metrics, it's 92.9% and 82.0%. So an easy set hides most of the difference between setups. Second, un-dominated. No single fact gets to swing the headline. Third, live. Questions grow out of real use, and when the set has a wrong answer, it gets corrected. Fourth, sealed. If anything in the pipeline can see the answer... the agent will find it.
+
+Grade the answer first. Why? Because two different queries can both be right. LinkedIn found that about 60% of its questions had more than one valid answer. So grading isn't one check. It's a stack of them. Check the value, within tolerance. Look at the SQL and the trace. Have a judge check the answer's shape. And run a leak check. And count refusals apart from wrong answers... though both are still misses.
+
+So what's the eval's real output? A work queue. Never patch context for one question. Instead, read every miss as one of three things... a definition never written, written but not served, or served and ignored.
+
+So now, whether it works isn't an opinion. It's a score anyone can rerun. Build the golden set before you build any context. Without it, you can't tell progress from luck. Next up: Semantic views, or metrics? The form your context should take.

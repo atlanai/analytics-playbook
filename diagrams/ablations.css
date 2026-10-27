@@ -1,0 +1,13 @@
+.ablate .ab-axis,.ablate .ab-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:10px;align-items:center}
+.ablate .ab-row{padding:6px 0;border-top:1px solid var(--line)}
+.ablate .ab-l{font-size:12.5px;line-height:1.35;color:var(--text)}
+.ablate .ab-row.hi .ab-l{font-weight:600;color:var(--ink)}
+.ablate .ab-scale,.ablate .ab-track{position:relative;display:block;height:14px;margin:0 14px}
+.ablate .ab-track{height:22px}
+.ablate .ab-scale em{position:absolute;left:calc(var(--x) * 1%);transform:translateX(-50%);font:10.5px/14px var(--body);font-style:normal;color:var(--muted);white-space:nowrap}
+.ablate .ab-stem{position:absolute;left:0;top:10px;height:2px;width:calc(var(--x) * 1%);background:var(--panel)}
+.ablate .ab-dot{position:absolute;top:5px;left:calc(var(--x) * 1%);width:12px;height:12px;border-radius:50%;transform:translateX(-50%);background:var(--ink)}
+.ablate .ab-row.hi .ab-dot{background:var(--accent)}
+.ablate .ab-row.lo .ab-dot{background:var(--stop)}
+.ablate .ab-track b{position:absolute;top:3px;left:calc(var(--x) * 1% + 10px);font:600 11.5px/16px var(--body);color:var(--ink);font-variant-numeric:tabular-nums}
+.ablate .ab-foot{grid-column:1/-1}

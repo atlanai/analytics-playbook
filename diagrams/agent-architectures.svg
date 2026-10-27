@@ -1,0 +1,66 @@
+<svg viewBox="10 0 712 466" role="img" aria-label="Agent architecture: UI, harness, model and the Context layer. Platform-native stacks (Databricks Genie, Snowflake CoWork) and custom stacks (Google ADK, LangGraph, your own code) both get their context from the context layer over MCP or API and send traces back. The golden set sits apart, sealed and never served to the agent">
+<title>Where the context layer sits in an agent</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--accent)"/></marker></defs>
+<!-- column headers -->
+<text x="170" y="24" class="d" style="font-size:14.5px;font-weight:600;fill:var(--ink)">Platform-native</text>
+<text x="170" y="41" class="t" style="font-size:11px;fill:var(--muted)">Databricks Genie, Snowflake CoWork</text>
+<text x="450" y="24" class="d" style="font-size:14.5px;font-weight:600;fill:var(--ink)">Custom</text>
+<text x="450" y="41" class="t" style="font-size:11px;fill:var(--muted)">Google ADK, LangGraph, your own code</text>
+<!-- row labels -->
+<g class="t">
+  <text x="16" y="80" class="m" style="font-size:10.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">UI</text>
+  <text x="16" y="96" style="font-size:11px;fill:var(--muted)">where users ask</text>
+  <text x="16" y="138" class="m" style="font-size:10.5px;letter-spacing:.08em;fill:var(--accent);font-weight:500">HARNESS</text>
+  <text x="16" y="154" style="font-size:11px;fill:var(--muted)">the loop, tools,</text>
+  <text x="16" y="167" style="font-size:11px;fill:var(--muted)">prompts, traces</text>
+  <text x="16" y="200" class="m" style="font-size:10.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">MODEL</text>
+  <text x="16" y="216" style="font-size:11px;fill:var(--muted)">the LLM it calls</text>
+  <text x="16" y="318" class="m" style="font-size:10.5px;letter-spacing:.08em;fill:var(--accent);font-weight:500">CONTEXT LAYER</text>
+  <text x="16" y="334" style="font-size:11px;fill:var(--muted)">the agent's</text>
+  <text x="16" y="347" style="font-size:11px;fill:var(--muted)">context</text>
+</g>
+<g class="t" style="font-size:11.5px">
+  <!-- platform-native column -->
+  <rect x="170" y="60" width="260" height="50" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.3"/>
+  <text x="182" y="81" style="fill:var(--text)">The platform's chat,</text>
+  <text x="182" y="97" style="fill:var(--text)">or embedded in your app</text>
+  <rect x="170" y="120" width="260" height="54" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.8"/>
+  <text x="182" y="141" style="fill:var(--ink);font-weight:600">The platform's agent, configured by you</text>
+  <text x="182" y="158" style="fill:var(--text)">instructions, data scope, tools</text>
+  <rect x="170" y="184" width="226" height="50" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.3"/>
+  <text x="182" y="205" style="fill:var(--text)">The platform's model</text>
+  <text x="182" y="221" style="fill:var(--muted);font-size:10.5px">chosen by the vendor</text>
+  <!-- custom column -->
+  <rect x="450" y="60" width="254" height="50" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.3"/>
+  <text x="462" y="81" style="fill:var(--text)">Slack, Teams, a BI tool</text>
+  <text x="462" y="97" style="fill:var(--text)">or your own app</text>
+  <rect x="450" y="120" width="254" height="54" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.8"/>
+  <text x="462" y="141" style="fill:var(--ink);font-weight:600">Built by you</text>
+  <text x="462" y="158" style="fill:var(--text)">on Google ADK, LangGraph or plain code</text>
+  <rect x="450" y="184" width="220" height="50" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.3"/>
+  <text x="462" y="205" style="fill:var(--text)">The model you choose</text>
+  <text x="462" y="221" style="fill:var(--muted);font-size:10.5px">swap it without touching the context</text>
+</g>
+<!-- MCP/API connectors: context served up to each harness, traces back down -->
+<g style="fill:none;stroke:var(--accent);stroke-width:1.6">
+  <path d="M413 176 L413 290" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path d="M676 176 L676 290" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g>
+  <rect x="371" y="250" width="84" height="18" rx="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:1"/>
+  <text x="413" y="263" text-anchor="middle" class="m" style="font-size:10px;letter-spacing:.06em;fill:var(--accent);font-weight:500">MCP · API</text>
+  <rect x="636" y="250" width="80" height="18" rx="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:1"/>
+  <text x="676" y="263" text-anchor="middle" class="m" style="font-size:10px;letter-spacing:.06em;fill:var(--accent);font-weight:500">MCP · API</text>
+</g>
+<!-- Context layer -->
+<rect x="170" y="292" width="534" height="80" rx="8" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+<text x="184" y="312" class="t" style="font-size:13px;fill:var(--ink);font-weight:600">Context layer</text>
+<text x="184" y="329" class="t" style="font-size:11.5px;fill:var(--accent);font-weight:500">files and a search function in your repository, or a product</text>
+<text x="184" y="345" class="t" style="font-size:11px;fill:var(--text)">metrics, trusted past queries, rules and terms</text>
+<text x="184" y="361" class="t" style="font-size:11px;fill:var(--muted)">context in (generate or import, approve) · served to your agent · traces back</text>
+<!-- golden set: apart from the context layer, never served -->
+<rect x="170" y="384" width="534" height="46" rx="8" style="fill:var(--panel);stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 3"/>
+<text x="184" y="403" class="m" style="font-size:10.5px;letter-spacing:.06em;fill:var(--ink);font-weight:500">GOLDEN SET · SEALED, NEVER SERVED</text>
+<text x="184" y="420" class="t" style="font-size:11px;fill:var(--text)">kept apart by the eval owner; it scores the agent, and the agent never reads it</text>
+<text x="16" y="454" class="m" style="font-size:10px;letter-spacing:.04em;fill:var(--muted)">THE CONTEXT LAYER SERVES CONTEXT. THE HARNESS RUNS THE AGENT AND THE SQL.</text>
+</svg>

@@ -1,0 +1,8 @@
+.bf .bf-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr) auto) minmax(0,1fr);gap:8px;align-items:stretch}
+.bf .bf-row .d-box{margin:0;font-size:12.5px;line-height:1.4}
+.bf .bf-row .d-box b{display:block;margin-bottom:4px}
+.bf .bf-arrow{align-self:center;color:var(--muted);font-size:16px}
+.bf .bf-base{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.bf .bf-base span{border:1px dashed var(--line-2);border-radius:6px;padding:8px 12px;font-size:12.5px;color:var(--muted)}
+.bf .bf-base b{color:var(--ink);margin-right:6px}
+@media (max-width:640px){.bf .bf-row,.bf .bf-base{grid-template-columns:1fr}.bf .bf-arrow{justify-self:center;transform:rotate(90deg)}}

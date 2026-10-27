@@ -1,0 +1,26 @@
+<div class="d wex">
+<section class="wx"><header><span class="wx-k">Example 1</span><q>As of the date of last quarter's business review, how much open new-business and upsell pipeline closing that quarter did we have?</q><p><b>The hidden decision</b> Rebuild each deal's stage, amount, close date and type as they stood on the review date, and leave out early-stage deals.</p></header><div class="wx-cells">
+<div class="wx-c ref"><span class="wx-n">Bare schema</span><b>Refused</b><span class="wx-w">Spent all ten queries on one deal's history</span></div>
+<div class="wx-c ok"><span class="wx-n">Top five past queries</span><b>Right</b><span class="wx-w">Adapted a retrieved point-in-time rebuild</span></div>
+<div class="wx-c no"><span class="wx-n">Metrics layer</span><b>+19% off</b><span class="wx-w">The early-stage rule was served three times and not applied</span></div>
+<div class="wx-c no"><span class="wx-n">Semantic views</span><b>−19% off</b><span class="wx-w">Rebuilt as of month end, not the review date</span></div>
+</div></section>
+<section class="wx"><header><span class="wx-k">Example 2</span><q>How much pipeline did the summit influence after the event, at account level?</q><p><b>The hidden decision</b> The table repeats each account's pipeline on every row. Take one value per account, keep deals that entered the first stage after the event, then add up.</p></header><div class="wx-cells">
+<div class="wx-c no"><span class="wx-n">Bare schema</span><b>+342% off</b><span class="wx-w">Summed every row, with no date gate</span></div>
+<div class="wx-c no"><span class="wx-n">Top five past queries</span><b>+71% off</b><span class="wx-w">Had the date gate; summed per deal, not per account</span></div>
+<div class="wx-c ok"><span class="wx-n">Metrics layer</span><b>Right</b><span class="wx-w">One value per account, after the event</span></div>
+<div class="wx-c no"><span class="wx-n">Semantic views</span><b>+303% off</b><span class="wx-w">One value per account; no date gate</span></div>
+</div></section>
+<section class="wx"><header><span class="wx-k">Example 3</span><q>After the event, how many opportunities from booth-scan attendees have reached the first stage?</q><p><b>The hidden decision</b> Use the dated stage-entry field and pin the exact booth campaign. Creation date and the "after event" flag both give the wrong count.</p></header><div class="wx-cells">
+<div class="wx-c ref"><span class="wx-n">Bare schema</span><b>Refused</b><span class="wx-w">Never found the booth campaign</span></div>
+<div class="wx-c ok"><span class="wx-n">Top five past queries</span><b>Right</b><span class="wx-w">The retrieved query had the shape; one query</span></div>
+<div class="wx-c ok"><span class="wx-n">Metrics layer</span><b>Right</b><span class="wx-w">The same shape; one query</span></div>
+<div class="wx-c no"><span class="wx-n">Semantic views</span><b>+48% off</b><span class="wx-w">Counted the whole parent campaign</span></div>
+</div></section>
+<section class="wx still"><header><span class="wx-k">Still fails everywhere</span><q>How many customer accounts churned this quarter?</q><p><b>The hidden decision</b> Churn is an event: the account's type changed away from customer this quarter, and deleted customer accounts count too.</p></header><div class="wx-cells">
+<div class="wx-c no"><span class="wx-n">Bare schema</span><b>−40% off</b><span class="wx-w">Counted a churn-date field on today's snapshot</span></div>
+<div class="wx-c no"><span class="wx-n">Top five past queries</span><b>−40% off</b><span class="wx-w">The same field</span></div>
+<div class="wx-c no"><span class="wx-n">Metrics layer</span><b>−40% off</b><span class="wx-w">No churn metric exists yet</span></div>
+<div class="wx-c no"><span class="wx-n">Semantic views</span><b>−40% off</b><span class="wx-w">A churn date on the account</span></div>
+</div></section>
+<p class="wx-foot">One run each, questions paraphrased. "Off" is the distance from the sealed answer.</p></div>

@@ -1,0 +1,56 @@
+<svg viewBox="0 0 704 506" role="img" aria-label="How the metrics agent turns past SQL and BI into metrics: keep what analysts trust, group statements by shape and name the metrics, keep the rest as trusted past queries, witness every candidate read-only, settle conflicts in one review queue, approve, and serve per question.">
+<title>How the metrics agent works</title>
+<defs><marker id="ma-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<text x="8" y="20" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.06em">THE METRICS AGENT · DRAFTS</text>
+<g class="t">
+<rect x="8" y="32" width="324" height="70" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="22" y="54" style="font-size:13.5px;fill:var(--ink);font-weight:600">What you already have</text>
+<text x="22" y="73" style="font-size:12px;fill:var(--text)">past SQL, with who ran it, when and how often</text>
+<text x="22" y="89" style="font-size:12px;fill:var(--text)">BI reports, semantic models, saved queries</text>
+<rect x="372" y="32" width="324" height="70" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="386" y="54" style="font-size:13.5px;fill:var(--ink);font-weight:600">Keep what analysts trust</text>
+<text x="386" y="73" style="font-size:12px;fill:var(--text)">machine traffic out, duplicates merged</text>
+<text x="386" y="89" style="font-size:12px;fill:var(--text)">golden-set SQL purged by hash</text>
+<rect x="8" y="132" width="324" height="86" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.8"/>
+<text x="22" y="154" style="font-size:13.5px;fill:var(--ink);font-weight:600">Generate candidates</text>
+<text x="22" y="173" style="font-size:12px;fill:var(--text)">group statements by shape, keep one full</text>
+<text x="22" y="189" style="font-size:12px;fill:var(--text)">statement, name the metric inside it</text>
+<text x="22" y="205" style="font-size:12px;fill:var(--text)">writes no new SQL</text>
+<rect x="372" y="132" width="324" height="86" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="386" y="154" style="font-size:13.5px;fill:var(--ink);font-weight:600">Keep the rest</text>
+<text x="386" y="173" style="font-size:12px;fill:var(--text)">as trusted past queries, complete SQL,</text>
+<text x="386" y="189" style="font-size:12px;fill:var(--text)">with provenance, for the exploratory lane</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4"><path d="M332 67 L370 67" marker-end="url(#ma-arr)"/><path d="M534 102 V117 H170 V130" marker-end="url(#ma-arr)"/><path d="M332 175 L370 175" marker-end="url(#ma-arr)"/><path d="M170 218 L170 250" marker-end="url(#ma-arr)"/></g>
+<text x="180" y="239" class="m" style="font-size:11.5px;fill:var(--muted)">EVERY CANDIDATE</text>
+<rect x="8" y="252" width="688" height="134" rx="8" style="fill:var(--panel);stroke:var(--line-2);stroke-width:1.2"/>
+<text x="22" y="273" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.06em">YOUR PEOPLE · DECIDE</text>
+<g class="t">
+<rect x="22" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="33" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">Witness, read-only</text>
+<text x="33" y="325" style="font-size:12px;fill:var(--text)">runs on the warehouse</text>
+<text x="33" y="341" style="font-size:12px;fill:var(--text)">row count and grain</text>
+<text x="33" y="357" style="font-size:12px;fill:var(--text)">checked</text>
+<rect x="190" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="201" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">One review queue</text>
+<text x="201" y="325" style="font-size:12px;fill:var(--text)">conflicts settle on</text>
+<text x="201" y="341" style="font-size:12px;fill:var(--text)">provenance first</text>
+<text x="201" y="357" style="font-size:12px;fill:var(--text)">then the owner</text>
+<rect x="358" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="369" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">Approve</text>
+<text x="369" y="325" style="font-size:12px;fill:var(--text)">owner approves; each</text>
+<text x="369" y="341" style="font-size:12px;fill:var(--text)">metric gets an owner</text>
+<text x="369" y="357" style="font-size:12px;fill:var(--text)">and a version</text>
+<rect x="526" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="537" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">Served per question</text>
+<text x="537" y="325" style="font-size:12px;fill:var(--text)">one context call</text>
+<text x="537" y="341" style="font-size:12px;fill:var(--text)">complete SQL</text>
+<text x="537" y="357" style="font-size:12px;fill:var(--text)">run as served</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4"><path d="M178 328 L189 328" marker-end="url(#ma-arr)"/><path d="M346 328 L357 328" marker-end="url(#ma-arr)"/><path d="M514 328 L525 328" marker-end="url(#ma-arr)"/><path d="M352 386 L352 414" marker-end="url(#ma-arr)"/></g>
+<rect x="110" y="416" width="484" height="56" rx="8" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+<rect x="126" y="433" width="10" height="10" transform="rotate(45 131 438)" style="fill:var(--accent);stroke:none"/>
+<text x="148" y="438" class="t" style="font-size:13.5px;fill:var(--ink);font-weight:600">Phase 2 gate: metrics scored on the same set</text>
+<text x="148" y="458" class="m" style="font-size:11.5px;fill:var(--muted)">IN PRACTICE: 14 OF 20, UP FROM 7 AT THE BASELINE</text>
+<text x="352" y="496" text-anchor="middle" class="t" style="font-size:12px;fill:var(--muted)">The generator never sees the golden set. Every SQL statement it proposes was cut from a real one.</text>
+</svg>

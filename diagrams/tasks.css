@@ -1,0 +1,26 @@
+.tb3-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tb3 .tb3-card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+.tb3 .tb3-head{display:grid;gap:4px;padding:12px 14px 11px;background:var(--tint);text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+.tb3 .tb3-head:hover .tb3-name{color:var(--accent)}
+.tb3 .tb3-ph{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--accent);line-height:1.2}
+.tb3 .tb3-ph b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:10.5px;font-weight:600}
+.tb3 .tb3-name{font:600 15.5px/1.25 var(--display);letter-spacing:-.01em}
+.tb3 ul{list-style:none;margin:0;padding:6px 6px 8px;display:grid;gap:0;flex:1;align-content:start}
+.tb3 li{margin:0;display:flex;align-items:center;gap:6px;padding:4px 6px 4px 8px;min-height:36px;border-radius:6px;min-width:0}
+.tb3 li:hover{background:var(--panel)}
+.tb3 .tb3-task{flex:1;min-width:0;font-size:14px;line-height:1.35;font-weight:500;color:var(--ink);text-decoration:none}
+.tb3 .tb3-task::after{content:"→";display:inline-block;width:0;margin-left:5px;white-space:nowrap;color:var(--accent);opacity:0;transition:opacity .12s}
+.tb3 li:hover .tb3-task{color:var(--accent)} .tb3 li:hover .tb3-task::after{opacity:1}
+.tb3 .tb3-is{display:inline-flex;gap:2px;flex:none}
+.tb3 .tb3-i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;color:var(--muted);opacity:.75}
+figure.fig .fig-body .tb3 .tb3-i svg,figure.fig .fig-body .tb3 .tb3-key svg,.tb3 .tb3-i svg,.tb3 .tb3-key svg{width:15px!important;height:15px!important;display:block;flex:none}
+.tb3 .tb3-i:hover{color:var(--accent);background:var(--tint);opacity:1}
+.tb3 .tb3-i.chk:hover{color:var(--ok)}
+.tb3 .tb3-leave{margin:0;padding:10px 14px 12px;border-top:1px dashed var(--line);font-size:12.5px;line-height:1.4;color:var(--text)}
+.tb3 .tb3-leave span{display:block;font-size:11px;color:var(--muted);margin-bottom:2px}
+.tb3 .tb3-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 2px 0;font-size:12.5px;color:var(--muted)}
+.tb3 .tb3-key span{display:inline-flex;align-items:center;gap:6px}
+figure.fig[data-diagram="tasks"] .fig-body{border:0;background:none;padding:4px 0}
+@media (max-width:760px){.tb3-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.tb3-grid{grid-template-columns:1fr}}
+@media print{.tb3 .tb3-card{break-inside:avoid}}

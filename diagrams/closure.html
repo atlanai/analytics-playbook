@@ -1,0 +1,25 @@
+<div class="d d-closure">
+  <div class="d-parts">
+    <div class="d-part"><b>Population</b>Which rows are in<br><span>new-business and upsell deals past the earliest stages, on the top N accounts by current ARR</span></div>
+    <div class="d-part"><b>Grain</b>One row per what<br><span>one row per customer; each open deal counted once</span></div>
+    <div class="d-part"><b>Time rule</b>Which period, as of when<br><span>the quarter-end snapshot at the as-of date</span></div>
+    <div class="d-part"><b>Formula</b>The arithmetic<br><span>sum of ARR</span></div>
+    <div class="d-part"><b>Exclusions</b>What is always out<br><span>early stages never; internal and test accounts out; closed deals out</span></div>
+  </div>
+<pre>WITH top_accounts AS (
+  <mark data-p="population">SELECT account_id FROM latest_term WHERE rn = 1
+  GROUP BY account_id ORDER BY SUM(arr) DESC LIMIT $n</mark>
+)
+SELECT <mark data-p="grain">COUNT(DISTINCT o.account_id) AS accounts</mark>,
+       COUNT(*)                     AS deals,
+       <mark data-p="formula">SUM(o.arr)</mark>                   AS open_pipeline
+FROM crm.opportunity_snapshot o
+JOIN top_accounts ta ON ta.account_id = o.account_id
+JOIN crm.account a   ON a.id = o.account_id
+WHERE <mark data-p="time rule">o.as_of_date = $as_of</mark>
+  AND <mark data-p="population">o.stage_order &gt;= 2</mark>
+  AND o.type IN ('New Business', 'Upsell')
+  AND <mark data-p="exclusions">o.is_closed = FALSE
+  AND a.is_internal = FALSE
+  AND a.is_test = FALSE</mark>;</pre>
+</div>

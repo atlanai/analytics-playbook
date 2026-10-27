@@ -1,0 +1,18 @@
+# Episode clarifications
+
+The three episodes are AI-generated conversations based on the guide. Expect the odd slip in the hosts' tone and in the transcripts' wording. Where an episode and the guide disagree on a fact, the guide is right. The hosts say "certified metric", and the guide says "metric": in the benchmark, no person approved the metrics. In the method, each metric's owner signs it off. The points below correct or qualify what the episodes say.
+
+Sponsoring it
+
+- The hosts credit the governed lane with 83.2% accuracy. The governed lane was not benchmarked. The 83.2% comes from the metrics-layer setup: metrics served with trusted past queries, per question, in the configuration the guide ships.
+- "SQL always beats prose" goes further than the evidence. The guide compared the same metrics on multi-table questions in one benchmark. It makes no claim about every task.
+
+Building it
+
+- Near the launch gate, the hosts say to run "all 50 of those fresh questions." The guide says to expand the starting set to 50, including fresh questions. You don't replace the whole set with 50 unseen questions. Run the full 50-question set three to five times.
+- "The whole system goes stale in a quarter" echoes the guide's warning that context left alone goes stale within a quarter. The guide does not measure how fast that happens.
+
+Running it
+
+- The hosts call a metric "pre-calculated." The guide defines a metric as a complete, owned, versioned statement that runs. It does not cache its result.
+- The closing prediction that companies will restructure their governance is the hosts' own view. The guide does not measure it.

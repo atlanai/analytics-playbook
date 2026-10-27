@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-label="The FDE Playbook for Analytics Agents. From demo to production.">
+<rect width="1200" height="360" rx="14" fill="#2026D2"/>
+<text x="64" y="84" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2.5" fill="#62E1FC">FOR TEAMS BUILDING TALK-TO-DATA AGENTS</text>
+<text x="64" y="160" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#FFFFFF">The FDE Playbook for Analytics Agents</text>
+<text x="64" y="232" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#62E1FC">From demo to production.</text>
+<text x="64" y="292" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" fill="#C9CBFF">Your agent fails on the tenth real question because it guesses rules your company never wrote down.</text>
+<text x="64" y="322" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" fill="#C9CBFF">This is how you write them down, measure the result, and keep it true, one domain at a time.</text>
+</svg>

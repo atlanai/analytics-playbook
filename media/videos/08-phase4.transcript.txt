@@ -1,0 +1,15 @@
+Here's the trap... a score earned on the questions you tuned against? It flatters the agent. This is Phase 4... release and hand over. Phase 3 closed at 18 of 20. So by now, the golden set had grown to 50. The graders drafted the new ones... and the context engineer never saw them.
+
+The launch gate runs all 50, sealed ones included. Each one runs 3 to 5 times, and governed questions must be right on every run. Then 5 passing questions, picked at random, get re-graded by hand.
+
+And everything that passed at the last gate? It still has to pass. On our benchmark, bare schema, just the tables, got 34 of 107 right. Add certified metrics, and the agent kept every one... 34 of 34.
+
+So what if something falls short? You've got three moves. Ship without it and name it... move it to the exploratory lane... or climb one more round. The CRO signed the launch, and held one question type back, by name. How much pipeline did we create this quarter? It's wrong on every run, because no table records it.
+
+Next, wire the agent to wherever your users ask. There are three paths. A platform agent with context pushed in... the same agent, calling it over MCP... or a custom harness. Whichever you pick, all three reach the same context layer.
+
+On launch day, four checks have to hold. And the one that slips? Traces, reaching a store the team can read. Without traces, the launch waits.
+
+Then you hand over. Everything left behind gets an owner on your side. The decisions log... who settled each conflict, and when... outlasts the rest. Even a model swap. Run one pass together, with the context engineer only watching. Then one alone, within two weeks. The engineer's on call... and nobody calls.
+
+So the CRO signed on a score that was earned... not flattered. The rule? Launch on questions nobody climbed against, and hand over only what your team has run alone. Then keep it running. Domain two starts from what this one certified.

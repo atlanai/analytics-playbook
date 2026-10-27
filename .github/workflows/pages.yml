@@ -1,8 +1,9 @@
-name: Publish site
+name: Build and publish the guide
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -17,11 +18,26 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install pandoc 3.9 (the version the build is tested with; checksum-pinned)
+        env:
+          PANDOC_VERSION: "3.9"
+          PANDOC_SHA256: f95d6e280da0daec1297bc2608bd537de563eadc31b56088d258532abcd257f4
+        run: |
+          curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          echo "${PANDOC_SHA256}  pandoc.deb" | sha256sum -c -
+          sudo dpkg -i pandoc.deb
+          pandoc --version | head -1
+      - name: Build and check
+        env:
+          PB_SITE_URL: https://analytics-playbook.atlan.com/
+        run: python3 build.py --check --site _site
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.event_name != 'pull_request'
         with:
-          path: site
+          path: _site
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-24.04
     permissions:

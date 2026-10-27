@@ -1,0 +1,8 @@
+.ew .ew-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ew .ew-tile{display:grid;align-content:start;gap:6px;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:6px;padding:12px 12px 14px;background:var(--bg);min-width:0}
+.ew .ew-q{font:600 14px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+.ew .ew-a{font-size:12.5px;line-height:1.4;color:var(--text)}
+.ew .ew-foot{margin:10px 0 0}
+@media (max-width:760px){.ew .ew-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:360px){.ew .ew-grid{grid-template-columns:1fr}}
+@media print{.ew .ew-tile{break-inside:avoid}}

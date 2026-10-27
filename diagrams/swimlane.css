@@ -1,0 +1,4 @@
+.d-swim.w4{grid-template-columns:150px repeat(6,minmax(0,1fr));min-width:0}
+.d-swim.w4 .d-h{overflow-wrap:anywhere}
+.d-swim.w4 .p{overflow-wrap:break-word;hyphens:auto}
+.d-swim-roles.w4 .d-strip{grid-template-columns:repeat(6,1fr)}

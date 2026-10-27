@@ -1,0 +1,68 @@
+<svg viewBox="0 0 704 390" role="img" aria-label="What leaves the building: result rows, past SQL sent for metric generation, and context served from the Context layer">
+<title>What leaves the building</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<text x="8" y="22" class="m" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">FROM</text>
+<text x="202" y="22" class="m" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">WHAT MOVES</text>
+<text x="498" y="22" class="m" style="font-size:11.5px;letter-spacing:.08em;fill:var(--ink);font-weight:500">TO</text>
+<g class="t" style="font-size:12px">
+  <!-- sources -->
+  <rect x="8" y="34" width="170" height="196" rx="8" style="fill:var(--panel);stroke:var(--line-2);stroke-width:1.5"/>
+  <text x="20" y="55" class="m" style="font-size:11.5px;fill:var(--ink);letter-spacing:.06em;font-weight:500">YOUR WAREHOUSE</text>
+  <text x="20" y="75" style="fill:var(--text)">the in-scope tables,</text>
+  <text x="20" y="91" style="fill:var(--text)">read to answer questions</text>
+  <line x1="20" y1="134" x2="166" y2="134" style="stroke:var(--line-2);stroke-width:1;stroke-dasharray:3 3"/>
+  <text x="20" y="172" style="fill:var(--text)">past SQL, BI reports</text>
+  <text x="20" y="188" style="fill:var(--text)">and DDL, read by a</text>
+  <text x="20" y="204" style="fill:var(--text)">read-only identity</text>
+  <rect x="8" y="256" width="170" height="100" rx="8" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+  <text x="20" y="277" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.06em;font-weight:500">CONTEXT LAYER</text>
+  <text x="20" y="298" style="fill:var(--text)">register · serve ·</text>
+  <text x="20" y="314" style="fill:var(--text)">evaluate · improve</text>
+  <text x="20" y="330" style="fill:var(--text)">the agent's context</text>
+  <!-- flow 1 -->
+  <rect x="202" y="34" width="272" height="88" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="214" y="54" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">1 · RESULT ROWS</text>
+  <text x="214" y="74" style="font-size:13.5px;fill:var(--ink);font-weight:600">Answers go straight to you</text>
+  <text x="214" y="93" style="fill:var(--text)">read under a named identity:</text>
+  <text x="214" y="109" style="fill:var(--text)">the asking user, or a service account</text>
+  <!-- flow 2 -->
+  <rect x="202" y="146" width="272" height="84" rx="7" style="fill:var(--bg);stroke:var(--stop);stroke-width:1.5"/>
+  <text x="214" y="166" class="m" style="font-size:11.5px;fill:var(--stop);letter-spacing:.04em">2 · PAST SQL AND BI DEFINITIONS</text>
+  <text x="214" y="186" style="font-size:13.5px;fill:var(--ink);font-weight:600">Sent to generate metrics</text>
+  <text x="214" y="204" style="fill:var(--text)">query text only, never table rows;</text>
+  <text x="214" y="220" style="fill:var(--text)">security approves it in Phase 0</text>
+  <!-- flow 3 -->
+  <rect x="202" y="256" width="272" height="100" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+  <text x="214" y="276" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">3 · SERVED CONTEXT</text>
+  <text x="214" y="295" style="font-size:13.5px;fill:var(--ink);font-weight:600">Definitions, not data</text>
+  <text x="214" y="313" style="fill:var(--text)">metrics, trusted past</text>
+  <text x="214" y="329" style="fill:var(--text)">queries, rules and terms, served</text>
+  <text x="214" y="345" style="fill:var(--text)">over MCP or API per question</text>
+  <!-- destinations -->
+  <rect x="498" y="34" width="198" height="88" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+  <text x="510" y="56" style="font-size:13.5px;fill:var(--ink);font-weight:600">Your harness, its model</text>
+  <text x="510" y="74" style="fill:var(--text)">and your trace store</text>
+  <text x="510" y="96" class="m" style="font-size:11.5px;fill:var(--muted)">NEVER THROUGH THE</text>
+  <text x="510" y="111" class="m" style="font-size:11.5px;fill:var(--muted)">CONTEXT LAYER</text>
+  <rect x="498" y="146" width="198" height="84" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+  <text x="510" y="168" style="font-size:13.5px;fill:var(--ink);font-weight:600">The model provider</text>
+  <text x="510" y="186" style="fill:var(--text)">used by the metrics agent;</text>
+  <text x="510" y="202" style="fill:var(--text)">it reads query text</text>
+  <text x="510" y="221" class="m" style="font-size:11.5px;fill:var(--stop)">NAME IT IN THE BRIEF</text>
+  <rect x="498" y="256" width="198" height="100" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:2"/>
+  <text x="510" y="278" style="font-size:13.5px;fill:var(--ink);font-weight:600">The model your</text>
+  <text x="510" y="295" style="font-size:13.5px;fill:var(--ink);font-weight:600">harness calls</text>
+  <text x="510" y="314" style="fill:var(--text)">metric SQL and instructions;</text>
+  <text x="510" y="330" style="fill:var(--text)">traces go back to your trace</text>
+  <text x="510" y="346" style="fill:var(--text)">store and context layer</text>
+</g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.4">
+  <path d="M178 78 L200 78" marker-end="url(#arr)"/>
+  <path d="M474 78 L496 78" marker-end="url(#arr)"/>
+  <path d="M178 188 L200 188" marker-end="url(#arr)"/>
+  <path d="M474 188 L496 188" style="stroke:var(--stop)" marker-end="url(#arr)"/>
+  <path d="M178 306 L200 306" marker-end="url(#arr)"/>
+  <path d="M474 306 L496 306" marker-end="url(#arr)"/>
+</g>
+<text x="8" y="380" class="m" style="font-size:11.5px;fill:var(--muted)">THREE FLOWS, AGREED WITH SECURITY IN PHASE 0 · EVERY CONTEXT CALL IS TRACED</text>
+</svg>

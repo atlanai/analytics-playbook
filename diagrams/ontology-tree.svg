@@ -1,0 +1,53 @@
+<svg viewBox="0 0 700 546" role="img" aria-label="Is an ontology worth it? A decision tree">
+<title>Is an ontology worth it?</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--muted)"/></marker></defs>
+<g class="t" style="font-size:13.5px">
+<rect x="8" y="8" width="280" height="88" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="31" style="fill:var(--ink);font-weight:600">Are the what-questions released</text>
+<text x="22" y="48" style="fill:var(--ink);font-weight:600">and stable?</text>
+<text x="22" y="68" style="fill:var(--muted);font-size:12.5px">the same number twice, on the</text>
+<text x="22" y="84" style="fill:var(--muted);font-size:12.5px">golden set of 50</text>
+<path d="M288 52 L382 52" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="45" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="8" width="306" height="88" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="400" y="38" style="fill:var(--ink);font-weight:600">Not yet. Go back to the hill climb.</text>
+<text x="400" y="58" style="fill:var(--stop);font-size:12.5px">a number you cannot state</text>
+<text x="400" y="74" style="fill:var(--stop);font-size:12.5px">consistently explains nothing</text>
+<path d="M148 96 L148 118" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="113" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="8" y="122" width="280" height="72" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="145" style="fill:var(--ink);font-weight:600">Does the domain live in a single</text>
+<text x="22" y="162" style="fill:var(--ink);font-weight:600">system?</text>
+<text x="22" y="182" style="fill:var(--muted);font-size:12.5px">one schema, one set of keys</text>
+<path d="M288 158 L382 158" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="151" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="386" y="122" width="306" height="72" rx="7" style="fill:var(--panel);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="400" y="145" style="fill:var(--ink);font-weight:600">Rules carry the why. Stop here.</text>
+<text x="400" y="165" style="fill:var(--muted);font-size:12.5px">write the processes as rules: "a re-signed</text>
+<text x="400" y="181" style="fill:var(--muted);font-size:12.5px">deal returns to the first stage"</text>
+<path d="M148 194 L148 216" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="211" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="8" y="220" width="280" height="104" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="243" style="fill:var(--ink);font-weight:600">Is there cross-system identity to</text>
+<text x="22" y="260" style="fill:var(--ink);font-weight:600">resolve, or lifecycle history to</text>
+<text x="22" y="277" style="fill:var(--ink);font-weight:600">reason over?</text>
+<text x="22" y="296" style="fill:var(--muted);font-size:12.5px">where the ontology earned its keep</text>
+<text x="22" y="312" style="fill:var(--muted);font-size:12.5px">in our test</text>
+<path d="M288 272 L382 272" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="265" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="236" width="306" height="72" rx="7" style="fill:var(--panel);stroke:var(--line-2);stroke-width:1.3"/>
+<text x="400" y="266" style="fill:var(--ink);font-weight:600">Not worth it yet.</text>
+<text x="400" y="286" style="fill:var(--muted);font-size:12.5px">metrics carry most of the answer</text>
+<path d="M148 324 L148 346" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="341" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="8" y="350" width="280" height="70" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
+<text x="22" y="373" style="fill:var(--ink);font-weight:600">Will a team date each change?</text>
+<text x="22" y="392" style="fill:var(--muted);font-size:12.5px">Sales Ops for territories, Finance</text>
+<text x="22" y="408" style="fill:var(--muted);font-size:12.5px">for pricing</text>
+<path d="M288 385 L382 385" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="378" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
+<rect x="386" y="350" width="306" height="70" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
+<text x="400" y="373" style="fill:var(--ink);font-weight:600">Start that record first.</text>
+<text x="400" y="392" style="fill:var(--stop);font-size:12.5px">without it the agent describes the</text>
+<text x="400" y="408" style="fill:var(--stop);font-size:12.5px">business, not what moved it</text>
+<path d="M148 420 L148 442" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="437" class="m" style="font-size:12px;fill:var(--muted)">YES</text>
+<rect x="8" y="446" width="684" height="92" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
+<text x="22" y="467" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.06em">BUILD IT</text>
+<text x="22" y="487" style="fill:var(--ink);font-weight:600">Import what exists, cut to the why-set's subgraph, bind entities to tables</text>
+<text x="22" y="504" style="fill:var(--ink);font-weight:600">and metrics, record dated changes.</text>
+<text x="22" y="524" style="fill:var(--text);font-size:12.5px">Metrics carry most of the answer; the dated changes explain the move.</text>
+</g>
+</svg>

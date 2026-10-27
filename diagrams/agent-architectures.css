@@ -1,0 +1,9 @@
+.aa-phone .aa-layers{display:grid;gap:6px}
+.aa-phone .aa-l{border:1px solid var(--line-2);border-radius:6px;padding:8px 12px;background:var(--bg)}
+.aa-phone .aa-l b{display:block;font:600 14px/1.3 var(--display);color:var(--ink)}
+.aa-phone .aa-l span{font-size:12.5px;color:var(--text)}
+.aa-phone .aa-yours{border:1.8px solid var(--accent);background:var(--tint)}
+.aa-phone .aa-yours em{font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;background:var(--accent);color:var(--accent-ink);border-radius:3px;padding:2px 5px;margin-left:6px;vertical-align:2px}
+.aa-phone .aa-ctx{border:2px solid var(--ink)}
+.aa-phone .aa-mcp{font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-align:center;padding:2px 0}
+.aa-phone .aa-sealed{border-style:dashed;background:var(--panel)}
