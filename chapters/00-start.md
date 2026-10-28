@@ -6,7 +6,7 @@ Pick the row that matches your job. Each one has a podcast, a recommended readin
 
 You are the exec sponsor, or the data leader who will answer for the agent. The risk you are buying down is a wrong answer that looks right.
 
-<p class="door-listen"><a class="listen-cta" href="#listen-sponsor" data-podcast="listen-sponsor"><span aria-hidden="true">▶</span> Listen <small>9:34</small></a></p>
+<p class="door-listen"><a class="listen-cta" href="#listen-sponsor" data-podcast="listen-sponsor"><span aria-hidden="true">▶</span> Listen <small>21:12</small></a></p>
 
 1. [Why analytics agents are hard](#ch01)
 2. [The method at a glance](#start)
@@ -21,7 +21,7 @@ Your cards: [The sponsor's ask](#c2), [What the sponsor sees at each gate](#c10)
 
 You are the agent builder, the context engineer or an analytics engineer. You want to know what to build, and where each piece of knowledge goes.
 
-<p class="door-listen"><a class="listen-cta" href="#listen-builder" data-podcast="listen-builder"><span aria-hidden="true">▶</span> Listen <small>19:35</small></a></p>
+<p class="door-listen"><a class="listen-cta" href="#listen-builder" data-podcast="listen-builder"><span aria-hidden="true">▶</span> Listen <small>12:58</small></a></p>
 
 1. [Evals first](#ch-evals)
 2. [The metric is the unit](#ch02)
@@ -41,7 +41,7 @@ When the numbers are right, read [Answer why](#ch08). If you already run a seman
 
 You are the delivery lead: a forward-deployed engineer, a partner consultant or an internal program lead. You want to know what happens in each phase and what to do when a week goes wrong.
 
-<p class="door-listen"><a class="listen-cta" href="#listen-runner" data-podcast="listen-runner"><span aria-hidden="true">▶</span> Listen <small>15:18</small></a></p>
+<p class="door-listen"><a class="listen-cta" href="#listen-runner" data-podcast="listen-runner"><span aria-hidden="true">▶</span> Listen <small>11:48</small></a></p>
 
 1. [The method at a glance](#start)
 2. [Phase 0](#ch03)
