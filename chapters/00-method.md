@@ -47,7 +47,7 @@ Each phase of the lifecycle ends at a gate. Move on when the gate is met, whatev
 Phase 0 runs before the clock: the clock is the build, and it starts with Phase 1, once Phase 0's gate is met. Phase 3 is the hill climb: run the golden set, read the trace of each miss, make the smallest fix and run it again. Phase 4 releases the agent and hands it over; [What you'll walk away with](#home-outcome) lists what your team holds at the end.
 
 ::: {.diagram #phases}
-Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch, each ending at its gate. The golden set starts at 20 questions in Phase 1, and the graders add more before launch that the builder never saw.
+Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch, each ending at its gate. The golden set starts at 20 questions in Phase 1. During Phase 3 the graders add questions the context engineer never sees, first scored at the launch gate.
 :::
 
 Before Phase 1 you need read-only warehouse access, query history and BI reports. You also need your agent harness set up to record a trace of every run, so that your first test runs are traced. The full list is on [What you need before you start](#c11).

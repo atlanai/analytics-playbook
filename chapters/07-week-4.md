@@ -10,7 +10,7 @@ produces: launch decision, release note, handover
 
 ::: {.tldr}
 - **Short version.** Test on fresh questions nobody climbed against, let the business decide go or no-go, choose how the agent reaches users, then hand over with one pass together and one your team runs alone.
-- **Do this.** Have the graders add questions the builders never see, and run the launch gate on them.
+- **Do this.** Have the graders draft new questions during Phase 3 that the context engineer never sees. Hold them out of the climb and score them first at the launch gate.
 - **Skip if** you're still climbing. Come back when the score holds.
 :::
 
@@ -22,10 +22,10 @@ Phase 4 has two jobs. It proves the agent holds up on questions nobody climbed a
 
 ## Gate 4: is it ready to launch? {#ch07-launch-gate}
 
-A score earned on the questions you tuned against flatters the agent. That is why the graders added questions during Phase 3 that the builders never saw: new dashboard tiles, recent tickets, the sponsor's own asks. The launch score is then not one anyone tuned against. Now run the whole set, each question three to five times. Tick this checklist at the gate review.
+A score earned on the questions you tuned against flatters the agent. That is why the graders drafted new questions during Phase 3 that the context engineer never saw: new dashboard tiles, recent tickets, the sponsor's own asks. They were held out of the climb and are first scored here, so the launch score is not one anyone tuned against. Now run the whole set, each question three to five times. Tick this checklist at the gate review.
 
 > [!DONE]
-> - [ ] New questions were added before launch and sealed without the context engineer seeing them
+> - [ ] New questions were drafted during Phase 3, held out of the climb and sealed without the context engineer seeing them
 > - [ ] The whole set ran three to five times on the release configuration
 > - [ ] The golden set scores at or above the bar in the brief on every run
 > - [ ] Nothing that passed at the last gate has broken
@@ -33,6 +33,7 @@ A score earned on the questions you tuned against flatters the agent. That is wh
 > - [ ] The random pass audit is done: five passing questions, chosen at random, re-graded by hand
 > - [ ] Out-of-scope questions are refused, never guessed
 > - [ ] Traces from the production surface reach a store the team can read
+> - [ ] The first pass your team runs alone is booked, within two weeks
 > - [ ] The sponsor decided go, no-go, or go with conditions, and each condition has a date
 
 If something falls short, you have three moves: ship without it and name it, move it to the exploratory lane with the sponsor's agreement, or run one more round of the hill climb. The engagement's launch readout fit in five lines:
@@ -77,13 +78,13 @@ An agent that clears its bar is half the job. The other half is a team that can 
 | What stays | Reused as |
 |---|---|
 | Metrics, each with its owner and version | The one definition every later agent and domain calls |
-| Golden set | The full rerun on every context change. The questions it gets right on every run form the regression set, rerun on every schema change |
+| Golden set | The full rerun on every context, harness or model change. The questions it gets right on every run form the regression set, rerun on every schema change |
 | Decisions log | Precedent: the next conflict on the same concept starts here |
 | Rules and business terms | Shared by every domain that uses the same words |
 | Trusted past queries | The exploratory lane's library |
 | A trained team | The people who run domain two |
 
-The decisions log outlasts the rest. It records every place two defensible definitions were in use, who decided, and when. It survives a model swap or a harness rewrite.
+The conflict records (the decisions log) outlast the rest. They record every place two defensible definitions were in use, who decided, and when. They survive a model swap or a harness rewrite.
 
 The handover takes three steps:
 

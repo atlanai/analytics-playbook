@@ -52,11 +52,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .topbar button:hover{background:var(--plate);border-color:var(--line-2)}
 .progress{height:1px;bottom:0}
 .shell{grid-template-columns:var(--nav) minmax(0,1fr) var(--railw);gap:20px;padding:0 20px 20px 12px}
-nav.toc{padding:20px 8px 48px 4px;margin:0;font-size:13px;max-height:calc(100dvh - var(--hdr));scrollbar-width:thin}
+nav.toc{padding:20px 8px 0 4px;margin:0;font-size:13px;max-height:calc(100dvh - var(--hdr));scrollbar-width:thin}
 /* the contents fill the column, so the GitHub link sits at the bottom even when the list is short */
 nav.toc{display:flex;flex-direction:column;height:calc(100dvh - var(--hdr))}
 nav.toc > *{flex-shrink:0}
-nav.toc .toc-repo{margin-top:auto;bottom:-48px}   /* flush with the sidebar's bottom edge, through its 48px padding */
+nav.toc .toc-repo{margin-top:auto;bottom:0;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}   /* flush with the sidebar's bottom edge; the sidebar has no bottom padding */
 .toc-intro{padding:0 12px 20px;display:flex;gap:12px;align-items:center}
 .toc-emblem{width:32px;height:32px;display:grid;place-items:center;background:var(--plate);border:1px solid var(--line);border-radius:9px;color:var(--ink)}
 .toc-intro strong{display:block;font-size:13px;font-weight:500;line-height:1.4}

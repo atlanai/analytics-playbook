@@ -154,6 +154,6 @@ Brief agreed, every access item proved. The sponsor sees the brief and the acces
 > - [ ] Every access item proved by its test, including one trace read end to end
 > - [ ] The agent architecture recorded: platform-native or custom, and which model
 > - [ ] If data leaves your environment: security has walked the data-flow diagram and approved it
-> - [ ] The minimum harness is planned, due before the baseline
+> - [ ] The minimum harness runs: one question traced end to end
 
 Card: [The sponsor's ask](#c2)

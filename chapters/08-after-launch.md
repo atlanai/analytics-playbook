@@ -95,7 +95,7 @@ Without this context, the agent summed open amounts by country and returned a pe
 EMEA pipeline with the top 100 customers fell $53M. North America and APAC held.
 New deals were flat, and last year rules out the season.
 $31M sits in deals that changed owner in the territory realignment and have not moved since.
-$19M sits in Enterprise deals re-signed on new terms after the pricing change, which sent them back to an early stage.
+$19M sits in Enterprise deals re-signed on new terms after the pricing change, which sent them back to the first stage.
 The remaining $3M has no single cause.
 ```
 
@@ -163,4 +163,4 @@ In our engagements, the stall that cost the most time was a decider who could sp
 > - [ ] The four ceremonies are booked through Phase 4, and every gate decision is written down
 > - [ ] Every condition on a "go with conditions" has a date, checked on that date
 
-Card: [What to do when](#c9)
+Card: [What to do when things stall](#c9)

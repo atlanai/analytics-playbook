@@ -37,7 +37,7 @@ The Evidence column says **measured** when a benchmark comparison backs the row,
 | A written term or trusted query is never retrieved | The question's word ("slipped") appears in neither the query's text nor its title | Give the business term its alternate labels and link it to the query | written, not served | measured | Phase 3 |
 | Glossary definitions on columns add context and no accuracy | Business terms served as column prose | Use business terms to route question words to the right metric or query | written, not served | measured | Phase 2 |
 | The agent copies the start of a served query and improvises the rest | SQL cut short to save tokens | Serve complete statements, literals kept | written, not served | measured | Phase 2 |
-| A second retriever on top of metrics adds nothing | Near-variants compete with the metric | Rank metrics above retrieved queries; never blend the lanes | written, not served | measured | Phase 2 |
+| A second retriever on top of metrics adds nothing | Near-variants compete with the metric | Rank metrics above retrieved queries; never blend the two | written, not served | measured | Phase 2 |
 | Wide dashboard objects cost questions | They crowd the decisive metric out | Keep metrics narrow and atomic; cap what is served per question | written, not served | measured | Phase 2 |
 | Search recall improves and accuracy does not | Recall counts candidates found; accuracy needs the decisive one served | Measure answers against the golden set, never retrieval alone | written, not served | measured | Phase 3 |
 | Column profiles bloat the prompt with no gain | Profiling describes data shape and carries no decisions | Look up values only when a question names one | written, not served | measured | Phase 2 |
@@ -82,8 +82,8 @@ These rows come from our field engagements. Each maps to a Phase 0 decision or t
 | Every answer must be exact, judged against a dashboard | The use case is a dashboard | Exact recurring numbers go through the governed lane, or stay on the dashboard | never written | diagnosis | Phase 0 |
 | The company cannot run a round of fixes without the delivery team | The loop was run for them; the handover was a document | One pass together, one alone, before the delivery team leaves | never written | diagnosis | Phase 4 |
 | Two domains own the same word and disagree, and nobody can decide | No one decides across domains | The sponsor names an arbiter before domain two's Phase 0 ends | never written | diagnosis | Phase 4 |
-| High pilot accuracy fails the first real user | The test set came from the tuning examples | Build the golden set from real questions, seal it, hold some back | key wrong | diagnosis | Phase 1 |
-| The golden set is still being written in Phase 3 | Drafted from scratch | Start from verified dashboards, reports and analyst work; seal 20 in Phase 1 | key wrong | diagnosis | Phase 1 |
+| High pilot accuracy fails the first real user | The test set came from the tuning examples | Build the golden set from real questions, seal it, and add questions the builder never saw before launch | key wrong | diagnosis | Phase 1 |
+| The golden set is still being written in Phase 3 | Drafted from scratch | Start from verified dashboards, reports and analyst work; seal at least 20 in Phase 1 | key wrong | diagnosis | Phase 1 |
 | Every miss becomes a question for the delivery team | The company's side never took on correctness | The company's graders keep the golden set, and the company settles its own definitions | key wrong | diagnosis | Phase 0 |
 | The sponsor rejects a result the team celebrated | The bar was never written down | Set the bar in Phase 0, before any result exists | key wrong | diagnosis | Phase 0 |
 | Phase 3 starts with no traces to read | Trace export arrived last | Test one trace end to end, per call, before Phase 1 | budget | diagnosis | Phase 0 |

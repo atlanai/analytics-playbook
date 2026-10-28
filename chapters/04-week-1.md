@@ -121,5 +121,6 @@ The sponsor sees the golden set and the baseline, and decides whether to start b
 > - [ ] No sealed answer or expected SQL in the agent's context; removals recorded by hash
 > - [ ] The set committed, and stored wherever your runs are recorded
 > - [ ] The baseline run once per question, with the guessed decision on every miss
+> - [ ] Random pass audit: five passing items re-graded by hand
 
 Card: [The eval owner's week](#c3)

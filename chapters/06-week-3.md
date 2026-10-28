@@ -18,7 +18,7 @@ produces: trace reviews, approved context changes, the iteration ledger, a score
 The summary for the pipeline question said the agent had used the metric. That was true. The context engineer opened the raw trace anyway. One line of the metric's SQL ranked the top 100 customers by number of deals. Finance ranks them by current ARR. Finance's list lived in a spreadsheet, so no query history had ever shown it. Phase 2 had no way to see it: the generator drafted from query history, and the one place the ranking had surfaced was a Phase 1 sealing dispute. That dispute should have crossed the wall to the conflict list, with no sealed value. It stayed on the item instead. The FP&A partner and the RevOps lead settled it in a 20-minute session the next morning. The metric now ranks by ARR. The stage rule from kickoff, until then served as a separate instruction, went into the metric's SQL too. Gate 2 should have held the metric until the rule was in its SQL. Nobody had checked. One change broke another question, the regression run caught it, and they fixed it the next day. Phase 3 closed at 18 of 20.
 :::
 
-Phase 3 starts from the metrics and the Phase 2 score. The misses left are decisions nobody raised, and the trace is where they show. The phase ends when the score stops moving or clears the bar set in the brief. The work is one loop, run in short rounds. Each round changes the context a little, reruns the golden set and reads what happened. Meanwhile the graders add questions the context engineer never sees, so the launch score is not one anyone tuned against.
+Phase 3 starts from the metrics and the Phase 2 score. The misses left are decisions nobody raised, and the trace is where they show. The phase ends when the score stops moving or clears the bar set in the brief. The work is one loop, run in short rounds. Each round changes the context a little, reruns the golden set and reads what happened. Meanwhile the graders draft new questions the context engineer never sees. They are held out of the climb and first scored at the launch gate, so the launch score is not one anyone tuned against.
 
 ## The loop {#ch06-loop}
 
@@ -130,7 +130,8 @@ The sponsor sees the score after each round, what broke and what was fixed, and 
 > - [ ] The whole set rerun after every change; nothing that passed before is broken
 > - [ ] Iteration ledger complete, reverted changes included
 > - [ ] Step budget unchanged since the baseline
-> - [ ] New questions added for the launch test, sealed without the context engineer seeing them
+> - [ ] New questions added for the launch test, held out of the climb and sealed without the context engineer seeing them
+> - [ ] Random pass audit: five passing items re-graded by hand
 > - [ ] Remaining gaps taken to the sponsor, or the ceiling reported
 
 Card: [Why did this miss?](#c6)

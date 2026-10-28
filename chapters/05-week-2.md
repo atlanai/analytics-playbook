@@ -157,5 +157,6 @@ A gate can only check what somebody raised. A metric can pass every check here a
 > - [ ] Everything served arrives through one traced context call, per question
 > - [ ] Anything brought in from existing models or saved queries is versioned and witnessed
 > - [ ] Gate 2: metrics scored on the sealed questions, change since the baseline recorded
+> - [ ] Random pass audit: five passing items re-graded by hand
 
 Card: [How to resolve a conflict](#c5)

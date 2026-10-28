@@ -9,7 +9,7 @@ Every term names part of the method.
 
 **Agent builder.** The company's engineer who builds and runs the harness, exports traces and runs every eval, baseline, round and gate.
 
-**Answer key.** See golden set.
+**Answer key (key).** The sealed expected answer of one golden-set item. The golden set holds one per question.
 
 **As-of date.** The fixed snapshot every expected answer is computed at, such as a fiscal year-end. The harness passes it on every eval run, so sealed answers stay reproducible.
 
@@ -37,6 +37,8 @@ Every term names part of the method.
 
 **Context layer.** The governed store of context that sits under any agent and serves it per question.
 
+**Decisions log.** The conflict records ([template](#r2-6)): every place two defensible definitions were in use, who decided, and when. It outlasts the rest of the handover.
+
 **Decoy.** The wrong answer you get when the choices a question hides are guessed the obvious way, recorded on the golden-set item. For the pipeline question it is $1.31B.
 
 **Definition of done.** The checklist that closes a chapter's phase, checked item by item.
@@ -55,11 +57,11 @@ Every term names part of the method.
 
 **Exploratory lane.** Long-tail and diagnostic questions, answered by SQL the agent writes, grounded in trusted past queries. Every answer shows its SQL and sources, so a reader can check it before acting.
 
-**Gate.** The checkable condition that ends each step: Phase 0 (brief agreed, access proved), Phase 1 (20 or more sealed, baseline scored), Phase 2 (metrics scored), Phase 3 (misses closed, new questions added for the launch test, nothing that passed has broken) and the launch gate in Phase 4.
+**Gate.** The checkable condition that ends each step: Phase 0 (brief agreed, access proved), Phase 1 (20 or more sealed, baseline scored), Phase 2 (metrics scored), Phase 3 (new questions added for the launch test, nothing that passed has broken) and the launch gate in Phase 4.
 
 **Generate metrics.** Phase 2's core task: a metrics agent reads past SQL, BI reports and semantic models, and proposes candidate metrics with the real queries behind them. Candidates are then witnessed, conflicts resolved, and the survivors approved.
 
-**Golden set.** The sealed questions with expected answers, expected SQL and a grading method, built from questions the business already asks: at least 20 in Phase 1, with more added before launch that the builder never saw, so the launch score is not one anyone tuned against. Also called an answer key.
+**Golden set.** The sealed questions with expected answers, expected SQL and a grading method, built from questions the business already asks: at least 20 in Phase 1. During Phase 3 the graders draft new questions the context engineer never sees. They are held out of the climb and first scored at the launch gate, so the launch score is not one anyone tuned against.
 
 **Governed lane.** The numbers the business runs on. They come only from a metric, run as served, and the lane fails loudly: no metric, no answer.
 
@@ -73,7 +75,7 @@ Every term names part of the method.
 
 **Iteration ledger.** The record of every round: what changed, the fixes predicted before the run, the score, and whether the change was kept.
 
-**Launch gate.** The Phase 4 test: the golden set scores at or above the bar in the brief on every run, nothing that passed has broken, the random pass audit is done, and out-of-scope questions are refused. The sponsor decides go, no-go or go with conditions.
+**Launch gate.** The Phase 4 test: the golden set scores at or above the bar in the brief on every run, nothing that passed has broken, the random pass audit is done, out-of-scope questions are refused, and the first pass your team runs alone is booked, within two weeks. The sponsor decides go, no-go or go with conditions.
 
 **LLM judge.** A model that grades what code cannot, such as whether an answer states its period, filter and unit. It never grades the number itself when code can, and it counts only once calibrated against human graders.
 
@@ -87,11 +89,11 @@ Every term names part of the method.
 
 **Provenance.** The evidence behind a query or metric: who ran it, how many different people, how often, how recently, and whether it runs clean and matches the warehouse. Provenance settles most conflicts without a meeting, and it is served with every metric.
 
-**Random pass audit.** At every gate, five passing items, chosen at random, are re-graded by hand against their source. A key found wrong is corrected in either direction, and the score is reported after the correction.
+**Random pass audit.** At every gate from Phase 1 on, five passing items, chosen at random, are re-graded by hand against their source. A key found wrong is corrected in either direction, and the score is reported after the correction.
 
 **Refusal.** The governed lane's answer when no metric covers the question: it says so, with no number. Correct on an out-of-scope question, and a miss on an in-scope one. On the benchmark every refusal counts as a miss.
 
-**Regression set.** The golden-set questions the agent already answers right on every run, rerun on every context change and every schema change.
+**Regression set.** The golden-set questions the agent already answers right on every run, rerun on every schema change; the full golden set reruns on every context, harness or model change.
 
 **Resolve a conflict.** Settle which of two definitions is right. Provenance decides first; whoever owns that number decides the rest. The decision is written into the metric as SQL.
 

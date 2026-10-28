@@ -129,7 +129,7 @@ Room: CRO, RevOps lead, FP&A partner, eval owner, agent builder, platform owner,
 | 0:00 | Why pilots stall between the demo and the tenth question | a shared diagnosis |
 | 0:10 | The decisions hidden in "What's our Q3 pipeline?", on the company's data | two unwritten rules: some early stages never count; internal and test accounts are out |
 | 0:25 | Which domain first | sales pipeline, over finance close and marketing attribution |
-| 0:35 | The bar and the two lanes | the bar: 9 in 10 golden-set questions right on every run; board numbers governed; slippage, creation and aging exploratory; why deferred |
+| 0:35 | The bar, then how the agent answers | the bar: 9 in 10 golden-set questions right on every run; board numbers governed; slippage, creation and aging exploratory; why deferred |
 | 0:50 | Who settles which definitions | RevOps lead: deals, stages, amounts · FP&A partner: who the top 100 customers are |
 | 1:00 | Walk the before-you-start checklist | roles filled; architecture chosen |
 | 1:15 | Access and what leaves the building | security walks the data-flow diagram; the per-call trace export started |
@@ -146,7 +146,7 @@ Pre-read: the one-page method
 | 0:00 | Why pilots stall between the demo and the tenth question | shared diagnosis |
 | 0:10 | One question, the decisions it hides, on your own data | two of your own unwritten rules |
 | 0:25 | Which domain first | the domain, and why |
-| 0:35 | The bar and the two lanes | one pass rate for the whole golden set; which kinds of question are governed |
+| 0:35 | The bar, then how the agent answers | one pass rate for the whole golden set; which kinds of question are governed |
 | 0:50 | Who settles which definitions | the domain owner, and a co-owner if a definition crosses teams |
 | 1:00 | Walk the before-you-start checklist | status per item; a date for each gap |
 | 1:15 | Access and what leaves the building | security's next step and date |
@@ -504,7 +504,7 @@ What the harness sends on its one context call, what comes back, and the per-cal
     "business_terms": [{"term": "<term>", "version": "<int>", "points_to": "<metric or query, with version>"}]
   },
   "trace_record": {
-    "trace_id": "<question id · week, round · run n of k>",
+    "trace_id": "<question id · phase, round · run n of k>",
     "question_id": "<id, or unsealed in production>",
     "model": "<model and version>",
     "served": [{"id": "<item>", "version": "<version>"}],
@@ -800,12 +800,12 @@ Optional columns: cost and latency per question, from the traces.
 :::
 
 ::: {.template #r2-12 file="sponsor-readout.md" title="Sponsor readout"}
-One page the exec sponsor reads in five minutes: the score against the golden set, what changed, and what needs a decision. Every week, and at each gate.
+One page the exec sponsor reads in five minutes: the score against the golden set, what changed, and what needs a decision. Once per phase, at its gate.
 
 ```markdown
 # Sponsor readout: Sales · end of Phase 2 · delivery lead
 
-Status: on track. Gate this week: metrics published and scored. Met.
+Status: on track. Gate this phase: metrics published and scored. Met.
 
 ## Score against the golden set
 Six metrics, one run per question: 14 of 20, up from the bare-schema baseline of 7 of 20. The bar is 9 in 10.
@@ -824,20 +824,20 @@ Six metrics, one run per question: 14 of 20, up from the bare-schema baseline of
 - New questions for the launch test, ones the builders never saw, must be sealed by the end of Phase 3
 - The FP&A partner's hour in Phase 3, for any decision on the top 100
 
-## Next week
+## Next phase
 Measure run-to-run variation, then fix from traces; the graders add new questions for the launch test.
 ```
 
 ```markdown
-# Sponsor readout: <domain> · <week or gate> · <delivery lead>
+# Sponsor readout: <domain> · <phase or gate> · <delivery lead>
 
-Status: on track | at risk | blocked. Gate this week: <gate>, <met / not yet>
+Status: on track | at risk | blocked. Gate this phase: <gate>, <met / not yet>
 
 ## Score against the golden set
-<context version, score against the bar, change since last week, inside run-to-run variation or not>
+<context version, score against the bar, change since the last readout, inside run-to-run variation or not>
 
 ## What changed
-<context changes this week, and how each conflict was settled>
+<context changes since the last readout, and how each conflict was settled>
 
 ## Decisions needed from you
 <decision, why it matters, by when>
@@ -845,7 +845,7 @@ Status: on track | at risk | blocked. Gate this week: <gate>, <met / not yet>
 ## Risks
 <live rows from the risk log, with their mitigation>
 
-## Next week
+## Next phase
 <plan to the next gate>
 ```
 :::
@@ -953,7 +953,7 @@ Open: <what waits, and on whom>
 ::: {.template #r2-20 file="pattern-write-up.txt" title="Pattern write-up"}
 A short, anonymised account of what the engagement showed, for whoever owns the platform it ran on. The delivery lead drafts it within a week of launch:
 
-1. Collect the decisions log, the iteration ledger and the postmortem.
+1. Collect the decisions log (the conflict records), the iteration ledger and the postmortem.
 2. Describe the domain's shape: industry, which kinds of question are governed, estate size, and whether an agent already existed.
 3. List what moved the score and what did not.
 4. Sort every fix into two piles: keep the fixes the next engagement will need, throw away the ones that fitted only this estate.

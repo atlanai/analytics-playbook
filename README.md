@@ -31,13 +31,15 @@ Prefer listening? [Choose a podcast for your role](https://analytics-playbook.at
 Ask an agent for fiscal Q3 sales pipeline, at a company whose fiscal year ends 30 June. Any good analyst writes this:
 
 ```sql
-SELECT SUM(amount)
-FROM opportunity
-WHERE close_date BETWEEN DATE '2026-01-01' AND DATE '2026-03-31'  -- fiscal Q3
-  AND stage NOT IN ('Closed Won', 'Closed Lost');
+SELECT SUM(o.amount)
+FROM opportunity o
+JOIN account a ON a.id = o.account_id
+WHERE o.close_date BETWEEN DATE '2026-01-01' AND DATE '2026-03-31'  -- fiscal Q3
+  AND o.stage NOT IN ('Closed Won', 'Closed Lost')
+  AND a.is_internal = FALSE AND a.is_test = FALSE;  -- internal and test accounts are out
 ```
 
-It returns $18.4M. Finance reports $11.2M, because at this company the earliest pipeline stage is top-of-funnel noise and never counts. That rule is in no table, no column and no description. Nothing in the wrong SQL looks wrong.
+It returns $18.4M. Finance reports $11.2M, because at this company the earliest pipeline stages are top-of-funnel noise and never count. That rule is in no table, no column and no description. Nothing in the wrong SQL looks wrong.
 
 A business question like this hides about five such decisions: which stages count, which rows, which quarter, which amount, and how the answer is assembled. Guess each one right 80% of the time and you get all five right once in three tries: 0.8⁵ ≈ 33%. This is a worked example. Bare-schema agents in our runs scored near it. On our warehouse, switching models moved that score far less than adding context did.
 
@@ -86,8 +88,8 @@ Cards are one-page checklists you can print. Not sure where you stand? Take the 
 
 | | Chapter | What it answers |
 |---|---|---|
-| **Why it is hard** | [Why analytics agents are hard](chapters/01-why-hard.md) | The tenth question; what the question means (five hidden decisions, the model swap, the context ladder); deciding the same way every time (SQL beats a sentence, what didn't work); knowing you are right (why a fixed test). Each ends with where its fix lives |
-| **How to build one** | [The method at a glance](chapters/00-method.md) | The five steps and the open one, the lifecycle, the eight rules, the gates, the method map, the running example |
+| **Why it is hard** | [Why analytics agents are hard](chapters/01-why-hard.md) | The five steps and the open one; the tenth question; what the question means (five hidden decisions, the model swap); deciding the same way every time (SQL beats a sentence); knowing you are right (why a fixed test). Each ends with where its fix lives |
+| **How to build one** | [The method at a glance](chapters/00-method.md) | What closes the gap (the context ladder), the lifecycle, the eight rules, the gates, the method map, the running example |
 | | [Evals first](chapters/02a-evals-first.md) | One row of the golden set, what makes an eval worth trusting, grading in layers, evals as the agent's CI/CD |
 | | [The metric is the unit](chapters/02b-metric-unit.md) | What a metric is, where each kind of knowledge goes, why a metric and not a view, the two lanes |
 | | [Serve per question](chapters/02c-serve-per-question.md) | The retrieval architecture, why MCP, what the search should match, checking it in the traces |
