@@ -26,7 +26,7 @@ By the end of Phase 1, twenty questions were sealed. The agent then ran on bare 
 
 ## Harvest at least 20 real questions {#ch04-harvest}
 
-Take the questions from what the business already asks and has already answered. An invented question tests work nobody needs done, and it tends to be one the agent can pass. Collect two or three times as many candidates as you will seal. Then pick at least 20 that cover the domain and both lanes.
+Take the questions from what the business already asks and has already answered. An invented question tests work nobody needs done, and it tends to be one the agent can pass. Collect two or three times as many candidates as you will seal. Then pick at least 20 that cover the domain.
 
 Pull the candidates from four places:
 
@@ -39,7 +39,7 @@ Rewrite each one the way a user would ask it, with no table or column names. Rec
 
 ## Write every item in one format {#ch04-item}
 
-Every question goes into the golden set in one format, so any grader can check any item and you can version the set like code. Six fields are required. The rest are optional.
+Every question goes into the golden set in one format, so any grader can check any item and you can version the set like code. Five fields are required. The rest are optional.
 
 ::: {.template #ch04-item-preview file="sales-01.yaml" title="Golden-set item, short form"}
 The pipeline question, as sealed.
@@ -48,7 +48,6 @@ The pipeline question, as sealed.
 # required
 id:               sales-01
 question:         How much open pipeline do we have with our top 100 customers?
-lane:             governed
 source:           FP&A board pack, top-accounts pipeline page
 expected:         {accounts: 91, deals: 340, open_pipeline: 412000000}
 expected_sql:     |
@@ -76,8 +75,8 @@ One item, graded in order: the returned data within tolerance, then the SQL agai
 :::
 
 - **Grade the data first, then the SQL.** The data check is fast and needs no judgment. Then check that the SQL makes the item's decisions. A wrong query can land near the right number by luck, so a near-match on data alone never passes.
-- **Allow several valid answers.** A total and a breakdown that sums to it are both right. Record these in `valid_alternatives` when you seal. An alternative that makes a different decision is a conflict. The definition's owner settles it before the item is sealed, and the eval owner sends it to the conflict list too, with no sealed value.
-- **Check consistency across runs.** Right every time means the agent knows it. Right some of the time means it is guessing, and on one run you cannot tell the difference. A governed answer counts only if it is right on every run.
+- **Allow several valid answers.** A total and a breakdown that sums to it are both right. Record these in `valid_alternatives` when you seal. An alternative that makes a different decision is a conflict. Whoever owns that number settles it before the item is sealed, and it goes to the conflict list too, with no sealed value.
+- **Check consistency across runs.** Right every time means the agent knows it. Right some of the time means it is guessing, and on one run you cannot tell the difference. That is why the bar in the brief must hold on every run.
 - **Use an LLM as a judge for answer shape.** A model is good at checking what code cannot: did the answer state its period, filter and unit? It should never grade the number itself when code can.
 
 Calibrate the judge before its verdicts count:
@@ -101,7 +100,7 @@ The context engineer never sees an expected answer. The agent sees only the ques
 How the golden set is built and sealed. Only two things cross the wall to the context side: a conflict between definitions, with no sealed value, and the hashes used to purge past SQL.
 :::
 
-**Seal, then audit.** An item is sealed when its expected SQL has run read-only on the snapshot, the result matches the trusted source, no dispute is open, and the eval owner has signed it. Commit the set to version control and never edit a question to make the agent pass.
+**Seal, then audit.** An item is sealed when its expected SQL has run read-only on the snapshot, the result matches the trusted source and no dispute is open. Commit the set to version control and never edit a question to make the agent pass.
 
 The set will still have errors. When an item fails on every run whatever you change, suspect the item first: re-run its SQL, re-check the source, and correct it if it is wrong. Audit a few passing items too. A wrong item the agent happens to match looks like a pass, and nobody checks a pass.
 
@@ -113,14 +112,15 @@ In the sales baseline, the pipeline question went wrong four ways. The agent ran
 
 ## Gate 1 {#ch04-tasks}
 
-The delivery lead shows the sponsor the golden set and the baseline. The decision is whether to start building context.
+The sponsor sees the golden set and the baseline, and decides whether to start building context.
 
 > [!DONE]
 > - [ ] At least 20 questions sealed, each verified against its source
-> - [ ] Every item has its six required fields; disputes settled, recorded in its history and sent to the conflict list
+> - [ ] Every item has its five required fields; disputes settled, recorded in its history and sent to the conflict list
 > - [ ] Grading rules written before any result; any LLM judge calibrated against the graders
 > - [ ] No sealed answer or expected SQL in the agent's context; removals recorded by hash
 > - [ ] The set committed, and stored wherever your runs are recorded
 > - [ ] The baseline run once per question, with the guessed decision on every miss
+> - [ ] Random pass audit: five passing items re-graded by hand
 
 Card: [The eval owner's week](#c3)

@@ -13,7 +13,7 @@ The benchmark had one rule from the start: no person writes the context. From ba
 
 People did two things: they wrote the questions and sealed the answers. The one exception is a comparison: the semantic-view setup ran on 40 semantic model files written by hand, because that is how such a layer is built. It scored 38.3% <!-- E76 -->, well below the layer our systems built.
 
-We set the rule because hand-written context doesn't scale. An analyst can tune one domain's context until the score looks good, and the next domain starts from zero. So the scores show what automation reaches on its own. In the benchmark, each metric was mined, checked by running it and ranked by use, with no person approving it. In an engagement, the domain owner reviews and approves each metric on top of that, as in [Phase 2](#ch05). We have not measured what that review adds.
+We set the rule because hand-written context doesn't scale. An analyst can tune one domain's context until the score looks good, and the next domain starts from zero. So the scores show what automation reaches on its own. In the benchmark, each metric was mined, checked by running it and ranked by use, with no person approving it. In an engagement, each metric is also reviewed and approved, as in [Phase 2](#ch05). We have not measured what that review adds.
 
 ## The questions {#method-questions}
 
@@ -56,9 +56,9 @@ Code grades every answer. Nobody reads an answer and decides it is close enough.
 
 ## How to read the numbers {#method-reading}
 
-- **Runs vary.** The same setup run twice moved by about eight questions out of 107. Treat a smaller gap as unresolved.
+- **Runs vary.** The same setup run twice moved by six questions out of 107, and eight questions changed verdict. Treat a gap under about seven points as unresolved.
 - **We quote the configuration we ship.** Results for other configurations are separate comparisons.
-- **One model by default.** Most comparisons use GLM-5.2. The model chart in [The tenth question](#ch01-models) and the Sonnet ablation chart name their models.
+- **One model by default.** Most comparisons use GLM-5.2. The model chart in [Why analytics agents are hard](#ch01-models) and the Sonnet ablation chart name their models.
 - **Cost and time are recorded.** Every run logs tokens, cost and seconds per question, so a better score can be weighed against what it costs.
 
 ## What it can't tell you {#method-limits}

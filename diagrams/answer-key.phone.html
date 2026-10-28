@@ -1,13 +1,13 @@
 <div class="d d-tree">
 <ol>
-  <li class="q">Harvest 2-3× the questions you will seal <span class="d-mono">eval owner · from what the business asks</span></li>
-  <li class="q">Draft expected SQL and answers <span class="d-mono">graders · six fields required, the rest optional</span></li>
-  <li class="q">Rubric: how each answer is graded <span class="d-mono">eval owner · before any result</span></li>
-  <li class="q">Verify every draft against its source <span class="d-mono">graders; disputes to the domain owner</span>
+  <li class="q">Harvest 2-3× the questions you will seal <span class="d-mono">from what the business asks</span></li>
+  <li class="q">Draft expected SQL and answers <span class="d-mono">five fields required, the rest optional</span></li>
+  <li class="q">Rubric: how each answer is graded <span class="d-mono">before any result</span></li>
+  <li class="q">Verify every draft against its source <span class="d-mono">disputes to whoever owns that number</span>
     <ol><li class="leaf"><span class="yn">crosses the wall</span>A definition dispute also goes to the review queue as a conflict, with no sealed value.</li></ol></li>
-  <li class="q">Seal at least 20 <span class="d-mono">eval owner · hashed, stored where no agent reads</span>
+  <li class="q">Seal at least 20 <span class="d-mono">hashed, stored where no agent reads</span>
     <ol><li><span class="yn">crosses as hashes</span>Past SQL is purged by hash; each exclusion can be audited without exposing the golden set.</li></ol></li>
-  <li class="q">Baseline on bare schema, once per question <span class="d-mono">agent builder runs, eval owner grades</span></li>
+  <li class="q">Baseline on bare schema, once per question</li>
   <li class="leaf"><span class="yn">gate</span><b>Phase 1 gate</b> · 20+ sealed and the baseline run. The exec sponsor sees where the agent starts.</li>
   <li class="stop"><span class="yn">never crosses</span>Expected answers and SQL, decisions and their history, the questions sealed later. The context engineer never sees the golden set; the agent sees only the question as a user asks it.</li>
 </ol>

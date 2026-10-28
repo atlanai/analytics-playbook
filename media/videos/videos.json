@@ -1,47 +1,52 @@
 {
  "00-overview": {
   "floor": true,
-  "key": "00-overview:8460552",
-  "seconds": 175
+  "key": "00-overview:9973902",
+  "seconds": 174
  },
- "01-benchmark": {
+ "01a-why-hard": {
   "floor": true,
-  "key": "01-benchmark:11897869",
-  "seconds": 263
+  "key": "01a-why-hard:9126012",
+  "seconds": 179
+ },
+ "01b-method": {
+  "floor": true,
+  "key": "01b-method:11748975",
+  "seconds": 203
  },
  "02-evals": {
   "floor": true,
-  "key": "02-evals:8460524",
-  "seconds": 194
+  "key": "02-evals:10085547",
+  "seconds": 198
  },
  "03-semantic-views": {
   "floor": true,
-  "key": "03-semantic-views:7207012",
-  "seconds": 156
+  "key": "03-semantic-views:17160921",
+  "seconds": 306
  },
  "04-phase0": {
   "floor": true,
-  "key": "04-phase0:7340272",
+  "key": "04-phase0:9016564",
   "seconds": 135
  },
  "05-phase1": {
   "floor": true,
-  "key": "05-phase1:8872672",
-  "seconds": 161
+  "key": "05-phase1:10878825",
+  "seconds": 165
  },
  "06-phase2": {
   "floor": true,
-  "key": "06-phase2:8244086",
-  "seconds": 160
+  "key": "06-phase2:9658494",
+  "seconds": 158
  },
  "07-phase3": {
   "floor": true,
-  "key": "07-phase3:8528221",
-  "seconds": 179
+  "key": "07-phase3:10333169",
+  "seconds": 180
  },
  "08-phase4": {
   "floor": true,
-  "key": "08-phase4:6940480",
-  "seconds": 139
+  "key": "08-phase4:8520417",
+  "seconds": 138
  }
 }

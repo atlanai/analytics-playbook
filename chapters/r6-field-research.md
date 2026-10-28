@@ -1,6 +1,6 @@
 # What others found {#r6}
 
-Other teams have shipped talk-to-data agents and written up what worked, and researchers have tested the same ideas on public benchmarks. Read that work for its mechanisms. Each source ran on a different warehouse, with different questions and its own definition of a right answer, so its scores won't transfer to yours. The last section shows what happened when we rebuilt eight of these methods on our own benchmark.
+Other teams have shipped analytics agents and written up what worked, and researchers have tested the same ideas on public benchmarks. Read that work for its mechanisms. Each source ran on a different warehouse, with different questions and its own definition of a right answer, so its scores won't transfer to yours. The last section shows what happened when we rebuilt eight of these methods on our own benchmark.
 
 ## Past queries and examples {#r6-examples}
 
@@ -32,7 +32,7 @@ Other teams have shipped talk-to-data agents and written up what worked, and res
 
 **LinkedIn.** [About 60% of more than 130 questions](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) had more than one valid answer. <!-- X02 --> Write answer keys that accept the alternatives, or you will grade correct answers as misses.
 
-**[BIRD](https://bird-bench.github.io/).** 12,751 question and SQL pairs over 95 databases, with a hint of outside knowledge written for each question. At release, ChatGPT scored 40.08% against 92.96% for people. <!-- X10 --> Its hints are written once per question. A library of definitions your owners maintain is a different thing, and BIRD scores say little about it.
+**[BIRD](https://bird-bench.github.io/).** 12,751 question and SQL pairs over 95 databases, with a hint of outside knowledge written for each question. At release, ChatGPT scored 40.08% against 92.96% for people. <!-- X10 --> Its hints are written once per question. A library of definitions your team maintains is a different thing, and BIRD scores say little about it.
 
 **[Spider 2.0](https://spider2-sql.github.io/).** 632 tasks drawn from enterprise workflows. The best agent at release solved 21.3%, against 91.2% on Spider 1.0 and 73.0% on BIRD. <!-- X09 --> Enterprise warehouses are much harder than academic sets, so put a date on any leaderboard figure you quote.
 
@@ -46,7 +46,7 @@ Other teams have shipped talk-to-data agents and written up what worked, and res
 
 ## On our benchmark {#r6-results}
 
-We rebuilt each method and ran it once on 107 questions from our own go-to-market warehouse. Most methods ran on top of our metrics layer, so each row measures what the method adds to an already strong setup. That is a harder test than the papers set themselves. Treat a gap under about 8 questions as unresolved.
+We rebuilt each method and ran it once on 107 questions from our own go-to-market warehouse. Most methods ran on top of our metrics layer, so each row measures what the method adds to an already strong setup. That is a harder test than the papers set themselves. Treat a gap under about seven points as unresolved.
 
 | Approach | Source | How it works | Accuracy | Cost per run | Seconds per question |
 |---|---|---|---|---|---|

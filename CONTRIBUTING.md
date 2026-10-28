@@ -5,7 +5,7 @@ Customers act on this guide. Every line has to hold up to a skeptical reader.
 ## Evidence
 - **IDs.** Every number that is evidence carries a maintainer-assigned ID, written as a hidden comment beside it, e.g. `31.8% <!-- E03 -->`. The `audit_ids` list in `evidence.json` validates these identifiers; it stores no evidence records. Figures from the running example and procedural defaults (time boxes, proposed hours) do not.
 - **Adding or changing a number.** Give the value, n, date, caveat and source in the PR description. A maintainer checks it against the internal store of record before merging and adds any new audit ID to `evidence.json`.
-- **How to quote results.** Keep numbers few and simple. Quote the configuration you ship, never the best run, and give the range of variants next to it. Single runs vary by about ±8 questions, so don't claim a smaller difference.
+- **How to quote results.** Keep numbers few and simple. Quote the configuration you ship, never the best run, and give the range of variants next to it. The same setup run twice moved by six questions and eight changed verdict, so don't claim a gap under about seven points.
 - **Field results** are anonymised before they enter the guide.
 
 ## Method

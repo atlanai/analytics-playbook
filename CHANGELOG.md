@@ -2,6 +2,13 @@
 
 Version history of The FDE Playbook for Analytics Agents, newest first. Older entries describe the book as it stood then.
 
+**Unreleased.** One bar for the golden set; lighter on ownership; videos follow the new opening pages.
+
+- The golden set has no lanes. Each item has five required fields (no `lane`), and the whole set is graded against one bar written in the Phase 0 brief. The two lanes still describe how the agent answers users.
+- No golden-set size of 50. Before launch, the graders add questions the builder never saw, so the launch score is not one anyone tuned against.
+- Ownership is said where it does work: each metric has an owner and a version, whoever owns a number settles a conflict the data can't, and the sponsor decides at each gate. Role-by-role assignments, named owners with hours and owner columns that only restated a role are gone.
+- Ten videos, about 31 minutes: a new one for Why analytics agents are hard, the benchmark video reworked for The method at a glance, the overview on the Overview page, Semantic views or metrics? rebuilt, and the rest corrected where they disagreed with the book.
+
 **Unreleased.** GitHub star count; no version label.
 
 - The GitHub link at the bottom of the sidebar shows the repository's star count.

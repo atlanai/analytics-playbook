@@ -1,15 +1,15 @@
-The sales team's CRO asked for one thing... a pipeline number for the top accounts, one that matches Finance every time. In a 90-minute kickoff, the team picked sales, named two owners, and wrote a one-page brief. Then getting access... took the next two weeks. This is Phase 0: what has to be ready before the first question gets graded.
+The sales team's CRO asked for one thing... a pipeline number for the top accounts, one that matches Finance every time. In a 90-minute kickoff, the team picked sales and wrote a one-page brief. Then getting access... took the next two weeks. This is Phase 0: what has to be ready before the first question gets graded.
 
-Phase 0 starts with one domain. Pick one where the questions are bounded, you know the users and the tables, and the owner has time. Try three domains at once... and you get three half-built golden sets.
+Phase 0 starts with one domain. Pick one where the questions are bounded, you know the users and the tables, and someone has time to settle its definitions. Try three domains at once... and you get three half-built golden sets.
 
-The brief fits on one page. And it puts every kind of question into a lane. Some questions are governed, like the CRO's top-100 pipeline. Those have to be exact, on every run. Others are exploratory, like which deals slipped. Those clear one pass rate... and the sponsor writes it down before any result.
+The brief fits on one page. And it sets one bar for the whole golden set. Here, that's 9 in 10 questions right... on every run. The sponsor writes it down before any result. The lanes, governed and exploratory? They're how the agent answers users. In the set, every question is graded the same way.
 
 Next comes access. Every item gets proved by running its test. And the one that's left until last? Trace export... and Phase 3 depends on it. A nightly summary doesn't count. You need a record of every call.
 
-Then put a person's name on every role. Why? RevOps can't settle a conflict... but the RevOps lead can. The co-owner's hour a week? That's the line teams forget. The builder's 20 hours a week? That's the one they underestimate.
+Then plan the people. Each role covers one part of the work. Adjust the hours to your domain... but never to zero. The co-owner's hour a week? That's the line teams forget. The builder's 20 hours a week? That's the one they underestimate.
 
 Every analytics agent comes down to four parts... the surface, the harness, the model, and the context. Platform-native or custom, it's the same picture. The context layer plugs into the same place in both.
 
 Then build the minimum harness... and stop. That's one context call per question, and one read-only SQL tool. Give it a step budget of 10... and trace every call. Building in-house? Then Phase 0 can take days, and three of its parts are optional.
 
-So, two weeks in... one question could be followed from start to finish. Start with one domain, and the people who own its numbers. Next up, Phase 1: build the golden set that every later change gets scored against.
+So, two weeks in... one question could be followed from start to finish. Start with one domain. It's small enough to finish. Next up, Phase 1: build the golden set that every later change gets scored against.

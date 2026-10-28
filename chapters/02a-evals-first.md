@@ -9,7 +9,7 @@ produces: what a trustworthy golden set looks like, and how it is graded
 > Build the golden set before you build any context. Without it, you can't tell progress from luck.
 
 ::: {.tldr}
-- **Short version.** A golden set is a fixed list of real questions with sealed answers, scored the same way after every change. Each row has six required fields, four properties make the set worth trusting, grading runs in layers, and the set reruns on every change like a test suite.
+- **Short version.** A golden set is a fixed list of real questions with sealed answers, scored the same way after every change. Each row has five required fields, four properties make the set worth trusting, grading runs in layers, and the set reruns on every change like a test suite.
 - **Do this.** Seal 20 real questions with verified answers before you write any context.
 - **Skip if** you already rerun a sealed answer key on every change. [Phase 1](#ch04) has the build steps.
 :::
@@ -24,7 +24,7 @@ Four questions only a fixed test can answer. Each one comes up in every phase an
 
 ## One row of the golden set {#ch-evals-row}
 
-Each row has [six required fields](#r2-3). Three of them do the core work, and each has one job:
+Each row has [five required fields](#r2-3). Three of them do the core work, and each has one job:
 
 | Part | Example | Its job |
 |---|---|---|

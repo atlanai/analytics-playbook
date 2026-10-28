@@ -1,0 +1,17 @@
+Same model. Same 107 questions. On bare schema, it got 31.8% right. With the right context... 83.2%. This is the method at a glance... what closes that gap, and the loop that builds it for your domain.
+
+We ran the same questions again, adding one kind of context to the bare schema each time. Descriptions and documentation reached 39.3%. A few points, for about seven times the context. Usage patterns from the query log... 43.9%. Then metrics generated from the query log, served with trusted past queries... 83.2%. An analyst who ran the right query had already made the right decisions. A metric seals them, so they hold every time.
+
+Where does it matter most? In the joins. On bare schema, single-table questions scored 64.3%. Multi-table questions? Just 11.5%. With no context, the agent refused 31 of those join questions outright. With the metrics layer, they climb to 92.9%... and 82.0%.
+
+Then we rebuilt eight published methods, and ran each one on the same questions. Most ran on top of our metrics layer. None came close to the metrics layer on its own. Most cost more per run... and the slowest took over five minutes a question. Context moved the score. The method of reasoning didn't.
+
+So what does work? A metric. It seals every decision into one statement... that runs. Here's our running example. The sales team asks... how much open pipeline do we have with our top 100 customers? Left to guess, the agent said $1.31 billion. With the metric... $412 million. And the business can read it, and correct it. It carries its owners, and a version.
+
+And it's cheap. The metrics layer cost 3.9¢ per right answer... and took 29 seconds a question. Paste the whole layer into every prompt instead, and it scored 52.3%... at more than twice the cost per right answer. Only curated past queries were cheaper and faster... and they scored 75.7%.
+
+Then choose the lane by asking one thing. If this answer is wrong, and nobody notices... where does it land? The top-hundred pipeline lands in the board pack. So it's governed... a metric, or no answer. Which deals slipped? That one's exploratory. The agent writes its own SQL from a trusted past query, and shows it. 96 deals had slipped. And win rate with those customers was 31%... against 24% elsewhere.
+
+So how do you build that last bar, for your own domain? The way software teams already ship. Write the tests first. Build. Debug. Release. Operate. For an agent, the tests are a golden set of real questions... and every stage is scored against it. Each phase ends at a gate. And the next domain starts from what this one built.
+
+So the gap never closed with a smarter model. It closed when the agent got the decisions your analysts had already made. Write the tests first, and run every domain through the same loop. Next up: Why evals come first. Because without a golden set, you can't tell a fix from luck.

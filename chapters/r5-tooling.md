@@ -7,7 +7,7 @@ This page holds how to run every step on your own stack, the context-call contra
 
 ## Running it on your own stack {#r5-tooling}
 
-Keep one file per context object in version control, in the formats of [the templates](#r2), with the domain owner as required approver. Generate and witness candidates under a read-only identity with a script, keep conflicts in a spreadsheet with each variant's provenance, and give the harness a retrieval function it calls before any SQL. Log every call with what was served and its version. Grade with a value-matching script, then read the SQL of every item that passes. Keep the iteration ledger in a shared sheet, tag each release with its eval results, and rerun the regression set on every context change and schema change. The method, the gates and the owners are the same either way.
+Keep one file per context object in version control, in the formats of [the templates](#r2), with a required approver. Generate and witness candidates under a read-only identity with a script, keep conflicts in a spreadsheet with each variant's provenance, and give the harness a retrieval function it calls before any SQL. Log every call with what was served and its version. Grade with a value-matching script, then read the SQL of every item that passes. Keep the iteration ledger in a shared sheet, tag each release with its eval results, and rerun the regression set on every context change and schema change. The method and the gates are the same either way.
 
 ### The context-call contract {#r5-contract}
 

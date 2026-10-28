@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Same questions: bare schema 31.8%; descriptions and documentation 39.3% (measured on another model, where bare schema scored 33.6%); usage patterns 43.9%; AI-generated metrics and queries 83.2%.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Same questions: bare schema 31.8%; descriptions and documentation 39.3%; usage patterns 43.9%; AI-generated metrics and queries 83.2%.">
 <rect width="1200" height="290" rx="14" fill="#0D1117" stroke="#2A2C3E"/>
 <text x="36" y="42" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5" fill="#9091A8">SAME QUESTIONS · BARE SCHEMA PLUS ONE KIND OF CONTEXT</text>
 <text x="36" y="90" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#C9CAD8">Bare schema</text>
@@ -17,4 +17,4 @@
 <rect x="430" y="216" width="660" height="28" rx="5" fill="#161B22"/>
 <rect x="430" y="216" width="549.1" height="28" rx="5" fill="#62E1FC"/>
 <text x="991.1" y="236" font-family="'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#F2F2F7">83.2%</text>
-<text x="36" y="276" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#9091A8">Descriptions and documentation were measured on another model, where bare schema scored 33.6%. Every other bar: one model, the same questions.</text></svg>
+<text x="36" y="276" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#9091A8">The same 107 questions for every bar. Source: internal benchmark.</text></svg>

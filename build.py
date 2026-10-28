@@ -46,7 +46,7 @@ ORDER = [
       ("08-after-launch", [], False)]),
     ("Toolkit", "cards",
      [("00-start", [], False), ("cards", [], False), ("r2-templates", [], False),
-      ("10-straight-answers", ["12-straight-answers"], False), ("videos", [], False), ("podcasts", [], False)]),
+      ("videos", [], False), ("podcasts", [], False)]),
     ("Research", "research",
      [("r0-results", [], False), ("r3-evidence", [], False), ("r6-field-research", [], False)]),
     ("Reference", "ref",
@@ -917,7 +917,7 @@ NAV_GROUPS = [
                           ("Principles", ["ch-evals", "ch02", "ch-retrieval"]),
                           ("Phases", ["ch03", "ch04", "ch05", "ch06", "ch07"]),
                           ("After launch", ["ch-run"])]),
-    ("Toolkit", ["assess", "cards", "r2", "ch10", "videos", "listen"]),
+    ("Toolkit", ["assess", "cards", "r2", "videos", "listen"]),
     ("Research and reference", ["results", "r3", "r6", "r1", "r4", "r5", "r7"]),
 ]
 NAV_BADGE = {"ch-evals": "1", "ch02": "2", "ch-retrieval": "3"}
@@ -1159,7 +1159,7 @@ def hero_value(b):
     return f'{float(b["value"]):g}%'
 
 
-def landing(articles, ladder, collected=()):
+def landing(articles, ladder, collected=(), vids=()):
     by = {a["id"]: a for a in articles}
     card_titles = {cid: title for cid, _, title, _ in collected}
     bars = ladder["bars"]
@@ -1209,6 +1209,7 @@ def landing(articles, ladder, collected=()):
                 '<span class="door-start"></span></div>'
                 f'<h3 class="door-rec">Recommended reading</h3><ol class="door-steps">{"".join(door_step_html(st) for st in steps)}</ol>{note}{cards_html}</div></details>')
         doors_html = f'<div class="doors">{"".join(rows)}</div>'
+    home_vid = "".join(video_block(v) for v in vids if v["aid"] == "home")
     # what the reader walks away with, and the map of the book, written in the reading-paths chapter
     home_secs = ""
     if src:
@@ -1220,19 +1221,18 @@ def landing(articles, ladder, collected=()):
                               f'<h2 class="home-h">{strip_tags(h2)}</h2>{body}</section>')
     start = "start" if "start" in by else next((a["id"] for a in articles), "")
     first_ch = next((a["id"] for a in articles if a["part_key"] == "part1"), "")
-    links = ((f'<p class="home-links"><a href="#lifecycle">The lifecycle in one picture →</a> <a href="#{start}">The method at a glance →</a>' if "lifecycle" in by
-              else f'<p class="home-links"><a href="#{start}">The method at a glance →</a>')
-             + (' <a href="#assess">Where are you starting? →</a>' if "assess" in by else "")
-             + (f' <a href="#{first_ch}">Or read from the beginning →</a>' if first_ch else "") + "</p>")
+    links = ('<p class="home-links">'
+             + (f'<a href="#{first_ch}">Why analytics agents are hard →</a> ' if first_ch else "")
+             + ('<a href="#lifecycle">The lifecycle in one picture →</a> ' if "lifecycle" in by else "")
+             + f'<a href="#{start}">The method at a glance →</a>'
+             + (' <a href="#assess">Where are you starting? →</a>' if "assess" in by else "") + "</p>")
     nch = sum(1 for a in articles if a["part_key"] in ("part1", "part2", "part3", "part4"))
     ncards = len(collected)
     return (f'<article class="ch home" id="home"><header class="cover"><div class="kicker"><span>Atlan</span>'
             f'<span class="meta"><span>Five phases</span><span>{nch} chapters</span>{f"<span>{ncards} cards</span>" if ncards else ""}</span></div>'
             f'<div class="cover-t"><h1>{TITLE}<span>From demo to production.</span></h1>'
             f'<p class="thesis">Your analytics agent gets questions wrong when it lacks your business context. It needs to know what each metric means, which tables join, and how your analysts already write the SQL. A better model leaves that gap open. We measured this on our own benchmark, with one model and one question set throughout. This playbook turns what worked into a method: build that context as a governed, measured asset, one domain at a time.</p></div>'
-            '<p class="cover-listen"><a class="listen-cta" href="#listen-sponsor" data-podcast="listen-sponsor">'
-            '<span aria-hidden="true">▶</span> Listen to the overview <small>14 min</small></a></p>'
-            f'{hero}</header>{home_secs}'
+            f'{hero}</header>{home_vid}{home_secs}'
             f'<h2 class="home-h">Pick your path</h2>{doors_html}{links}</article>'), paths
 
 
@@ -1505,8 +1505,9 @@ def check(chapters, articles, html_out, ladder):
 # because the Pages build has no ffprobe.
 VIDEO_DIR = ROOT / "media" / "videos"
 VIDEO_URL = "media/videos"
-VIDEOS = [("00-overview", "The whole playbook, in brief", "start"),
-          ("01-benchmark", "What we learned on our benchmark", "ch01"),
+VIDEOS = [("00-overview", "The whole playbook, in brief", "home"),
+          ("01a-why-hard", "Why analytics agents are hard", "ch01"),
+          ("01b-method", "The method at a glance", "start"),
           ("02-evals", "Why evals come first", "ch-evals"),
           ("03-semantic-views", "Semantic views or metrics?", "r7"),
           ("04-phase0", "Phase 0: before the clock", "ch03"),
@@ -1580,6 +1581,8 @@ def video_block(v):
 def embed_videos(articles, vids):
     by = {a["id"]: a for a in articles}
     for v in vids:
+        if v["aid"] == "home":   # the overview sits on the cover page, which landing() builds
+            continue
         a = by.get(v["aid"])
         if not a:
             WARN.append(f"video {v['stem']}: no chapter #{v['aid']}")
@@ -1604,7 +1607,7 @@ def video_theater(vids, by):
     first = vids[0]
     items = []
     for i, v in enumerate(vids):
-        ch = strip_tags(by[v["aid"]]["title_html"]) if v["aid"] in by else ""
+        ch = strip_tags(by[v["aid"]]["title_html"]) if v["aid"] in by else ("Overview" if v["aid"] == "home" else "")
         tx = "".join(f"<p>{esc(p_)}</p>" for p_ in v["paras"])
         thumb = f'<img src="{v["thumb"]}" alt="" loading="lazy">' if v["thumb"] else '<span class="vt-noimg"></span>'
         items.append(
@@ -1617,7 +1620,7 @@ def video_theater(vids, by):
             + (f'<span class="vt-c">{esc(ch)}</span>' if ch.lower() not in v["title"].lower() else "") + '</button>'
             f'<template class="vt-tx-src">{tx}</template></li>')
     tx0 = "".join(f"<p>{esc(p_)}</p>" for p_ in first["paras"])
-    ch0 = strip_tags(by[first["aid"]]["title_html"]) if first["aid"] in by else ""
+    ch0 = strip_tags(by[first["aid"]]["title_html"]) if first["aid"] in by else ("Overview" if first["aid"] == "home" else "")
     mins = round(total / 60)
     return (f'<div class="vt" id="video-theater">'
             f'<p class="vt-sum">{len(vids)} videos · about {mins} minutes in all</p>'
@@ -1764,7 +1767,7 @@ def md_pages(chapters, articles):
 
 def llms_txt(articles, pages):
     """The index, in the llms.txt layout: title, one-line summary, then each page by part with its one-line lede."""
-    out = [f"# {TITLE}\n", "> How to build an analytics (talk-to-data) agent that answers business questions correctly: "
+    out = [f"# {TITLE}\n", "> How to build an analytics agent that answers business questions correctly: "
            "write the evals first, seal each business rule into a metric, and improve the agent from its traces."]
     part = None
     for a in articles:
@@ -1826,12 +1829,13 @@ def main():
             articles.append(art)
     cards_article(articles, collected)
     inline_cards(articles, collected)
-    embed_videos(articles, available_videos())
+    vids = available_videos()
+    embed_videos(articles, vids)
     resolve_links(articles, collected)
     dedupe_ids(articles)
     audio_files = podcast_files(articles)
     MD.update(md_pages(chapters, articles))
-    home, paths = landing(articles, ladder, collected)
+    home, paths = landing(articles, ladder, collected, vids)
     parts_order = [(p, k) for p, k, _ in ORDER]
     nav = build_nav(articles, parts_order)
     idx = search_index(articles)

@@ -38,9 +38,9 @@
 <text x="201" y="357" style="font-size:12px;fill:var(--text)">then the owner</text>
 <rect x="358" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
 <text x="369" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">Approve</text>
-<text x="369" y="325" style="font-size:12px;fill:var(--text)">owner approves; each</text>
-<text x="369" y="341" style="font-size:12px;fill:var(--text)">metric gets an owner</text>
-<text x="369" y="357" style="font-size:12px;fill:var(--text)">and a version</text>
+<text x="369" y="325" style="font-size:12px;fill:var(--text)">each metric is</text>
+<text x="369" y="341" style="font-size:12px;fill:var(--text)">approved, with an</text>
+<text x="369" y="357" style="font-size:12px;fill:var(--text)">owner and a version</text>
 <rect x="526" y="284" width="156" height="88" rx="7" style="fill:var(--bg);stroke:var(--line-2);stroke-width:1.3"/>
 <text x="537" y="306" style="font-size:13px;fill:var(--ink);font-weight:600">Served per question</text>
 <text x="537" y="325" style="font-size:12px;fill:var(--text)">one context call</text>

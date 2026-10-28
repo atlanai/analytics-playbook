@@ -46,7 +46,7 @@
 <!-- leaf -->
 <rect x="8" y="384" width="688" height="96" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>
 <text x="22" y="405" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.06em">PASS^K · THE ITEM COUNTS</text>
-<text x="22" y="425" style="fill:var(--ink);font-weight:600">Report pass^k for the governed lane: a board number right on two runs of three is wrong.</text>
+<text x="22" y="425" style="fill:var(--ink);font-weight:600">Report pass^k for the whole set: an answer right on two runs of three is wrong.</text>
 <text x="22" y="444" style="fill:var(--text);font-size:12px">An item right on every run joins the regression set, and leaves it if it fails.</text>
 <text x="22" y="467" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">WHY SEVERAL RUNS: THE SAME SETUP, RUN TWICE, CAN DISAGREE ON A FEW QUESTIONS</text>
 <text x="8" y="502" class="m" style="font-size:11.5px;fill:var(--muted)">TOLERANCES, VALID ALTERNATIVES AND GRADERS ARE FIXED AT SEALING, BEFORE ANY RESULT EXISTS</text>
