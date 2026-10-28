@@ -25,7 +25,7 @@ Every term names part of the method.
 
 **Clock.** The build, Phases 1 to 4. It starts once Phase 0's gate is met, so Phase 0 runs before the clock.
 
-**Conflict.** Two definitions of the same thing, both in use, such as two rankings of "top 100 customers". The agent flags a conflict instead of picking a side. It is resolved by provenance or by the domain owner.
+**Conflict.** Two definitions of the same thing, both in use, such as two rankings of "top 100 customers". The agent flags a conflict instead of picking a side. It is resolved by provenance first, then by whoever owns that number.
 
 **Conflict record.** The record of a resolved conflict: the variants, their provenance, the decision, who made it, what changed and what would reopen it. Kept on [its template](#r2-6).
 
@@ -43,29 +43,29 @@ Every term names part of the method.
 
 **Delivery lead.** The person who runs the engagement phase by phase, from the kickoff to the handover: sessions, gates and readouts.
 
-**Domain.** One business area with its own questions, users, tables and owner, such as sales pipeline. The method runs one domain at a time.
+**Domain.** One business area with its own questions, users and tables, such as sales pipeline. The method runs one domain at a time.
 
-**Domain owner.** The company's person who owns the business definitions in a domain. Signs off the golden set, decides the conflicts provenance cannot settle, and approves every context change. A definition that crosses teams has a co-owner, as the FP&A partner co-owns "top 100 customers".
+**Domain owner.** The company's person who owns the business definitions in a domain and settles the conflicts provenance cannot. A definition that crosses teams has a co-owner, as the FP&A partner co-owns "top 100 customers".
 
 **Drift.** The slow loss of accuracy as the business changes and the context does not. Traces, user corrections and repeated runs feed it back.
 
-**Eval owner.** The one named person who drafts and seals the golden set with the graders, and grades every run. The sponsor accepts the eval owner's verdicts.
+**Eval owner.** The person who drafts and seals the golden set with the graders, and audits the grading.
 
 **Exec sponsor.** The executive who sets the bar, chooses the domain and the agent architecture, and decides at each gate and at launch.
 
-**Exploratory lane.** Long-tail and diagnostic questions, answered by SQL the agent writes, grounded in trusted past queries. The bar is one pass rate the sponsor sets before any result, and every answer shows its SQL and sources.
+**Exploratory lane.** Long-tail and diagnostic questions, answered by SQL the agent writes, grounded in trusted past queries. Every answer shows its SQL and sources, so a reader can check it before acting.
 
-**Gate.** The checkable condition that ends each step: Phase 0 (brief agreed, access proved), Phase 1 (20 or more sealed, baseline scored), Phase 2 (metrics scored), Phase 3 (misses closed, set grown to 50) and the launch gate in Phase 4.
+**Gate.** The checkable condition that ends each step: Phase 0 (brief agreed, access proved), Phase 1 (20 or more sealed, baseline scored), Phase 2 (metrics scored), Phase 3 (misses closed, new questions added for the launch test, nothing that passed has broken) and the launch gate in Phase 4.
 
-**Generate metrics.** Phase 2's core task: a metrics agent reads past SQL, BI reports and semantic models, and proposes candidate metrics with the real queries behind them. Candidates are then witnessed, conflicts resolved, and the survivors approved by their owner.
+**Generate metrics.** Phase 2's core task: a metrics agent reads past SQL, BI reports and semantic models, and proposes candidate metrics with the real queries behind them. Candidates are then witnessed, conflicts resolved, and the survivors approved.
 
-**Golden set.** The sealed questions with expected answers, expected SQL and a grading method, built from questions the business already asks: at least 20 in Phase 1, 50 by the launch gate. Also called an answer key.
+**Golden set.** The sealed questions with expected answers, expected SQL and a grading method, built from questions the business already asks: at least 20 in Phase 1, with more added before launch that the builder never saw, so the launch score is not one anyone tuned against. Also called an answer key.
 
-**Governed lane.** The numbers the business runs on. They come only from a metric, run as served, and the lane fails loudly: no metric, no answer. The bar is exact, on every run.
+**Governed lane.** The numbers the business runs on. They come only from a metric, run as served, and the lane fails loudly: no metric, no answer.
 
 **Grain.** What one row represents before aggregation, such as one row per customer. Most inflated totals are grain errors.
 
-**Harness.** The agent runtime around the model: its loop, tools, prompts and step budget. It belongs to the company, which builds it, runs it and owns it.
+**Harness.** The agent runtime around the model: its loop, tools, prompts and step budget. It belongs to the company, which builds and runs it.
 
 **Hill climb.** Phase 3's loop: run the golden set, read the raw trace of each miss, classify it, make the smallest fix, and rerun. "Hill climb" is the noun; "hill-climb" is the verb.
 
@@ -73,11 +73,11 @@ Every term names part of the method.
 
 **Iteration ledger.** The record of every round: what changed, the fixes predicted before the run, the score, and whether the change was kept.
 
-**Launch gate.** The Phase 4 test on the golden set grown to 50: governed questions right on every run, exploratory at their pass rate, nothing that passed has broken, and the random pass audit done. The sponsor decides go, no-go or go with conditions.
+**Launch gate.** The Phase 4 test: the golden set scores at or above the bar in the brief on every run, nothing that passed has broken, the random pass audit is done, and out-of-scope questions are refused. The sponsor decides go, no-go or go with conditions.
 
 **LLM judge.** A model that grades what code cannot, such as whether an answer states its period, filter and unit. It never grades the number itself when code can, and it counts only once calibrated against human graders.
 
-**Metric.** A business number as one executable SQL statement: population, grain, time rule, formula, exclusions and filters, with its provenance. It is versioned like code. In the method, its owner signs it off. In the benchmark, no person approved the metrics.
+**Metric.** A business number as one executable SQL statement: population, grain, time rule, formula, exclusions and filters, with its provenance. It has an owner and is versioned like code. In the benchmark, no person approved the metrics.
 
 **Metrics agent.** Any model-driven script that reads past SQL, BI reports and semantic models and drafts candidate metrics, each cut from a real statement.
 
@@ -87,21 +87,21 @@ Every term names part of the method.
 
 **Provenance.** The evidence behind a query or metric: who ran it, how many different people, how often, how recently, and whether it runs clean and matches the warehouse. Provenance settles most conflicts without a meeting, and it is served with every metric.
 
-**Random pass audit.** At every gate, the eval owner re-grades five passing items, chosen at random, by hand against their source. A key found wrong is corrected in either direction, and the score is reported after the correction.
+**Random pass audit.** At every gate, five passing items, chosen at random, are re-graded by hand against their source. A key found wrong is corrected in either direction, and the score is reported after the correction.
 
 **Refusal.** The governed lane's answer when no metric covers the question: it says so, with no number. Correct on an out-of-scope question, and a miss on an in-scope one. On the benchmark every refusal counts as a miss.
 
 **Regression set.** The golden-set questions the agent already answers right on every run, rerun on every context change and every schema change.
 
-**Resolve a conflict.** Settle which of two definitions is right. Provenance decides first; the domain owner decides the rest, with a co-owner when a definition crosses teams. The decision is written into the metric as SQL.
+**Resolve a conflict.** Settle which of two definitions is right. Provenance decides first; whoever owns that number decides the rest. The decision is written into the metric as SQL.
 
 **Round.** One small batch of context changes, followed by a rerun of the whole golden set, recorded as one row of the iteration ledger.
 
-**Rule.** A small, owned, versioned instruction the agent must follow, such as `quarter-means-fiscal` or "regions roll up to NA, EMEA and APAC". Also called a skill. A rule that touches one metric goes inside that metric; a rule that touches many stays a rule.
+**Rule.** A small, versioned instruction the agent must follow, such as `quarter-means-fiscal` or "regions roll up to NA, EMEA and APAC". Also called a skill. A rule that touches one metric goes inside that metric; a rule that touches many stays a rule.
 
 **Run-to-run variation.** How far the score moves between identical runs of an unchanged configuration. A change whose effect sits inside it is unresolved. Measure your own before the first round.
 
-**Seal.** A golden-set item is sealed when its expected SQL has run read-only on the snapshot, the result matches the trusted source, no dispute is open, and the eval owner has signed it. Sealed items are versioned and never edited to make the agent pass.
+**Seal.** A golden-set item is sealed when its expected SQL has run read-only on the snapshot, the result matches the trusted source and no dispute is open. Sealed items are versioned and never edited to make the agent pass.
 
 **Semantic layer.** Metric and join definitions kept in a tool, so every query reuses them. Snowflake semantic views, Databricks metric views, LookML and dbt MetricFlow are all semantic layers. In Phase 2 you treat yours as a source, like past SQL. See [Why a metric, and not a view](#ch-sv).
 

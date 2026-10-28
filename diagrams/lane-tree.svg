@@ -23,16 +23,16 @@
 <text x="400" y="117" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.06em">GOVERNED LANE</text>
 <text x="400" y="137" style="fill:var(--ink);font-weight:600">Exact, every time.</text>
 <text x="400" y="154" style="fill:var(--ink);font-weight:600">Metric or no answer.</text>
-<text x="400" y="174" style="fill:var(--text);font-size:12.5px">bar: exact match to the golden set on</text>
-<text x="400" y="190" style="fill:var(--text);font-size:12.5px">every run · the pipeline question, $412M</text>
+<text x="400" y="174" style="fill:var(--text);font-size:12.5px">nobody reads the SQL before acting</text>
+<text x="400" y="190" style="fill:var(--text);font-size:12.5px">the pipeline question, $412M</text>
 <path d="M288 180 H298 V266 H382" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/>
 <text x="306" y="228" class="m" style="font-size:12px;fill:var(--muted)">WHERE TO</text>
 <text x="306" y="243" class="m" style="font-size:12px;fill:var(--muted)">LOOK NEXT</text>
 <rect x="386" y="214" width="306" height="104" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"/>
 <text x="400" y="235" class="m" style="font-size:12px;fill:var(--accent);letter-spacing:.06em">EXPLORATORY LANE</text>
-<text x="400" y="255" style="fill:var(--ink);font-weight:600">Directionally right.</text>
+<text x="400" y="255" style="fill:var(--ink);font-weight:600">Points the right way.</text>
 <text x="400" y="272" style="fill:var(--ink);font-weight:600">SQL and sources shown.</text>
-<text x="400" y="292" style="fill:var(--text);font-size:12.5px">bar: a pass rate the sponsor states now</text>
+<text x="400" y="292" style="fill:var(--text);font-size:12.5px">a reader checks the SQL before acting</text>
 <text x="400" y="308" style="fill:var(--text);font-size:12.5px">slipped deals: 96</text>
 <path d="M148 192 L148 326" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="158" y="256" class="m" style="font-size:12px;fill:var(--muted)">LATER, IN</text><text x="158" y="271" class="m" style="font-size:12px;fill:var(--muted)">PRODUCTION</text>
 <rect x="8" y="332" width="280" height="88" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>

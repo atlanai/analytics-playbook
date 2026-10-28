@@ -24,7 +24,7 @@ One question, end to end. The agent makes one context call before any SQL. The M
 
 Three parts do the work:
 
-- **One store.** Metrics, trusted past queries, rules and business terms live in one place, each with an owner and a version. This is the layer you build in [Phase 2](#ch05).
+- **One store.** Metrics, trusted past queries, rules and business terms live in one place, each with a version. This is the layer you build in [Phase 2](#ch05).
 - **One MCP server in front of it.** It exposes a small set of tools, such as a context lookup and a metric fetch, to any agent that speaks MCP. Lyft reaches its metrics through an MCP server in the same way <!-- X05 -->. DoorDash's data agent goes further: it blocks unmodeled or unverified sources at the harness level, and keeps new joins and documents inactive until they meet an eval threshold <!-- X16 -->.
 - **One rule in the agent's instructions.** Call for context before writing SQL. If a metric matches, run its SQL as served. If none matches, say so. For a governed question, stop there; otherwise explore and show the SQL.
 

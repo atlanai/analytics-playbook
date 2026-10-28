@@ -61,6 +61,6 @@
 <!-- golden set: apart from the context layer, never served -->
 <rect x="170" y="384" width="534" height="46" rx="8" style="fill:var(--panel);stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 3"/>
 <text x="184" y="403" class="m" style="font-size:10.5px;letter-spacing:.06em;fill:var(--ink);font-weight:500">GOLDEN SET · SEALED, NEVER SERVED</text>
-<text x="184" y="420" class="t" style="font-size:11px;fill:var(--text)">kept apart by the eval owner; it scores the agent, and the agent never reads it</text>
+<text x="184" y="420" class="t" style="font-size:11px;fill:var(--text)">kept apart; it scores the agent, and the agent never reads it</text>
 <text x="16" y="454" class="m" style="font-size:10px;letter-spacing:.04em;fill:var(--muted)">THE CONTEXT LAYER SERVES CONTEXT. THE HARNESS RUNS THE AGENT AND THE SQL.</text>
 </svg>

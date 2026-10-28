@@ -1,6 +1,6 @@
-Here's the trap... a score earned on the questions you tuned against? It flatters the agent. This is Phase 4... release and hand over. Phase 3 closed at 18 of 20. So by now, the golden set had grown to 50. The graders drafted the new ones... and the context engineer never saw them.
+Here's the trap... a score earned on the questions you tuned against? It flatters the agent. This is Phase 4... release and hand over. Phase 3 closed at 18 of 20. So by now, the golden set had new questions in it. The graders drafted the new ones... and the context engineer never saw them.
 
-The launch gate runs all 50, sealed ones included. Each one runs 3 to 5 times, and governed questions must be right on every run. Then 5 passing questions, picked at random, get re-graded by hand.
+The launch gate runs the whole set, sealed ones included. Each question runs 3 to 5 times... and the set must clear the bar from the brief, on every run. Then 5 passing questions, picked at random, get re-graded by hand.
 
 And everything that passed at the last gate? It still has to pass. On our benchmark, we took every question bare schema got right, just the tables. Add metrics, and the agent kept every one.
 
@@ -10,6 +10,6 @@ Next, wire the agent to wherever your users ask. There are three paths. A platfo
 
 On launch day, four checks have to hold. And the one that slips? Traces, reaching a store the team can read. Without traces, the launch waits.
 
-Then you hand over. Everything left behind gets an owner on your side. The decisions log... who settled each conflict, and when... outlasts the rest. Even a model swap. Run one pass together, with the context engineer only watching. Then one alone, within two weeks. The engineer's on call... and nobody calls.
+Then you hand over. Everything left behind lives in your repository, with a version. The decisions log... who settled each conflict, and when... outlasts the rest. Even a model swap. Run one pass together, with the context engineer only watching. Then one alone, within two weeks. The engineer's on call... and nobody calls.
 
 So the CRO signed on a score that was earned... not flattered. The rule? Launch on questions nobody climbed against, and hand over only what your team has run alone. Then keep it running. Domain two starts from what this one built.

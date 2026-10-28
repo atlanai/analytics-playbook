@@ -8,7 +8,7 @@ A right answer, once, isn't a capability. So run each question three to five tim
 
 On our benchmark, two runs of the same setup scored 86 and 80... out of 107. Now look across more than 150 runs, of every setup we tried. 105 of 107 questions got answered right at least once. Yet the best single run got 90. So the knowledge is there... the consistency isn't.
 
-So what goes in one row of the golden set? Six required fields... and three of them do the core work. First, the question, in the business's own words. That's the only part the agent sees. Then the SQL, graded second. Does the agent make the same decisions? And the sealed answer, $412M... that's graded first.
+So what goes in one row of the golden set? Five required fields... and three of them do the core work. First, the question, in the business's own words. That's the only part the agent sees. Then the SQL, graded second. Does the agent make the same decisions? And the sealed answer, $412M... that's graded first.
 
 An eval worth trusting has four properties. First, it's representative... keep the hard half. On bare schema, just the tables, single-table questions scored 64.3%. Multi-table? 11.5%. With the metrics layer, it's 92.9% and 82.0%. So an easy set hides most of the difference between setups. Second, not dominated by one fact. No single rule gets to swing the headline. Third, live. Questions grow out of real use, and when the set has a wrong answer, it gets corrected. Fourth, sealed. If anything in the pipeline can see the answer... the agent will find it.
 

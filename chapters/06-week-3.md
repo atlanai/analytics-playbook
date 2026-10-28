@@ -18,7 +18,7 @@ produces: trace reviews, approved context changes, the iteration ledger, a score
 The summary for the pipeline question said the agent had used the metric. That was true. The context engineer opened the raw trace anyway. One line of the metric's SQL ranked the top 100 customers by number of deals. Finance ranks them by current ARR. Finance's list lived in a spreadsheet, so no query history had ever shown it. Phase 2 had no way to see it: the generator drafted from query history, and the one place the ranking had surfaced was a Phase 1 sealing dispute. That dispute should have crossed the wall to the conflict list, with no sealed value. It stayed on the item instead. The FP&A partner and the RevOps lead settled it in a 20-minute session the next morning. The metric now ranks by ARR. The stage rule from kickoff, until then served as a separate instruction, went into the metric's SQL too. Gate 2 should have held the metric until the rule was in its SQL. Nobody had checked. One change broke another question, the regression run caught it, and they fixed it the next day. Phase 3 closed at 18 of 20.
 :::
 
-Phase 3 starts from the metrics and the Phase 2 score. The misses left are decisions nobody raised, and the trace is where they show. The phase ends when the score stops moving or clears the bar set in the brief. The work is one loop, run in short rounds. Each round changes the context a little, reruns the golden set and reads what happened. Meanwhile the graders grow the golden set to 50 questions for the launch gate. The context engineer never sees the new questions.
+Phase 3 starts from the metrics and the Phase 2 score. The misses left are decisions nobody raised, and the trace is where they show. The phase ends when the score stops moving or clears the bar set in the brief. The work is one loop, run in short rounds. Each round changes the context a little, reruns the golden set and reads what happened. Meanwhile the graders add questions the context engineer never sees, so the launch score is not one anyone tuned against.
 
 ## The loop {#ch06-loop}
 
@@ -63,22 +63,22 @@ If your export lacks any of these, fix it before the next round.
 ## The three kinds of miss {#ch06-miss}
 
 ::: {.diagram #miss-tree}
-Walk every miss through the tree before you fix anything. Each kind has one fix and one owner.
+Walk every miss through the tree before you fix anything. Each kind has one fix.
 :::
 
-Check two things first, because adding context makes both worse. Is the golden answer wrong? Then the eval owner re-verifies and reseals it, and nobody edits the question to fit the agent. Did the agent run out of steps? Then read what the steps were spent on.
+Check two things first, because adding context makes both worse. Is the golden answer wrong? Then re-verify and reseal it, and never edit the question to fit the agent. Did the agent run out of steps? Then read what the steps were spent on.
 
 Then place the miss in one of three kinds:
 
-| Kind | What the trace shows | Smallest fix | Who |
-|---|---|---|---|
-| Never written | The decision exists nowhere in the context | Write the definition; the owner decides it | Context engineer drafts, domain owner decides |
-| Written, not served | The definition exists and never reached the agent | Fix retrieval: a term link, alternate labels, a rank | Context engineer |
-| Served, ignored | The definition was in front of the agent and it took a simpler path | Make it a rule the agent must follow, or make the SQL a metric | Context engineer and agent builder |
+| Kind | What the trace shows | Smallest fix |
+|---|---|---|
+| Never written | The decision exists nowhere in the context | Write the definition; if the data can't settle it, whoever owns that number decides |
+| Written, not served | The definition exists and never reached the agent | Fix retrieval: a term link, alternate labels, a rank |
+| Served, ignored | The definition was in front of the agent and it took a simpler path | Make it a rule the agent must follow, or make the SQL a metric |
 
 Phase 3 found the first two kinds in the running example. The top-100 ranking was never written: finance's definition lived nowhere the pipeline could see it. The slipped-deals question was written and not served. A trusted past query already answered it, but the question said "slipped", and neither the query nor its title used that word, so the agent invented its own definition.
 
-A miss that persists with its definition served and used is not a context problem. The warehouse has no table in the shape the question needs. Take it to the platform owner.
+A miss that persists with its definition served and used is not a context problem. The warehouse has no table in the shape the question needs, and the fix belongs there.
 
 []{#ch06-instruments}When a miss won't sort cleanly, ask the question several times with everything else fixed and compare the SQL. Where the runs split, two definitions compete. Resolve it as a conflict. This check needs no golden set, so it keeps working after launch.
 
@@ -89,11 +89,11 @@ The climb stalls when a team writes new definitions for misses whose definitions
 - **Target the rule, never the answer.** The change states the business rule. It should make sense to someone who has never seen the golden set.
 - **Keep sealed values out.** No change may contain a golden answer or a literal copied from the set.
 - **Use the form that runs.** Definitions go in as SQL, rules as instructions, vocabulary as term links.
-- **Give it an owner and a version.** Each round gets a new context version, so rolling back is one step.
+- **Version it.** Each round gets a new context version, so rolling back is one step.
 
 The slipped-deals fix shows the size to aim for. It was two edits to one business term. "Slipped deal" gained the alternate labels "pushed" and "rolled", and it was linked to the analyst's query. Nobody wrote a new definition, because none was missing.
 
-The top-100 fix needed a decision. The context engineer prepared both rankings as witnessed SQL, with who uses each. The two owners chose ARR in 20 minutes and agreed to co-own the metric. The RevOps lead also moved "some early stages never count" out of a separate instruction and into the metric's SQL. A harness runs a metric as written, so a rule has to be in the statement to count.
+The top-100 fix needed a decision. The context engineer prepared both rankings as witnessed SQL, with who uses each. The two owners chose ARR in 20 minutes. "Some early stages never count" also moved out of a separate instruction and into the metric's SQL. A harness runs a metric as written, so a rule has to be in the statement to count.
 
 ::: {.diagram #a1-before-after}
 The pipeline question before and after the fix. Without context: $1.31B, from four reasonable guesses. With the metric: $412M, 340 deals on 91 of the top 100 customers.
@@ -108,10 +108,10 @@ Write the stop rule down before the first round, so nobody bends it later. Ours:
 > [!STOP]
 > **Stop adding context and escalate when:**
 >
-> - A miss persists with its definition served and used. The platform owner fixes the table or its grain.
+> - A miss persists with its definition served and used. Fix the table or its grain in the warehouse.
 > - A conflict has no owner willing to decide. More examples only teach the agent to pick a side. The sponsor names an owner.
 > - A new example fixes one question and breaks others. Make the definition a metric instead.
-> - A golden answer is disputed. The eval owner freezes that question until the dispute is settled.
+> - A golden answer is disputed. Freeze that question until the dispute is settled.
 
 ## Don't raise the step budget to cut refusals {#ch06-budget}
 
@@ -119,18 +119,18 @@ When the agent gives up too often, a bigger step budget looks like the easy answ
 
 ## Gate 3 {#ch06-gate}
 
-The sponsor sees the score after each round, what broke and what was fixed, and the golden set grown to 50. The decision is to move to the launch gate.
+The sponsor sees the score after each round, what broke and what was fixed, and the questions added for the launch test. The decision is to move to the launch gate.
 
 > [!DONE]
 > - [ ] Run-to-run variation measured on the unchanged context before the first round
 > - [ ] Each question asked three to five times per round once past about 60%
 > - [ ] Predicted fixes written down before every run
 > - [ ] The raw trace of every miss read and classified
-> - [ ] Every change approved by its owner and versioned; no sealed value in the context
+> - [ ] Every change versioned; no sealed value in the context
 > - [ ] The whole set rerun after every change; nothing that passed before is broken
 > - [ ] Iteration ledger complete, reverted changes included
 > - [ ] Step budget unchanged since the baseline
-> - [ ] The golden set grown to 50 for the launch gate
-> - [ ] Remaining gaps escalated with an owner, or the ceiling reported
+> - [ ] New questions added for the launch test, sealed without the context engineer seeing them
+> - [ ] Remaining gaps taken to the sponsor, or the ceiling reported
 
 Card: [Why did this miss?](#c6)

@@ -1,6 +1,6 @@
 # Episode clarifications
 
-The three episodes are AI-generated conversations based on the guide. Expect the odd slip in the hosts' tone and in the transcripts' wording. Where an episode and the guide disagree on a fact, the guide is right. The hosts say "certified metric", and the guide says "metric": in the benchmark, no person approved the metrics. In the method, each metric's owner signs it off. The points below correct or qualify what the episodes say.
+The three episodes are AI-generated conversations based on the guide. Expect the odd slip in the hosts' tone and in the transcripts' wording. Where an episode and the guide disagree on a fact, the guide is right. The hosts say "certified metric", and the guide says "metric": in the benchmark, no person approved the metrics. In the method, each metric has an owner and a version. The points below correct or qualify what the episodes say.
 
 Sponsoring it
 
@@ -9,10 +9,12 @@ Sponsoring it
 
 Building it
 
-- Near the launch gate, the hosts say to run "all 50 of those fresh questions." The guide says to expand the starting set to 50, including fresh questions. You don't replace the whole set with 50 unseen questions. Run the full 50-question set three to five times.
+- Near the launch gate, the hosts say the golden set grows to 50 and to run "all 50 of those fresh questions." The guide sets no size. Before launch, the graders add more questions the builder never saw, so the launch score is not one anyone tuned against. Then run the whole set, old and new questions together, three to five times.
+- The hosts give governed and exploratory questions different pass bars at the launch gate. The guide grades the whole golden set against one bar, written in the Phase 0 brief. The two lanes describe how the agent answers users, not how the golden set is graded.
 - "The whole system goes stale in a quarter" echoes the guide's warning that context left alone goes stale within a quarter. The guide does not measure how fast that happens.
 
 Running it
 
+- The hosts say Phase 0 needs named owners with committed weekly hours, and that domain two gets its own named owners. The guide asks for less: the brief agreed and access proved before the clock starts, with ownership kept to three places: each metric has an owner and a version, whoever owns a number settles a conflict the data can't, and the sponsor decides at each gate.
 - The hosts call a metric "pre-calculated." The guide defines a metric as a complete, owned, versioned statement that runs. It does not cache its result.
 - The closing prediction that companies will restructure their governance is the hosts' own view. The guide does not measure it.

@@ -32,7 +32,7 @@ Other teams have shipped talk-to-data agents and written up what worked, and res
 
 **LinkedIn.** [About 60% of more than 130 questions](https://www.linkedin.com/blog/engineering/ai/practical-text-to-sql-for-data-analytics) had more than one valid answer. <!-- X02 --> Write answer keys that accept the alternatives, or you will grade correct answers as misses.
 
-**[BIRD](https://bird-bench.github.io/).** 12,751 question and SQL pairs over 95 databases, with a hint of outside knowledge written for each question. At release, ChatGPT scored 40.08% against 92.96% for people. <!-- X10 --> Its hints are written once per question. A library of definitions your owners maintain is a different thing, and BIRD scores say little about it.
+**[BIRD](https://bird-bench.github.io/).** 12,751 question and SQL pairs over 95 databases, with a hint of outside knowledge written for each question. At release, ChatGPT scored 40.08% against 92.96% for people. <!-- X10 --> Its hints are written once per question. A library of definitions your team maintains is a different thing, and BIRD scores say little about it.
 
 **[Spider 2.0](https://spider2-sql.github.io/).** 632 tasks drawn from enterprise workflows. The best agent at release solved 21.3%, against 91.2% on Spider 1.0 and 73.0% on BIRD. <!-- X09 --> Enterprise warehouses are much harder than academic sets, so put a date on any leaderboard figure you quote.
 

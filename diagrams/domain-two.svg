@@ -35,8 +35,7 @@
   <text x="500" y="169" style="fill:var(--text)">metrics for bookings, net new</text>
   <text x="500" y="185" style="fill:var(--text)">ARR and churn ARR</text>
   <text x="500" y="207" style="fill:var(--text)">its own conflicts to resolve</text>
-  <text x="500" y="233" class="m" style="font-size:11.5px;fill:var(--muted)">THE SAME FIVE PHASES</text>
-  <text x="500" y="249" class="m" style="font-size:11.5px;fill:var(--muted)">OWNER 2-3 H/WEEK</text>
+  <text x="500" y="241" class="m" style="font-size:11.5px;fill:var(--muted)">THE SAME FIVE PHASES</text>
 </g>
 <!-- shared words -->
 <text x="8" y="284" class="m" style="font-size:11.5px;letter-spacing:.06em;fill:var(--ink);font-weight:500">WORDS BOTH DOMAINS USE</text>

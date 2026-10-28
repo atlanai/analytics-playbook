@@ -61,11 +61,11 @@ At the end of Phase 4, your team holds:
 
 - an agent that cleared the bar your sponsor set, on one domain;
 - the metrics behind it, each with an owner and a version;
-- a golden set of 50 real questions that tests every later change;
+- a golden set of real questions that tests every later change;
 - a decisions log;
 - people on your side who have run a round together, with a round alone booked within two weeks.
 
-[Hand over](#handover) lists who owns each piece.
+[Hand over](#handover) covers how each piece passes to your team.
 
 ## What's inside {#paths-inside}
 
@@ -109,7 +109,7 @@ This page takes about fifteen minutes to answer honestly. Ten questions score yo
 | 7 | Do you already have a semantic layer (such as semantic views, metric views, LookML or dbt metrics) or a glossary for this domain? | Nothing | Some, unowned | Yes, with owners | [Phase 2](#ch05) |
 | 8 | Have you chosen where users will ask and which agent stack answers? | Undecided | Partly | Both chosen | [Phase 0](#ch03), [The builder's minimum harness](#c4) |
 | 9 | Gate. Can you export traces of what the agent did (context served, SQL run, answer) from day one? | No path | Planned | Working today | [Phase 0](#ch03), [Phase 3](#ch06) |
-| 10 | Gate. Are named people committed with weekly hours, including a domain owner who can settle definitions? | Nobody named | Named, no hours | Named, hours agreed | [Phase 0](#ch03), [What to do when](#c9) |
+| 10 | Gate. Do you have people with time for the work, including someone who can settle definitions? | Nobody yet | People, no time agreed | People and time agreed | [Phase 0](#ch03), [What to do when](#c9) |
 
 | Score | Where you are | Next step |
 |---|---|---|

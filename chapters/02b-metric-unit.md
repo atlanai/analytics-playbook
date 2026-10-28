@@ -30,7 +30,7 @@ Leave any part out and the agent guesses it. Take the engagement's pipeline ques
 
 Before the metric existed, the agent guessed each of these and returned $1.31B. With the metric, it returned $412M: 340 deals on 91 of the top 100 customers.
 
-A metric has one more advantage: the business already understands it. A sales leader can read "open pipeline with the top 100 customers, by current ARR" and say "that's wrong, we rank by bookings." Nobody can say that about a table description or a prompt. When the unit of context is a metric, the people who own the number can correct and approve it directly, so the feedback loop stays short. Their time is the real cost of this method, which is one reason to work one domain at a time.
+A metric has one more advantage: the business already understands it. A sales leader can read "open pipeline with the top 100 customers, by current ARR" and say "that's wrong, we rank by bookings." Nobody can say that about a table description or a prompt. When the unit of context is a metric, the business can correct and approve it directly, so the feedback loop stays short. That review time is the real cost of this method, which is one reason to work one domain at a time.
 
 Metrics also change. Stage names move and fiscal rules get redefined. So every metric carries an owner and a version, and every agent reads the same copy.
 
@@ -104,7 +104,7 @@ Provenance is what makes a past query trustworthy. In the engagement, the slippe
 
 Per logical table is the default today, because it is what the major platforms ship. Its costs show up once agents are asking: a metric that two views need is often defined in each, a question that spans two views has nowhere to go, and a wrong answer gets patched with a note beside the view that the agent reinterprets on every question. On our benchmark, semantic views as the only way in scored 38.3% <!-- E76 -->. On multi-table questions they scored 16%, against about 61% on the same questions for past queries with complete SQL <!-- E18 -->. A view states a join; a past query shows it worked.
 
-[]{#ch-sv-metric}Business questions start with a metric. People ask how many orders came in last week or what churn did last quarter; they rarely start from a table or a view. A per-metric layer stores context in the shape the questions arrive in: the business can read a metric and correct it, the same definition serves every agent and BI tool, and it compiles to the same SQL every time. Its costs are real too. Questions no metric covers fall back to exploration, so coverage builds over time, and without owners and review, metrics sprawl into near-duplicates such as revenue, net revenue and recognized revenue. That is why every metric carries an owner and a version.
+[]{#ch-sv-metric}Business questions start with a metric. People ask how many orders came in last week or what churn did last quarter; they rarely start from a table or a view. A per-metric layer stores context in the shape the questions arrive in: the business can read a metric and correct it, the same definition serves every agent and BI tool, and it compiles to the same SQL every time. Its costs are real too. Questions no metric covers fall back to exploration, so coverage builds over time, and without review, metrics sprawl into near-duplicates such as revenue, net revenue and recognized revenue.
 
 ::: {.diagram #sv-start}
 Logical-table first asks the agent to pick a view, and the same metric lives in several. Metric-first starts at the one definition the question names, with its formula, verified SQL, named joins, dimensions and drills.
@@ -128,9 +128,9 @@ The placement table says where knowledge goes. The lanes say how the agent may u
 The two lanes. Numbers the business runs on take the governed lane: a metric or no answer. The long tail and diagnostics take the exploratory lane: the agent writes SQL grounded in trusted past queries and shows its sources.
 :::
 
-In the governed lane, the agent serves a metric or gives no answer. The bar is exact, every time. The pipeline question took this lane and returned $412M, the number in the board pack.
+In the governed lane, the agent serves a metric or gives no answer. The number must be exact, every time. The pipeline question took this lane and returned $412M, the number in the board pack.
 
-In the exploratory lane, the agent writes its own SQL from trusted past queries and business terms. It shows the SQL and what it assumed. The bar is directionally right. The slipped-deals question took this lane: 96 deals had slipped, and the win rate with these customers was 31% against 24% elsewhere.
+In the exploratory lane, the agent writes its own SQL from trusted past queries and business terms. It shows the SQL and what it assumed. The answer has to point the right way. The slipped-deals question took this lane: 96 deals had slipped, and the win rate with these customers was 31% against 24% elsewhere.
 
 Good context alone doesn't make a board number safe. Even the best run still got some answers wrong, and it stated them as plainly as right ones. In the exploratory lane, a reader can see the SQL and catch a miss before acting. A board number has no such reader, so it needs the governed lane. A kind of question can move lanes later: when two people publish different numbers for an exploratory question, write the metric and move it to the governed lane.
 

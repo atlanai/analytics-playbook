@@ -7,10 +7,10 @@ Scope one domain, build the golden set, generate and approve metrics, hill-climb
 
 Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch. Each phase ends at a gate, and you move on only when it is met.
 
-1. Phase 0, before the clock. Pick one domain and decide which questions need an exact answer. Settle access and the agent architecture. Name the owners and their hours. Gate: the brief agreed, every access item proved.
+1. Phase 0, before the clock. Pick one domain, set the bar, and decide which questions need an exact answer. Settle access and the agent architecture. Gate: the brief agreed, every access item proved.
 2. Phase 1, the golden set. Harvest real questions, seal at least 20 with verified answers, and run the baseline once. Gate: 20 or more sealed, baseline scored.
 3. Phase 2, generate metrics. Draft them from past SQL and BI, check them against the warehouse, resolve conflicts, approve. Gate: the metrics scored on the same set.
-4. Phase 3, the hill climb. Read the raw trace of every miss and make the smallest fix that closes it. Gate: the misses closed that can be, and the set grown to 50.
+4. Phase 3, the hill climb. Read the raw trace of every miss and make the smallest fix that closes it. Gate: new questions added for the launch test, and nothing that passed has broken.
 5. Phase 4, release and hand over. Pass the launch gate, launch, and hand the loop to your team. Gate: launch approved, first solo run booked.
 
 The rules:
@@ -20,7 +20,7 @@ The rules:
 3. Build the golden set before any context. Without it, you can't tell progress from luck.
 4. Settle conflicts before the agent sees them: provenance first, then the owner. Never let the agent pick.
 5. Board numbers need a metric, or no answer.
-6. Start with one domain and the people who own its numbers.
+6. Start with one domain. It is small enough to finish, and its open questions have someone who can settle them.
 7. Read the raw trace of every miss, and feed real usage back.
 8. Make the agent reliable on what happened before you ask it why.
 
@@ -31,18 +31,16 @@ The five phases leave you metrics your business owns, a golden set that tests ea
 Phase 1 can't start until you make five decisions:
 
 1. The domain: one business area, its problem and its users.
-2. The bar: exact on every run for the numbers the business runs on, and one pass rate for everything else, written down now.
+2. The bar: one pass rate for the whole golden set, met on every run, written down now.
 3. The agent architecture: where people ask, which harness runs the loop, and which model.
-4. The people: a name and weekly hours next to every role.
+4. The people and their time, as set out in [Phase 0](#hours). The domain owner's two to three hours a week matter most: engagements stall where that shrinks to minutes.
 5. The start date. Phase 0 ends when the brief is agreed and every access item is proved.
 
 At the end of Phase 4 you decide go, no-go or go with conditions.
 
-Your people's weekly hours are set in [Phase 0](#hours). The domain owner's two to three hours a week matter most: engagements stall where the owner can spare only minutes.
-
 At each gate you see evidence and make one decision. [What the sponsor sees at each gate](#c10) lays it out.
 
-Go when the governed questions are right on every run, the rest clear your pass rate, and nothing that passed before has broken. Give each condition an owner and a date.
+Go when the golden set scores at or above your bar on every run, nothing that passed before has broken, the random pass audit is done, and out-of-scope questions are refused. Give each condition a date.
 
 | Exec sponsor | Signature | Date |
 |---|---|---|
@@ -54,25 +52,27 @@ You own the golden set. The context engineer never drafts, sees or edits an expe
 
 The tasks, in order:
 
-1. Name the graders and fix the as-of date every answer is computed at.
+1. Choose two graders and fix the as-of date every answer is computed at.
 2. Harvest two or three candidates for every question you will seal. Pull them from the board pack, dashboards, tickets, saved analyst queries and the sponsor's own questions.
 3. Rewrite each candidate the way a user would ask it, with no table or column names.
 4. Graders draft the expected SQL and answer for each one.
 5. Write the grading rules before any result exists: returned data first, then the SQL, with a tolerance per answer type.
 6. Graders verify every draft against its source. A question with two defensible answers goes to the domain owner before it is sealed.
-7. Pick at least 20 that cover both governed and exploratory questions. Seal them.
+7. Pick at least 20 and seal them.
 8. Purge every past query that computes a sealed answer, by hash. Commit the set.
-9. The agent builder runs the baseline once per question. You grade it and record the decision the agent guessed on every miss.
+9. The baseline runs once per question. Grade it by code against the sealed answers and record the decision the agent guessed on every miss.
 
-Every item carries six required fields: id, the question as asked, lane, source, expected result and expected SQL. Optional: valid alternatives, tolerance, the decisions the question hides, the wrong answer a guess would produce, and a history of every correction.
+Every item carries five required fields: id, the question as asked, source, expected result and expected SQL. Optional: valid alternatives, tolerance, the decisions the question hides, the wrong answer a guess would produce, and a history of every correction.
 
-An item is sealed when its expected SQL has run read-only on the as-of snapshot, the result matches the trusted source, no dispute is open, and you have signed it. Store the set where neither the agent nor the context side can read it. Never edit a question to make the agent pass.
+An item is sealed when its expected SQL has run read-only on the as-of snapshot, the result matches the trusted source, and no dispute is open. Store the set where neither the agent nor the context side can read it. Never edit a question to make the agent pass.
+
+Before launch, the graders add more questions the builders never saw, so the launch score is not one anyone tuned against.
 
 A definition dispute raised while sealing also goes to the conflict list, with no sealed value attached. Otherwise the context side never sees it.
 ::::
 
 :::: {.card #c4 title="The builder's minimum harness"}
-The harness runs in your environment and your team owns it. Two shapes work: platform-native, such as Databricks Genie or Snowflake CoWork, or custom, on Google ADK, LangGraph or your own loop.
+The harness runs in your environment, and your team builds and runs it. Two shapes work: platform-native, such as Databricks Genie or Snowflake CoWork, or custom, on Google ADK, LangGraph or your own loop.
 
 Build this and stop:
 
@@ -104,7 +104,7 @@ You can change the model later. When you do, rerun the golden set on the new mod
 :::: {.card #c5 title="How to resolve a conflict"}
 A conflict is two definitions of the same thing, both in use. Most settle on evidence; the domain owner decides the rest in a short session.
 
-First, let provenance decide. For each variant, the context engineer shows:
+First, let provenance decide. For each variant, show:
 
 - who runs it, and how many different people
 - how often, and how recently
@@ -113,7 +113,7 @@ First, let provenance decide. For each variant, the context engineer shows:
 
 When one variant is run by most analysts, recently, runs clean and matches the trusted report, keep it and record why. No meeting needed.
 
-When the evidence splits, it goes to the owner. The day before, the context engineer prepares each variant's definition as SQL, where it is used, and both results on the snapshot.
+When the evidence splits, it goes to the owner. The day before, prepare each variant's definition as SQL, where it is used, and both results on the snapshot.
 
 The owner resolves it one of five ways:
 
@@ -129,16 +129,16 @@ Example: the top-100 conflict. One variant ranked customers by number of deals. 
 
 What happens next:
 
-1. The context engineer records the decision and what would reopen it. The losing variant is retired and kept on record.
-2. The metric is re-rendered and checked against the warehouse again.
-3. The agent builder reruns the questions that depend on it.
+1. Record the decision and what would reopen it. The losing variant is retired and kept on record.
+2. Re-render the metric and check it against the warehouse again.
+3. Rerun the questions that depend on it.
 
 A definition kept in a spreadsheet leaves no trace in query history, so provenance can't rank it. Before approval, trace any pasted list of IDs back to its source.
 ::::
 
 :::: {.card #c6 title="Why did this miss?"}
 ::: {.diagram #miss-tree}
-Classify every miss before you fix it. Each kind has one fix and one owner.
+Classify every miss before you fix it. Each kind has one fix.
 :::
 
 Read the raw trace first and find the first step where the agent decided without context. Then walk the tree.
@@ -150,14 +150,14 @@ Read the raw trace first and find the first step where the agent decided without
    1. Yes. Read what the steps were spent on and supply the missing decision. Raising the budget is not the fix.
    2. No. Go to 3.
 3. Is the right decision written down anywhere, as a metric, rule, business term or trusted query?
-   1. No. Never written. The context engineer drafts it, and provenance or the domain owner settles it.
+   1. No. Never written. Draft it; provenance or the owner settles it.
    2. Yes. Go to 4.
 4. Was it served for this question? Look for it by name in the context call.
-   1. No. Written, not served. The context engineer fixes retrieval: a term link, alternate labels, ranking.
+   1. No. Written, not served. Fix retrieval: a term link, alternate labels, ranking.
    2. Yes. Go to 5.
 5. Was it used?
-   1. No. Served, ignored. The context engineer and agent builder make it a rule the agent must follow, or make the SQL a metric.
-   2. Yes, and still wrong on every run. The gap is in the data: the state the answer needs does not exist, or the grain is wrong. The platform owner fixes it.
+   1. No. Served, ignored. Make it a rule the agent must follow, or make the SQL a metric.
+   2. Yes, and still wrong on every run. The gap is in the data: the state the answer needs does not exist, or the grain is wrong. Take it to the platform team.
 
 A miss on some runs and not others means the agent is guessing. Ask the question several times and compare the SQL. Where the runs split, a decision is missing.
 
@@ -171,17 +171,15 @@ Work in rounds: a small batch of changes, then a full rerun. When two rounds in 
 Ask it of each kind of question in the brief, not of every question one by one.
 :::
 
-The sponsor and the domain owner walk this at the kickoff, in about 30 minutes. Why-questions wait until the numbers under them are right.
+Walk this at the kickoff, in about 30 minutes. It sets how the agent answers users. Every golden-set question is graded the same way, against one bar. Why-questions wait until the numbers under them are right.
 
 1. If this answer is wrong and nobody notices, where does it land?
    1. In a board pack, a finance close or a published KPI. The question is governed.
-      1. The bar is exact, on every run.
-      2. The answer comes from a metric, whose SQL runs as served.
-      3. If no metric covers it, the agent says so. No metric, no answer.
+      1. The answer comes from a metric, whose SQL runs as served.
+      2. If no metric covers it, the agent says so. No metric, no answer.
    2. In a decision about where to look next. The question is exploratory.
-      1. The bar is one pass rate for the whole lane, set by the sponsor now, before any result exists.
-      2. The agent writes the SQL, grounded in trusted past queries.
-      3. Every answer shows its SQL and its sources.
+      1. The agent writes the SQL, grounded in trusted past queries.
+      2. Every answer shows its SQL and its sources.
 2. Later, in production: do two people publish different numbers for an exploratory question?
    1. Yes. It has become governed. Resolve the conflict, write the metric, move it.
    2. No. Leave it where it is.
@@ -215,21 +213,21 @@ To build it:
 2. Import what exists: the glossary for entities and vocabulary, the BI semantic model for bindings.
 3. Cut it to what those questions touch. The running example needed five entities. Its answer turned on two of their relationships.
 4. Bind each entity to its tables and metrics.
-5. Have the domain owner approve the relationships the answers turn on.
-6. Name an owner for each kind of dated change, such as territories or pricing.
+5. Get the relationships the answers turn on approved.
+6. Agree which team records each kind of dated change, such as territories or pricing.
 
 The record of what changed is the part that decays. In the running example, the one why-answer that fell short traced to a comp-plan change nobody had written down.
 ::::
 
 :::: {.card #c9 title="What to do when"}
-Six stalls, what you do, and who decides.
+Six stalls and what you do. Unless a stall says otherwise, the sponsor decides it at the next readout.
 
-1. The domain owner disappears. Conflicts wait unresolved past a weekly session. Let provenance settle what it can, then raise the rest with the sponsor at the next readout. Ask for the hours back, or a named deputy who can decide. The context engineer never decides a definition. Decides: exec sponsor.
-2. Access is blocked. A test fails or a request stalls. Log it that day with an owner and a date. In Phase 0 the clock does not start. Mid-phase, work what needs no access and take the blocker to the next readout. Decides: platform owner, then the sponsor.
-3. The sponsor changes the bar. Record the new bar and its date. Score the last run against both bars. Leave the golden set alone. Agree in writing what the launch gate now tests. Decides: exec sponsor.
-4. You are asked to host the agent for the company. Decline. The harness stays with the company that runs it. The delivery team helps the agent builder stand up the minimum harness in the company's environment. Decides: exec sponsor.
-5. Scope creeps into a second domain. Log the new questions in the domain-two plan. They stay out of the golden set until launch. Decides: exec sponsor.
-6. Security review stretches Phase 0. Where vendor review applies, Phase 0 can take months. Hand out the access list on day one, walk security through what leaves the building, and keep the gates. Phase 1 starts when the checklist is met. Decides: security lead, with the sponsor.
+1. The domain owner disappears. Conflicts wait unresolved past a weekly session. Let provenance settle what it can, then raise the rest with the sponsor. Ask for the hours back, or a deputy who can decide. The context engineer never decides a definition.
+2. Access is blocked. A test fails or a request stalls. Log it that day with a date. In Phase 0 the clock does not start. Mid-phase, work what needs no access and take the blocker to the next readout.
+3. The sponsor changes the bar. Record the new bar and its date. Score the last run against both bars. Leave the golden set alone. Agree in writing what the launch gate now tests.
+4. You are asked to host the agent for the company. Decline. The harness stays with the company that runs it. Help the company's agent builder stand up the minimum harness in its own environment.
+5. Scope creeps into a second domain. Log the new questions in the domain-two plan. They stay out of the golden set until launch.
+6. Security review stretches Phase 0. Where vendor review applies, Phase 0 can take months. Hand out the access list on day one, walk security through what leaves the building, and keep the gates. Phase 1 starts when the checklist is met. The security lead decides with the sponsor.
 
 Whatever the stall, the clock does not start early and the bar does not move quietly.
 ::::
@@ -239,11 +237,11 @@ One decision per gate. Hold means the next phase waits.
 
 | Gate | You see | You decide | Go when | Hold when |
 |---|---|---|---|---|
-| End of Phase 0 | the brief, the access tests, the named owners | start the clock | every access item proved; a name in every role | any item untested or unowned |
+| End of Phase 0 | the brief, with the bar; the access tests | start the clock | the brief agreed; every access item proved | the brief open, or any item untested |
 | End of Phase 1 | 20 or more sealed questions; the baseline score; the decision guessed on each miss | start the metrics work | every item verified against its source | a dispute open or an item unverified |
 | End of Phase 2 | the metrics scored on the same set; the change over baseline; conflicts resolved and open | start the hill climb | every served metric checked, owned and versioned | a disputed or unowned metric is served |
-| End of Phase 3 | the score after each round of fixes; what broke and what was fixed; the set grown to 50 | move to the launch gate | the new questions sealed; nothing that passed has broken | the set short of 50, or a break unfixed |
-| Launch gate, Phase 4 | the 50, each run several times; governed and exploratory against their bars; the random pass audit; refusals | go, no-go, or go with conditions | governed right on every run; exploratory at its bar | a lane short: hold that kind of question back, or run one more round |
+| End of Phase 3 | the score after each round of fixes; what broke and what was fixed; the new questions added for the launch test | move to the launch gate | the new questions sealed; nothing that passed has broken | new questions unsealed, or a break unfixed |
+| Launch gate, Phase 4 | the whole set, each question run several times, against the bar; the random pass audit; refusals | go, no-go, or go with conditions | at or above the bar on every run; nothing that passed has broken; audit done; out-of-scope questions refused | below the bar: hold back the failing kind of question by name, move it to the exploratory lane, or run one more round |
 
 At every gate, the eval owner re-grades five passing items by hand, and the score is reported after any correction.
 
@@ -251,7 +249,7 @@ At the launch gate, also check how the governed lane fails. It should refuse que
 
 Expect a low baseline. It prices the decisions your schema leaves out.
 
-A no-go names each gap and who owns its fix. Go with conditions names each condition, its owner and its date.
+A no-go names each gap and its fix. Go with conditions names each condition and its date.
 ::::
 
 :::: {.card #c11 title="What you need before you start"}
@@ -277,8 +275,6 @@ People who run the engagement, from a partner or your own team:
 
 - A context engineer (in-house: an analytics engineer), dedicated from Phase 1 to Phase 4.
 - A delivery lead (in-house: your program lead), who runs every session and gate.
-
-Put a name next to every line. "RevOps" cannot resolve a conflict. The RevOps lead can.
 ::::
 
 :::: {.card #c12 title="Is it ready to launch?"}
@@ -286,31 +282,30 @@ The launch gate, as a checklist. The sponsor signs when every line holds.
 
 The golden set:
 
-- At least 50 sealed questions, including new ones the context engineer never saw.
-- Every question run several times. A governed answer counts only if it is right on every run.
+- New questions added before launch and sealed, ones the builders never saw, so the launch score is not one anyone tuned against.
+- Every question run several times. An answer counts only if it is right on every run.
 - The random pass audit done: five passing items re-graded by hand against their source.
 
 The results:
 
-- Governed questions right on every run.
-- Exploratory questions at or above the pass rate the sponsor set in Phase 0.
+- The golden set at or above the bar in the brief, on every run.
 - Everything that passed at the last gate still passes.
-- Out-of-scope governed questions refused, with no number. No question bound to the wrong metric.
-- Any kind of question that can't pass is named and held back, with an owner and a date.
+- Out-of-scope questions refused, with no number. No question bound to the wrong metric.
+- Any kind of question that can't pass is named and held back, or moved to the exploratory lane, with a date.
 
 The context:
 
-- Every served metric, rule and business term has an owner, a version and a record of why it was approved.
+- Every served metric has an owner and a version. Every served item has a record of why it was approved.
 - No open conflict is served. Each waits in the backlog with a date.
 
 Running it:
 
 - Production traces reach your log store, per call.
-- A rerun of the golden set fires on every context change and every schema change, and someone owns it.
-- The previous version can be restored in one step, and someone is named to decide.
+- A rerun of the golden set fires on every context change and every schema change.
+- The previous version can be restored in one step.
 - The first run your team does alone is on the calendar, within two weeks.
 
-Decision: go, no-go, or go with conditions. Each condition has an owner and a date. Never lower the bar to fit the score.
+Decision: go, no-go, or go with conditions. Each condition has a date. Never lower the bar to fit the score.
 
 | Exec sponsor | Decision | Date |
 |---|---|---|
@@ -330,8 +325,8 @@ What a data-platform skeptic asks in the room, and a reply that holds up.
 | "Curation won't scale to 10,000 tables." | You never curate 10,000 tables; you work one domain at a time. The metrics agent drafts candidates, provenance settles most conflicts, and the domain owner decides the rest. |
 | "What if our analysts' SQL is wrong?" | Then a generated metric inherits the error. That is why every candidate is checked against the warehouse and approved by an owner before it serves. Where analysts disagree, you have found a decision your business never wrote down. |
 | "How long does this take?" | Phase 0 first, which runs longer where vendor and privacy reviews apply. Then four build phases, often a week each. The gates hold even when the calendar stretches. |
-| "Who keeps it current?" | Named owners, with a rerun of the golden set on every context change and every schema change. |
-| "Who pays for the owners' time?" | You do, and it is the largest cost. When an owner can spare only minutes a week, the engagement stalls. |
+| "Who keeps it current?" | Your team, with a rerun of the golden set on every context change and every schema change. |
+| "Who pays for your people's time?" | You do, and it is the largest cost. When the domain owner can spare only minutes a week, the engagement stalls. |
 | "Our warehouse has row-level security." | Governed answers run under a fixed service identity, so a board number is the same for every asker. Exploratory queries run as the asker. |
 | "We'd be locked in." | What stays behind is plain files: metric specs, the golden set, the decisions log. Any store that can hold and serve them will do. |
 | "Will you run the agent for us?" | No. The harness is yours: your builder, your model, your surface, your logs. Context is served to it. |

@@ -2,9 +2,9 @@ Two graders checked the same question against two trusted sources... and got two
 
 Start with at least 20 real questions... the ones the business already asks. Where do they come from? The board pack, and leaders' dashboards. Analyst tickets from the last two quarters. Saved analyst queries, too. And the sponsor's own questions. Then ask the owner one thing... what was the last wrong number that reached a meeting?
 
-Every item goes in one format, with six required fields. An ID and the question. Its lane, and its source. The expected answer, plus the SQL. Two of the optional fields pay off in Phase 3. The decisions the question hides... and the decoy, the answer you get if you guess them.
+Every item goes in one format, with five required fields. An ID, the question, and its source. The expected answer, plus the SQL. Two of the optional fields pay off in Phase 3. The decisions the question hides... and the decoy, the answer you get if you guess them.
 
-Write the grading rules before any result exists. Rules written after... bend toward the results. Grade the data first... then the SQL. A wrong query can land near the right number by luck. Allow valid alternatives, like a total, or a breakdown that sums to it. And a governed answer only counts if it's right on every run.
+Write the grading rules before any result exists. Rules written after... bend toward the results. Grade the data first... then the SQL. A wrong query can land near the right number by luck. Allow valid alternatives, like a total, or a breakdown that sums to it. And the one bar in the brief has to hold... on every run.
 
 Then seal the set away from the builders... and guard against three leaks. First, golden SQL in the context. Purge it, and record each removal by hash. Second, the agent reading its own work. Exclude its service account. Third, sealed values in served text. Scan every prompt... a hit invalidates the run.
 

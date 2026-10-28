@@ -114,7 +114,7 @@ Without a fixed test, every claim gets answered by impression. A sponsor sees th
 | The problem | What fixes it | Where |
 |---|---|---|
 | A clean query returns the wrong number, and nothing looks wrong | Test the agent against real questions with sealed answers, built before any context | [Evals first](#ch-evals), [Phase 1](#ch04) |
-| The question hides decisions the schema doesn't show | Generate metrics from the SQL and reports your analysts already run, and settle conflicts with their owners | [The metric is the unit](#ch02), [Phase 2](#ch05) |
+| The question hides decisions the schema doesn't show | Generate metrics from the SQL and reports your analysts already run, and settle conflicts before the agent sees them | [The metric is the unit](#ch02), [Phase 2](#ch05) |
 | The agent decides differently each time | Seal each decision into a metric's SQL, serve the few that fit each question, and give board numbers their own lane | [The metric is the unit](#ch02-lanes), [Serve per question](#ch-retrieval) |
 | Nobody can tell whether it is right | Rerun the sealed set on every change, and fix each miss from its trace | [Evals first](#ch-evals-ci), [Phase 3](#ch06) |
 

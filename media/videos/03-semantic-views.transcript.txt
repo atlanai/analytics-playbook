@@ -26,4 +26,4 @@ And this isn't just our view. Lyft landed in the same place. Each widely used me
 
 If you already have semantic views, keep them. They keep working for the analysts who use them. And in Phase 2, they're a source. Their measures and filters become candidate metrics.
 
-So, semantic views can be accurate... for one agent, and one use case. Composable metrics keep one definition across all of them. Stored once, composed per question, retrieved by every agent. So organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the people who own its numbers.
+So, semantic views can be accurate... for one agent, and one use case. Composable metrics keep one definition across all of them. Stored once, composed per question, retrieved by every agent. So organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the bar it has to clear.

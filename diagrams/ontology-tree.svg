@@ -6,7 +6,7 @@
 <text x="22" y="31" style="fill:var(--ink);font-weight:600">Are the what-questions released</text>
 <text x="22" y="48" style="fill:var(--ink);font-weight:600">and stable?</text>
 <text x="22" y="68" style="fill:var(--muted);font-size:12.5px">the same number twice, on the</text>
-<text x="22" y="84" style="fill:var(--muted);font-size:12.5px">golden set of 50</text>
+<text x="22" y="84" style="fill:var(--muted);font-size:12.5px">whole golden set</text>
 <path d="M288 52 L382 52" style="fill:none;stroke:var(--muted);stroke-width:1.4" marker-end="url(#arr)"/><text x="335" y="45" text-anchor="middle" class="m" style="font-size:12px;fill:var(--muted)">NO</text>
 <rect x="386" y="8" width="306" height="88" rx="7" style="fill:var(--panel);stroke:var(--stop);stroke-width:1.3"/>
 <text x="400" y="38" style="fill:var(--ink);font-weight:600">Not yet. Go back to the hill climb.</text>

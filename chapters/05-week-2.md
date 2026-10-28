@@ -9,16 +9,16 @@ produces: metrics, trusted past queries, resolved conflicts, the Gate 2 score
 > Write each business rule into a metric's SQL. The agent follows a query and skims a paragraph.
 
 ::: {.tldr}
-- **Short version.** Generate candidate metrics from the SQL your analysts already run, settle the conflicts with the domain owner, have the owner approve what survives and serve it to the agent per question. Bring in the definitions you already have; nothing needs to start from zero.
+- **Short version.** Generate candidate metrics from the SQL your analysts already run, settle the conflicts, mostly on provenance, approve what survives and serve it to the agent per question. Bring in the definitions you already have; nothing needs to start from zero.
 - **Do this.** Get the metrics behind your golden-set questions approved first.
-- **Skip if** your metrics are already approved by their owners and served. Go to [Phase 3](#ch06).
+- **Skip if** your metrics are already approved and served. Go to [Phase 3](#ch06).
 :::
 
 ::: {.scene week="Phase 2"}
-On the first morning of Phase 2, the context engineer pointed a metrics agent, a script with a language model that drafts candidate metrics, at the analysts' past SQL and the sales dashboards. By the afternoon it had proposed candidate metrics, each with the real queries behind it. Every candidate then ran read-only against the warehouse. Most conflicts settled on provenance: the version most analysts ran, recently, that matched the warehouse. The RevOps lead decided the rest in short sessions. One would not settle. For multi-year deals, did the amount mean first-year ARR or total contract value? It went to the CRO, who answered two days later: ARR, the figure the board pack uses. By the end of Phase 2 the owners had approved six metrics, and the agent scored 14 of 20, up from 7.
+On the first morning of Phase 2, the context engineer pointed a metrics agent, a script with a language model that drafts candidate metrics, at the analysts' past SQL and the sales dashboards. By the afternoon it had proposed candidate metrics, each with the real queries behind it. Every candidate then ran read-only against the warehouse. Most conflicts settled on provenance: the version most analysts ran, recently, that matched the warehouse. The RevOps lead decided the rest in short sessions. One would not settle. For multi-year deals, did the amount mean first-year ARR or total contract value? It went to the CRO, who answered two days later: ARR, the figure the board pack uses. By the end of Phase 2 six metrics were approved, and the agent scored 14 of 20, up from 7.
 :::
 
-Most of what your company knows about its numbers is already written down. It sits in the SQL your analysts ran and in the reports and semantic models your BI tool serves. You rarely write a metric from scratch. You generate candidates from those sources, prove each one runs, settle the conflicts and have the owner approve what survives. Then you score the result on the same sealed questions.
+Most of what your company knows about its numbers is already written down. It sits in the SQL your analysts ran and in the reports and semantic models your BI tool serves. You rarely write a metric from scratch. You generate candidates from those sources, prove each one runs, settle the conflicts and approve what survives. Then you score the result on the same sealed questions.
 
 ## Five steps from past SQL to metrics {#ch05-pipeline}
 
@@ -69,13 +69,13 @@ In our engagements, most conflicts settled on provenance, without a meeting. Lin
 | How recently | A version nobody has run since a process change is probably stale |
 | Does it match the warehouse | The version whose filters fit the current schema and data is usually right |
 
-Win rate settled on recency. The dashboard version predated the "Disqualified" stage, and every recent analyst query excluded it. The RevOps lead confirmed it in a minute.
+Win rate settled on recency. The dashboard version predated the "Disqualified" stage, and every recent analyst query excluded it.
 
-When the evidence splits, the domain owner decides. Prepare each conflict the day before: both versions as SQL, both results on the same snapshot, the literals that differ, and who uses each. When a definition spans two functions, both owners sign. If they cannot agree, the conflict goes to the sponsor, and the agent serves neither version until then. Take on only the conflicts the owner can decide in the time booked, most-used numbers first. The rest wait, unserved.
+When the evidence splits, the conflict goes to whoever owns that number. Prepare each conflict the day before: both versions as SQL, both results on the same snapshot, the literals that differ, and who uses each. When a definition spans two functions, both owners decide it together. If they cannot agree, the conflict goes to the sponsor, and the agent serves neither version until then. Take on only the conflicts that can be decided in the time booked, most-used numbers first. The rest wait, unserved.
 
 ### Approve
 
-Send every witnessed metric with no open conflict for approval. Each one gets an owner, a version, its provenance and its SQL. The domain owner approves them, usually in one batch, and only approved metrics are served on the governed lane.
+Send every witnessed metric with no open conflict for approval. Each one gets an owner, a version, its provenance and its SQL. They are usually approved in one batch, and only approved metrics are served on the governed lane.
 
 Before you approve, check that every house rule that applies is written into the SQL. A rule that lives only in a description, or in a separate instruction, never reaches the statement the harness runs.
 
@@ -114,7 +114,7 @@ provenance:
   distinct_analysts: 6
   runs: 140
   witnessed: Phase 2 · 1 row · grain check passed
-  conflict: dashboard version counted disqualified deals; settled on recency, confirmed by the RevOps lead
+  conflict: dashboard version counted disqualified deals; settled on recency
   approved_by: [RevOps lead]
 ```
 :::
@@ -126,7 +126,7 @@ Read more: [the full metric spec template](#r2-5)
 How you serve decides whether the agent uses what you built. [Serve per question](#ch-retrieval) has the architecture and the ranking rules: one context call per question, a handful of complete statements, metrics first and labelled. Two more rules matter here:
 
 1. **Keep the literals.** `'Closed Won'` and `stage_order >= 2` are the definition. Mask the names of people and customers, and keep the business values.
-2. **Serve rules as instructions.** A house rule that holds for every question, such as "quarter means fiscal quarter", goes to the agent as a short instruction with the name of whoever set it. If a metric depends on the rule, write it into the metric's SQL as well.
+2. **Serve rules as instructions.** A house rule that holds for every question, such as "quarter means fiscal quarter", goes to the agent as a short instruction. If a metric depends on the rule, write it into the metric's SQL as well.
 
 ## Bring in what you already have {#ch05-path-b}
 
@@ -139,11 +139,11 @@ Most teams already hold some context: a semantic layer (semantic views, metric v
 | Instructions such as "exclude test tenants" | Candidate rules | A rule the agent must follow |
 | Column descriptions and synonyms | The floor, for finding tables | A dictionary says what exists. It says nothing about how to count |
 
-Give every imported object an owner and a version before it is served.
+Give every imported object a version before it is served, and every imported metric an owner.
 
 ## Gate 2 {#ch05-gate2}
 
-The sponsor sees the score on the same sealed questions, the change since the baseline, the conflicts resolved and anything escalated. The decision is to start the hill climb. Hold the gate if anything served is unowned, unversioned or unwitnessed.
+The sponsor sees the score on the same sealed questions, the change since the baseline, the conflicts resolved and anything escalated. The decision is to start the hill climb. Hold the gate if anything served is unversioned or unwitnessed, or a metric has no owner.
 
 A gate can only check what somebody raised. A metric can pass every check here and still carry a definition nobody questioned, because the other definition never appeared in any source. Phase 3 finds those in the traces.
 
@@ -155,7 +155,7 @@ A gate can only check what somebody raised. A metric can pass every check here a
 > - [ ] Conflicts resolved on provenance or by the owner; any deadlock on the sponsor's agenda
 > - [ ] Every metric has an owner, a version, provenance and SQL, with its house rules inside the SQL
 > - [ ] Everything served arrives through one traced context call, per question
-> - [ ] Anything brought in from existing models or saved queries is owned, versioned and witnessed
+> - [ ] Anything brought in from existing models or saved queries is versioned and witnessed
 > - [ ] Gate 2: metrics scored on the sealed questions, change since the baseline recorded
 
 Card: [How to resolve a conflict](#c5)

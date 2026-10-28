@@ -1,26 +1,26 @@
 ---
 for: sponsor, domain owner, platform owner, security lead, delivery lead
-produces: the domain brief, the access list proved, named owners with hours, the agent architecture, a working trace export
+produces: the domain brief, the access list proved, the agent architecture, a working trace export
 ---
 
 # Phase 0: before the clock {#ch03}
 
 > [!RULE]
-> Start with one domain and the people who own its numbers.
+> Start with one domain. It is small enough to finish, and its open questions have someone who can settle them.
 
 ::: {.tldr}
-- **Short version.** Pick one domain and the people who own its numbers, write a one-page brief, and prove every access item works before the clock starts. Then build the smallest harness that records every step the agent takes.
-- **Do this.** Name the domain owner and eval owner, with hours per week, in the brief.
-- **Skip if** the domain, owners and access are already settled. Go to [Phase 1](#ch04) once the minimum harness exists.
+- **Short version.** Pick one domain, write a one-page brief with the bar the agent must clear, and prove every access item works before the clock starts. Then build the smallest harness that records every step the agent takes.
+- **Do this.** Write the brief, with one bar for the whole golden set: a pass rate, on every run.
+- **Skip if** the domain, the bar and access are already settled. Go to [Phase 1](#ch04) once the minimum harness exists.
 :::
 
 ::: {.scene week="Phase 0"}
-The CRO asked for one thing: a pipeline number for the top accounts that matches Finance every time. In a 90-minute kickoff, the team chose sales as the domain, named two owners, the RevOps lead and the FP&A partner, and wrote a one-page brief.
+The CRO asked for one thing: a pipeline number for the top accounts that matches Finance every time. In a 90-minute kickoff, the team chose sales as the domain and wrote a one-page brief with the RevOps lead and the FP&A partner.
 
 Getting access took the next two weeks. Warehouse access and query history arrived within days. The slow part was recording what the agent does on each question: the chat tool kept only a daily summary, so the team added a record of every step. Phase 1 started once one question could be followed from start to finish.
 :::
 
-An answer is only right against a definition someone owns and a bar someone set. Phase 0 names those people, writes the bar down and opens the access every later fix depends on. The work is small and the waiting is long. Plan for about two weeks.
+An answer is only right against a bar set before any result exists. Phase 0 picks the domain, writes the bar down and opens the access every later fix depends on. The work is small and the waiting is long. Plan for about two weeks.
 
 > [!NOTE]
 > **Building in-house, or with a partner?**
@@ -32,12 +32,12 @@ An answer is only right against a definition someone owns and a bar someone set.
 >
 > Access takes longest when an outside team needs it. In-house, Phase 0 can take days.
 
-Pick one domain: a bounded set of questions, asked by known users, over known tables. Sales pipeline, finance close and support analytics are good first domains. Choose the one with an owner who has time, real questions the business already asks, and past SQL or dashboards on its tables. Three domains at once give you three half-built golden sets and no owner with time for any of them.
+Pick one domain: a bounded set of questions, asked by known users, over known tables. Sales pipeline, finance close and support analytics are good first domains. Choose the one with real questions the business already asks, past SQL or dashboards on its tables, and someone with time to settle its definitions. Three domains at once give you three half-built golden sets and nobody with time for any of them.
 
 
 ## The brief {#ch03-brief}
 
-The brief is one page. It fixes the domain, the users, the problem, the owners and which questions need an exact answer. Phase 1 harvests questions only from inside it. The domain owner and the sponsor write it together at the kickoff.
+The brief is one page. It fixes the domain, the users, the problem, the bar and which questions need an exact answer. Phase 1 harvests questions only from inside it. It is written at the kickoff, and the sponsor sets the bar in it.
 
 ::: {.template #ch03-brief-preview file="domain-brief.yaml" title="Domain brief, short form"}
 The sales team's brief, as agreed at the kickoff.
@@ -55,29 +55,31 @@ problem: >
   Each disagreement costs an analyst a day to reconcile.
 
 owners:
-  - RevOps lead: deals, stages, amounts; 2-3 h/week
-  - FP&A partner: who the top accounts are; about 1 h/week in Phases 2 and 3
-eval_owner:   one named person, with a RevOps analyst and an FP&A analyst as graders; 6-8 h in Phase 1, then about 2 h/week
+  - RevOps lead: deals, stages, amounts
+  - FP&A partner: who the top accounts are
+graders:      a RevOps analyst and an FP&A analyst
 model:        the one expected in production, named with its version
 
-governed:     open pipeline, win rate, closed-won ARR    # exact, every run
-exploratory:  slippage, pipeline creation, stage aging   # SQL shown; 4 in 5 pass
+bar:          9 in 10 golden-set questions right, on every run
+
+governed:     open pipeline, win rate, closed-won ARR    # a metric or no answer
+exploratory:  slippage, pipeline creation, stage aging   # SQL shown with the answer
 deferred:     why-questions, until the numbers are right
 out_of_scope: bookings forecast, commissions, marketing attribution
 
 ```
 :::
 
-[]{#ch03-lanes}The brief puts each kind of question in a lane. Governed questions must be exact on every run. Exploratory ones must clear one pass rate, which the sponsor writes down now, before any result exists. Name two owners if another team owns part of a definition. When the two meanings of "top 100 customers" collided in Phase 3, both people who could settle it were already named.
+[]{#ch03-lanes}The bar is one pass rate for the whole golden set, met on every run. The sponsor writes it down now, before any result exists. The brief also says which kinds of question the agent answers in the governed lane at launch and which in the exploratory lane. That is how the agent answers users; every golden-set question is graded the same way. If another team owns part of a definition, list both owners. When the two meanings of "top 100 customers" collided in Phase 3, both people who could settle it were already in the brief.
 
 Read more: [the full domain brief template](#r2-2)
 
 ## What you need before you start {#ch03-checklist}
 
-This is the checklist for Phase 0: the system access and the named people. Most delays in Phase 0 come from access, so request every item on the first day. Each item is done when its test passes. A statement that access "should work" is not a signature.
+This is the checklist for Phase 0: the system access. Most delays in Phase 0 come from access, so request every item on the first day. Each item is done when its test passes. A statement that access "should work" is not a pass.
 
 ::: {.diagram #access-checklist}
-What you need before Phase 1: five access items, each with its test, and a name and weekly hours for every role.
+What you need before Phase 1: five access items, each with its test.
 :::
 
 Trace export is the item most often left until last, and the one the hill climb depends on. In Phase 3 the trace is where you see which decision the agent guessed. A nightly summary does not count, because it reports what the agent said it did. You need a record of every call, with what was served and what SQL ran.
@@ -86,21 +88,21 @@ Read more: [What you need before you start](#c11)
 
 ## People and hours {#hours}
 
-[]{#ownership}Each role owns one part of the work. Adjust the hours to your domain, but never to zero.
+[]{#ownership}Each role covers one part of the work. Adjust the hours to your domain, but never to zero.
 
-| Role | Owns and decides | Phases 1-4 | After launch |
+| Role | Its part | Phases 1-4 | After launch |
 |---|---|---|---|
-| Exec sponsor | The bar and every gate | The kickoff, a 30-minute readout in each phase, the gates | Each release |
-| Domain owner | Approves metrics, past queries and rules; decides the conflicts provenance can't settle | 2-3 h/week, most of it in one working session | 1-2 h/week |
-| Co-owner from another team | Co-signs definitions that span both teams | About 1 h/week in Phases 2 and 3 | As conflicts need |
-| Eval owner and graders | Seal the golden set and grade every run | 6-8 h in Phase 1, then about 2 h/week | About 1 h/week |
+| Exec sponsor | Sets the bar; decides at each gate | The kickoff, a 30-minute readout in each phase, the gates | Each release |
+| Domain owner | Reviews metrics, past queries and rules; settles the conflicts provenance can't | 2-3 h/week, most of it in one working session | 1-2 h/week |
+| Co-owner from another team | Definitions that span both teams | About 1 h/week in Phases 2 and 3 | As conflicts need |
+| Eval owner and graders | Seal the golden set; audit the grading | 6-8 h in Phase 1, then about 2 h/week | About 1 h/week |
 | Agent builder | The harness and the model | About 20 h/week until the baseline, then 4-6 | Runs the loop |
 | Platform owner | Access, trace export, the tables | Phase 0, then on call | On call for schema changes |
 | Security lead (if data leaves your environment) | What leaves the building | Phase 0 | Reviews changes to data handling |
 | Context engineer (in-house: an analytics engineer) | Generates and tests candidates; never sees an expected answer | Dedicated | Hands over in Phase 4, or stays on |
 | Delivery lead (in-house: your program lead) | Runs every session and gate | Every session | Runs the handover |
 
-Put a person's name in every row. "RevOps" cannot settle a conflict. The RevOps lead can. The co-owner's hour is the line teams forget, and the agent builder's 20 hours is the line they underestimate.
+The co-owner's hour is the line teams forget, and the agent builder's 20 hours is the line they underestimate.
 
 ::: {.diagram #swimlane}
 Who does what, phase by phase. A gate closes each one.
@@ -143,16 +145,15 @@ Result rows never pass through the context layer. Every context call is logged, 
 
 ## Gate 0 {#ch03-gate}
 
-The delivery lead shows the sponsor the brief, the access tests and the named owners. The decision is to start the clock.
+Brief agreed, every access item proved. The sponsor sees the brief and the access tests, and decides whether to start the clock.
 
 > [!DONE]
-> - [ ] One domain chosen, with an owner who has time
-> - [ ] The brief written: users, problem, owners, governed and exploratory questions, out of scope
-> - [ ] One pass rate for the exploratory lane, written before any result
+> - [ ] One domain chosen, with someone who can settle its open questions
+> - [ ] The brief agreed: users, problem, the bar, governed and exploratory questions, out of scope
+> - [ ] One bar for the whole golden set, a pass rate on every run, written before any result
 > - [ ] Every access item proved by its test, including one trace read end to end
-> - [ ] A name and weekly hours next to every role
 > - [ ] The agent architecture recorded: platform-native or custom, and which model
 > - [ ] If data leaves your environment: security has walked the data-flow diagram and approved it
-> - [ ] The minimum harness has an owner and is due before the baseline
+> - [ ] The minimum harness is planned, due before the baseline
 
 Card: [The sponsor's ask](#c2)

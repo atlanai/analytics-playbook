@@ -34,9 +34,9 @@ The loop runs on eight rules. Rules 1, 2, 3 and 5 rest on our benchmark, and eac
 1. **Fix the context before you change the model.** Switching models moved our score far less than adding context: [the model chart](#ch01-models).
 2. **Write each business rule into a metric's SQL.** The past queries your analysts already ran carry the rules, and a sentence leaves the agent to translate them: [SQL, not a sentence](#ch02-form).
 3. **Build the golden set before any context.** Without sealed answers, you can't tell a fix from luck: [Evals first](#ch-evals).
-4. **Settle conflicts before the agent sees them: provenance first, then the owner.** The definition most analysts ran recently, and that matches the warehouse, usually wins. A definition kept only in a spreadsheet leaves no query history, so its owners settle it. Never let the agent pick.
+4. **Settle conflicts before the agent sees them: provenance first, then the owner.** The definition most analysts ran recently, and that matches the warehouse, usually wins. A definition kept only in a spreadsheet leaves no query history, so whoever owns that number settles it. Never let the agent pick.
 5. **Choose the lane by the use: exploratory or governed.** Exploratory answers suit questions where a person reads the SQL before acting on it. A number that goes on a board slide needs the governed lane: a metric that gives the same answer every time, or no answer: [Two lanes](#ch02-lanes).
-6. **Start with one domain and the people who own its numbers.** One domain is small enough to finish, and its owners settle what provenance can't.
+6. **Start with one domain.** One domain is small enough to finish, and its open questions have someone who can settle them.
 7. **Read the raw trace of every miss, and feed real usage back.** The summary hides the step where the agent guessed, and context left alone goes stale within a quarter.
 8. **Make the agent reliable on what happened before you ask it why.** "What was pipeline last quarter?" needs metrics. "Why did it drop?" needs a model of how the business works on top of them, and it is only worth building once the numbers hold.
 
@@ -47,14 +47,14 @@ Each phase of the lifecycle ends at a gate. Move on when the gate is met, whatev
 Phase 0 runs before the clock: the clock is the build, and it starts with Phase 1, once Phase 0's gate is met. Phase 3 is the hill climb: run the golden set, read the trace of each miss, make the smallest fix and run it again. Phase 4 releases the agent and hands it over; [What you'll walk away with](#home-outcome) lists what your team holds at the end.
 
 ::: {.diagram #phases}
-Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch, each ending at its gate. The golden set starts at 20 questions in Phase 1 and reaches 50 by launch.
+Five phases: Phase 0 to set up, then Phases 1 to 4 to build, test and launch, each ending at its gate. The golden set starts at 20 questions in Phase 1, and the graders add more before launch that the builder never saw.
 :::
 
-Before Phase 1 you need read-only warehouse access, query history and BI reports. You also need your agent harness set up to record a trace of every run, so that your first test runs are traced. Last, you need named owners with hours: [What you need before you start](#c11).
+Before Phase 1 you need read-only warehouse access, query history and BI reports. You also need your agent harness set up to record a trace of every run, so that your first test runs are traced. The full list is on [What you need before you start](#c11).
 
 ## Find your task {#lc-tasks}
 
-[]{#start-map}Each stage breaks into numbered steps. Pick a stage, then a step, to see how it is done, who does it, the template to copy and the mistake to avoid. Next step walks you through the whole method in order.
+[]{#start-map}Each stage breaks into numbered steps. Pick a stage, then a step, to see how it is done, the template to copy and the mistake to avoid. Next step walks you through the whole method in order.
 
 ::: {.diagram #method-map}
 The whole method, stage by stage. Every step links to its template or checklist, and every stage to its chapter.

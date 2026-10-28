@@ -13,7 +13,7 @@ The hardest reader of this book runs a data platform, has built text-to-SQL befo
 
 ## The skeptic's questions {#ch10-questions}
 
-The same questions come up in almost every room: a better model, few-shot retrieval, scale, and who pays for the owners' time. The card [Replies for the skeptic](#c13) has a reply to each, plus semantic layers, row-level security and lock-in.
+The same questions come up in almost every room: a better model, few-shot retrieval, scale, and who pays for the business's time. The card [Replies for the skeptic](#c13) has a reply to each, plus semantic layers, row-level security and lock-in.
 
 ## What score should we expect? {#ch10-score}
 
@@ -46,7 +46,7 @@ You don't need a budget or a vendor to start. You need an hour and one question.
 1. Take one question your leadership asks every week and list the decisions a correct answer needs, with the exercise in [The tenth question](#ch01-decisions). Find two unwritten rules.
 2. Pull 20 real questions with known answers for one domain, and run whatever agent you have against them. That is your baseline.
 3. Export the last quarter of query history for that domain. The rules your agent is missing are mostly already in it.
-4. Name the domain owner who will settle definitions, and ask for their hours in writing.
+4. Find who can settle that domain's open definitions, and book time with them.
 
 If the baseline is low and the rules are real, you have a context problem, and this book is the plan for fixing it.
 

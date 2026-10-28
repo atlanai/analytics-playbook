@@ -6,34 +6,28 @@
 <g class="t">
   <rect x="8" y="30" width="448" height="98" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
   <text x="20" y="49" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">HARVEST</text>
-  <text x="444" y="49" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">EVAL OWNER</text>
   <text x="20" y="68" style="font-size:13.5px;fill:var(--ink);font-weight:600">2-3× the questions you will seal,</text>
   <text x="20" y="85" style="font-size:13.5px;fill:var(--ink);font-weight:600">from what the business asks</text>
   <text x="20" y="103" style="font-size:12px;fill:var(--text)">from the board pack, dashboards, tickets and leaders;</text>
   <text x="20" y="119" style="font-size:12px;fill:var(--text)">rewritten as a user asks</text>
   <rect x="8" y="140" width="448" height="65" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
   <text x="20" y="159" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">DRAFT</text>
-  <text x="444" y="159" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">GRADERS</text>
   <text x="20" y="178" style="font-size:13.5px;fill:var(--ink);font-weight:600">Expected SQL and answer, one format per item</text>
-  <text x="20" y="196" style="font-size:12px;fill:var(--text)">six fields required, the rest optional</text>
+  <text x="20" y="196" style="font-size:12px;fill:var(--text)">five fields required, the rest optional</text>
   <rect x="8" y="217" width="448" height="65" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
   <text x="20" y="236" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">RUBRIC</text>
-  <text x="444" y="236" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">EVAL OWNER</text>
   <text x="20" y="255" style="font-size:13.5px;fill:var(--ink);font-weight:600">How each answer is graded, before any result</text>
   <text x="20" y="273" style="font-size:12px;fill:var(--text)">a tolerance per answer type; an LLM judge checks the shape</text>
   <rect x="8" y="294" width="448" height="65" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
   <text x="20" y="313" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">VERIFY</text>
-  <text x="444" y="313" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">GRADERS · DOMAIN OWNER</text>
   <text x="20" y="332" style="font-size:13.5px;fill:var(--ink);font-weight:600">Every draft checked against its source</text>
-  <text x="20" y="350" style="font-size:12px;fill:var(--text)">a dispute goes to the domain owner, who decides</text>
+  <text x="20" y="350" style="font-size:12px;fill:var(--text)">a dispute goes to whoever owns that number</text>
   <rect x="8" y="371" width="448" height="65" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.8"/>
   <text x="20" y="390" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">SEAL</text>
-  <text x="444" y="390" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">EVAL OWNER</text>
   <text x="20" y="409" style="font-size:13.5px;fill:var(--ink);font-weight:600">Pick at least 20</text>
   <text x="20" y="427" style="font-size:12px;fill:var(--text)">hashed, committed, stored where no agent or pipeline reads</text>
   <rect x="8" y="448" width="448" height="65" rx="7" style="fill:var(--bg);stroke:var(--ink);stroke-width:1.5"/>
   <text x="20" y="467" class="m" style="font-size:11.5px;fill:var(--accent);letter-spacing:.04em">BASELINE</text>
-  <text x="444" y="467" text-anchor="end" class="m" style="font-size:11.5px;fill:var(--muted);letter-spacing:.04em">AGENT BUILDER RUNS · EVAL OWNER GRADES</text>
   <text x="20" y="486" style="font-size:13.5px;fill:var(--ink);font-weight:600">Bare schema, once per question</text>
   <text x="20" y="504" style="font-size:12px;fill:var(--text)">the number every later change is measured against</text>
   <rect x="8" y="525" width="448" height="65" rx="7" style="fill:var(--tint);stroke:var(--accent);stroke-width:1.5"/>

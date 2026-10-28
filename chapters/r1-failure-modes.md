@@ -28,7 +28,7 @@ The Evidence column says **measured** when a benchmark comparison backs the row,
 | A house rule is served as an instruction, and a governed answer still breaks it | An instruction never reaches SQL the harness runs as served | Write the rule into the metric's population and filters | never written | diagnosis | Phase 3 |
 | Totals are several times too large | Wrong grain: a deal counted once per contract term | State the grain; check that each key appears once when you test the metric against the warehouse | never written | diagnosis | Phase 2 |
 | Multi-table questions fail with a join graph or semantic views in place | Declared joins say what connects, never how the answer is assembled | Serve a composed statement: a metric or a complete trusted past query | never written | measured | Phase 2 |
-| Every piece is served and a multi-step answer still fails | The state it needs does not exist in the warehouse, such as "created and still open" | Pre-assemble it as a metric, or have the platform owner build the state; hold that kind of question back until then | never written | measured | Phase 3 |
+| Every piece is served and a multi-step answer still fails | The state it needs does not exist in the warehouse, such as "created and still open" | Pre-assemble it as a metric, or build the state in the warehouse; hold that kind of question back until then | never written | measured | Phase 3 |
 | Filters, joins and metric names are all in context, and the answer is still wrong | The parts were served as separate hints | Serve whole decisions: population, grain, time rule and filters in one statement | never written | diagnosis | Phase 2 |
 | A large documentation effort barely moves the score | Documentation describes tables and carries no decisions | Keep it as the floor; spend the next hour on metrics | never written | measured | Phase 2 |
 | Generation yields hundreds of trivial "metrics" | Profiling and scratch queries promoted to candidates | Filter candidates by provenance: distinct analysts, runs, recency | never written | diagnosis | Phase 2 |
@@ -41,7 +41,7 @@ The Evidence column says **measured** when a benchmark comparison backs the row,
 | Wide dashboard objects cost questions | They crowd the decisive metric out | Keep metrics narrow and atomic; cap what is served per question | written, not served | measured | Phase 2 |
 | Search recall improves and accuracy does not | Recall counts candidates found; accuracy needs the decisive one served | Measure answers against the golden set, never retrieval alone | written, not served | measured | Phase 3 |
 | Column profiles bloat the prompt with no gain | Profiling describes data shape and carries no decisions | Look up values only when a question names one | written, not served | measured | Phase 2 |
-| Generic methodology or instruction packs add cost and no accuracy | Generic prose competes with domain rules | Serve small, owned, domain-specific rules only | written, not served | measured | Phase 2 |
+| Generic methodology or instruction packs add cost and no accuracy | Generic prose competes with domain rules | Serve small, domain-specific rules only | written, not served | measured | Phase 2 |
 | Embedding search misses the query that shares the question's field names | Embeddings blur identifiers and literals | Rank on field names and literals first, provenance as the tie-break | written, not served | measured | Phase 2 |
 | The agent answers from the wrong table | Table choice fails before any SQL is written | Serve one authoritative source per concept; put metrics on it | written, not served | measured | Phase 2 |
 | A schema change silently breaks trusted queries | Nothing re-checks them when a table changes | Rerun the regression set and re-test against the warehouse on every schema change; pull what fails | written, not served | diagnosis | In production |
@@ -56,9 +56,9 @@ The Evidence column says **measured** when a benchmark comparison backs the row,
 | A high score nobody reproduces on a fresh set | Golden-set SQL leaked into the context | Purge by hash; exclude the agent's own queries from history; audit runs for leaks | key wrong | measured | Phase 1 |
 | A business term hands the agent the answer | A term matches the expected answer's label | Serve a value term only when the question names that value | key wrong | diagnosis | Phase 1 |
 | Answers within tolerance are graded right while the logic is wrong | Grading on data alone | Grade returned data first, then the SQL against the item's decisions | key wrong | diagnosis | Phase 1 |
-| A question no change ever fixes, or one the agent gets right on every run and is graded wrong | The key itself is wrong (the grader used the calendar quarter) | Audit the key before tuning; the eval owner corrects and reseals it | key wrong | measured | Phase 3 |
+| A question no change ever fixes, or one the agent gets right on every run and is graded wrong | The key itself is wrong (the grader used the calendar quarter) | Audit the key before tuning; correct and reseal it | key wrong | measured | Phase 3 |
 | An item passes on every run and the answer is still wrong | The key is wrong and the agent matched it | At every gate, re-grade five random passes by hand against their source; correct in either direction | key wrong | diagnosis | Phase 4 |
-| A governed answer is wrong the same way on every run | A wrong metric is wrong every time, for everyone; repeat runs can't see it | Test every metric and have its owner approve it before it serves; keep a golden-set item per metric; run the random pass audit | never written | diagnosis | Phase 2 |
+| A governed answer is wrong the same way on every run | A wrong metric is wrong every time, for everyone; repeat runs can't see it | Test and approve every metric before it serves; keep a golden-set item per metric; run the random pass audit | never written | diagnosis | Phase 2 |
 | A one-run gain is announced as progress | Single runs vary by several questions | Treat gaps smaller than your run-to-run variation as unresolved; score items right on every run | key wrong | measured | Phase 3 |
 | A high overall score hides confident wrong answers on board numbers | Exploratory SQL is right most of the time and wrong the rest | Put exact recurring numbers in the governed lane: metric or no answer | key wrong | measured | Phase 0 |
 | Errored runs drag the average down | Harness errors counted as wrong answers | Report errors separately; never average them in | budget | diagnosis | Phase 3 |
@@ -72,7 +72,7 @@ These rows come from our field engagements. Each maps to a Phase 0 decision or t
 
 | Symptom | Cause | Fix | Branch | Evidence | Phase |
 |---|---|---|---|---|---|
-| The weeks slip; decisions wait for one person | The domain owner can spare only minutes a week | Named people, hours agreed with the owner's manager and on calendars; provenance settles what it can | never written | diagnosis | Phase 0 |
+| The weeks slip; decisions wait for one person | The one person who can settle definitions has minutes a week | Agree their time before Phase 1 starts; let provenance settle what it can | never written | diagnosis | Phase 0 |
 | The conflict list grows faster than the owner can resolve it | Every conflict treated as urgent and sent to a person | Let provenance settle the clear cases; bring the owner only the split ones, ranked by use; the rest wait in the backlog | never written | measured | Phase 2 |
 | A dispute settled while sealing surfaces weeks later in a trace | The wall between the key and the context hid the conflict along with the value | Send the dispute to the conflict list as well, with no sealed value attached | never written | diagnosis | Phase 1 |
 | A pasted list of IDs is set aside and nobody traces it | A set-aside item is not a conflict, so it never reaches the owner | Trace every pasted list to its source before approving the concept it touches | never written | diagnosis | Phase 2 |
@@ -84,7 +84,7 @@ These rows come from our field engagements. Each maps to a Phase 0 decision or t
 | Two domains own the same word and disagree, and nobody can decide | No one decides across domains | The sponsor names an arbiter before domain two's Phase 0 ends | never written | diagnosis | Phase 4 |
 | High pilot accuracy fails the first real user | The test set came from the tuning examples | Build the golden set from real questions, seal it, hold some back | key wrong | diagnosis | Phase 1 |
 | The golden set is still being written in Phase 3 | Drafted from scratch | Start from verified dashboards, reports and analyst work; seal 20 in Phase 1 | key wrong | diagnosis | Phase 1 |
-| Every miss becomes a question for the delivery team | Nobody on the company's side owns correctness | The eval owner and graders own the golden set; the domain owner settles definitions | key wrong | diagnosis | Phase 0 |
+| Every miss becomes a question for the delivery team | The company's side never took on correctness | The company's graders keep the golden set, and the company settles its own definitions | key wrong | diagnosis | Phase 0 |
 | The sponsor rejects a result the team celebrated | The bar was never written down | Set the bar in Phase 0, before any result exists | key wrong | diagnosis | Phase 0 |
 | Phase 3 starts with no traces to read | Trace export arrived last | Test one trace end to end, per call, before Phase 1 | budget | diagnosis | Phase 0 |
 | The clock starts, then stops for a data-handling review | Security was approached late | Walk security through what leaves the building in Phase 0 | budget | diagnosis | Phase 0 |
@@ -104,4 +104,4 @@ Sometimes a miss will not sort into one branch of [Why did this miss?](#c6). The
 | Serve the answer as prose | Give the agent its own procedure in words | If accuracy does not move, the gap was never knowledge; serve SQL or a rule |
 | Count the steps | Compare the steps the expected SQL needs with the steps the agent built | Whether the miss is assembly; pre-build it as a metric or a table |
 
-The last three need the golden set to score. The eval owner runs the scoring, and the context engineer sees only the verdicts.
+The last three need the golden set to score. The context engineer sees only the verdicts.
