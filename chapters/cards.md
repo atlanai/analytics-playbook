@@ -33,7 +33,7 @@ Phase 1 can't start until you make five decisions:
 1. The domain: one business area, its problem and its users.
 2. The bar: one pass rate for the whole golden set, met on every run, written down now.
 3. The agent architecture: where people ask, which harness runs the loop, and which model.
-4. The people and their time, as set out in [Phase 0](#hours). The domain owner's two to three hours a week matter most: engagements stall where that shrinks to minutes.
+4. The people and their time, as set out in [Phase 0](#hours); the hours are indicative. The domain owner's two to three hours a week matter most: engagements stall where that shrinks to minutes.
 5. The start date. Phase 0 ends when the brief is agreed and every access item is proved.
 
 At the end of Phase 4 you decide go, no-go or go with conditions.

@@ -14,7 +14,6 @@ You are the exec sponsor, or the data leader who will answer for the agent. The 
 4. [Two lanes](#ch02-lanes)
 5. [Phase 0: before the clock](#ch03)
 6. [Is it ready to launch?](#ch07-launch-gate)
-7. [The skeptic's questions](#ch10-questions)
 
 Your cards: [The sponsor's ask](#c2), [What the sponsor sees at each gate](#c10) and [Is it ready to launch?](#c12).
 
@@ -57,13 +56,12 @@ Your cards: [What you need before you start](#c11), [The eval owner's week](#c3)
 
 ## What you'll walk away with {#paths-outcome}
 
-At the end of Phase 4, your team holds:
+By the end of this playbook, you will have learned how to build:
 
-- an agent that cleared the bar your sponsor set, on one domain;
+- an agent that clears the bar your sponsor sets, on one domain;
 - the metrics behind it, each with an owner and a version;
 - a golden set of real questions that tests every later change;
-- a decisions log;
-- people on your side who have run a round together, with a round alone booked within two weeks.
+- a team on your side that can run the loop on its own.
 
 [Hand over](#handover) covers how each piece passes to your team.
 
@@ -73,7 +71,7 @@ At the end of Phase 4, your team holds:
 - **[The method at a glance](#start).** The loop, its eight rules and the gate each phase must clear, on one page.
 - **The principles.** [Evals first](#ch-evals), [The metric is the unit](#ch02) and [Serve per question](#ch-retrieval): what to build, and why.
 - **The phases.** [Phase 0](#ch03) to [Phase 4](#ch07), then [Keep it running](#ch-run) after launch.
-- **The toolkit.** [Cards](#cards), [Templates](#r2) and [Straight answers](#ch10) to the questions a skeptic will ask.
+- **The toolkit.** [Cards](#cards) and [Templates](#r2).
 - **Research and reference.** [What we found](#results), [How we measured](#r3), [What others found](#r6), failure modes, the glossary and tooling.
 
 ## How to read this book {#lc-read}
@@ -89,7 +87,7 @@ Press <kbd>?</kbd> anywhere for keyboard shortcuts.
 
 ## About this book {#colophon}
 
-Published by Atlan. The book is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): copy and adapt it with credit. The code that builds it is under the MIT License. Product names are their owners' trademarks. Maintained by the playbook maintainers. A change to any number must include its source evidence, and every change goes through [review by the maintainers](#r5-changes).
+Published by Atlan. The book is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): copy and adapt it with credit. The code that builds it is under the MIT License. Product names are their owners' trademarks. Maintained by the playbook maintainers. A change to any number must include its source evidence, and every change goes through [review by the maintainers](#r5-changes). Questions, corrections or a result to share: [open an issue](https://github.com/atlanai/analytics-playbook/issues) or email Himanshu Sikaria at himanshu@atlan.com.
 
 # Where are you starting? {#assess}
 

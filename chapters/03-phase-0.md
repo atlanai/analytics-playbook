@@ -88,7 +88,7 @@ Read more: [What you need before you start](#c11)
 
 ## People and hours {#hours}
 
-[]{#ownership}Each role covers one part of the work. Adjust the hours to your domain, but never to zero.
+[]{#ownership}Each role covers one part of the work. The hours are indicative; adjust them to your domain, but never to zero.
 
 | Role | Its part | Phases 1-4 | After launch |
 |---|---|---|---|

@@ -11,7 +11,7 @@ Chapters are pandoc Markdown in `chapters/`. `python3 build.py` assembles them i
 | How to build one · principles | `02a-evals-first`, `02b-metric-unit`, `02c-serve-per-question` | `#ch-evals`, `#ch02` (with `#ch-sv`), `#ch-retrieval` | |
 | How to build one · phases | `03-phase-0`, `04-week-1`, `05-week-2`, `06-week-3`, `07-week-4` | `#ch03` … `#ch07` | `04-phase-0`, `05-weeks-1-2`, `06-weeks-3-4`, `07-weeks-5-6`, `08-release-and-run` |
 | How to build one · after launch | `08-after-launch` | `#ch-run`, `#ch08`, `#ch09` | `07b-keep-it-running`, `08-answer-why`, `09-delivery-lead` are built until it exists |
-| Toolkit | `00-start` (doors, assessment), `cards`, `r2-templates`, `10-straight-answers`, `videos`, `podcasts` | `#doors`, `#assess`, `#cards`, `#r2`, `#ch10`, `#videos`, `#listen` | |
+| Toolkit | `00-start` (doors, assessment), `cards`, `r2-templates`, `videos`, `podcasts` | `#doors`, `#assess`, `#cards`, `#r2`, `#videos`, `#listen` | |
 | Research and reference | `r0-results`, `r3-evidence`, `r6-field-research`, `r1-failure-modes` … `r5-tooling` | `#results`, `#r3`, `#r6`, `#r1` … `#r5` | |
 
 The sidebar groups pages by what the reader is doing (`NAV_GROUPS` in `build.py`: Why it is hard, How to build one, Toolkit, Research and reference; `NAV_SECTION` puts the Learn and Resources headings above them), each group collapsible and opened on the current page; a page not named there falls into a trailing group named after its part. The table above still sets the reading order and prev/next.

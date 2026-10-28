@@ -23,7 +23,7 @@
 
 ---
 
-Talk-to-data agents pass the demo and fail on the tenth real question. The wrong answers look right, so nobody notices until a number reaches a board deck.
+Analytics agents pass the demo and fail on the tenth real question. The wrong answers look right, so nobody notices until a number reaches a board deck.
 
 This playbook shows how to fix that. It covers what the agent has to know, how to build that knowledge and measure it, and who does what, phase by phase, until your team runs the loop on its own. It is written for whoever does the work: your own team, a partner, or a forward-deployed engineer.
 
@@ -79,9 +79,9 @@ Work one domain at a time: scope, test, generate metrics, resolve conflicts, hil
 
 | You are… | Recommended reading | Your cards |
 |---|---|---|
-| **Sponsoring it**: CDAO, VP Data or AI, exec sponsor | [The method at a glance](chapters/00-method.md), [Why analytics agents are hard](chapters/01-why-hard.md) and [Evals first](chapters/02a-evals-first.md). About 20 minutes, or the three-minute [overview video](https://analytics-playbook.atlan.com/#videos) | The sponsor's ask · What the sponsor sees at each gate · Is it ready to launch? |
-| **Building it**: agent builder, context engineer, analytics engineer | [Evals first](chapters/02a-evals-first.md) → [The metric is the unit](chapters/02b-metric-unit.md) → [Serve per question](chapters/02c-serve-per-question.md) → [Phase 0](chapters/03-phase-0.md) → [Phases 1-4](chapters/04-week-1.md) → [Keep it running](chapters/08-after-launch.md) | What you need before you start · Why did this miss? · How to resolve a conflict |
-| **Running it**: delivery lead, partner consultant, internal program lead | [The method at a glance](chapters/00-method.md) → [Phase 0](chapters/03-phase-0.md) → Phases 1-4 → the ceremonies and stalls in [Keep it running](chapters/08-after-launch.md) | What you need before you start · The eval owner's week · What to do when · Deliver as a partner |
+| **Sponsoring it**: CDAO, VP Data or AI, exec sponsor | [The method at a glance](chapters/00-method.md), [Why analytics agents are hard](chapters/01-why-hard.md) and [Evals first](chapters/02a-evals-first.md). About 20 minutes, or the three-minute [overview video](https://analytics-playbook.atlan.com/#videos) | [The sponsor's ask](https://analytics-playbook.atlan.com/#c2) · [What the sponsor sees at each gate](https://analytics-playbook.atlan.com/#c10) · [Is it ready to launch?](https://analytics-playbook.atlan.com/#c12) |
+| **Building it**: agent builder, context engineer, analytics engineer | [Evals first](chapters/02a-evals-first.md) → [The metric is the unit](chapters/02b-metric-unit.md) → [Serve per question](chapters/02c-serve-per-question.md) → [Phase 0](chapters/03-phase-0.md) → [Phases 1-4](chapters/04-week-1.md) → [Keep it running](chapters/08-after-launch.md) | [What you need before you start](https://analytics-playbook.atlan.com/#c11) · [Why did this miss?](https://analytics-playbook.atlan.com/#c6) · [How to resolve a conflict](https://analytics-playbook.atlan.com/#c5) |
+| **Running it**: delivery lead, partner consultant, internal program lead | [The method at a glance](chapters/00-method.md) → [Phase 0](chapters/03-phase-0.md) → Phases 1-4 → the ceremonies and stalls in [Keep it running](chapters/08-after-launch.md) | [What you need before you start](https://analytics-playbook.atlan.com/#c11) · [The eval owner's week](https://analytics-playbook.atlan.com/#c3) · [What to do when](https://analytics-playbook.atlan.com/#c9) · [Deliver as a partner](https://analytics-playbook.atlan.com/#c14) |
 
 Cards are one-page checklists you can print. Not sure where you stand? Take the [self-assessment](https://analytics-playbook.atlan.com/#assess); it routes you to the chapters you need.
 
@@ -100,7 +100,7 @@ Cards are one-page checklists you can print. Not sure where you stand? Take the 
 | | [Phase 3: hill-climb from traces](chapters/06-week-3.md) | Reading the raw trace, the three kinds of miss, the smallest fix, when to stop |
 | | [Phase 4: release and hand over](chapters/07-week-4.md) | The launch gate, how the agent reaches users, and the handover |
 | | [Keep it running](chapters/08-after-launch.md) | The production loop, drift triggers, domain two, answering why, the ceremonies and gates, what to do when things stall |
-| **Toolkit** | [Where are you starting?](chapters/00-start.md) · [Cards](chapters/cards.md) · [Templates](chapters/r2-templates.md) · [Straight answers](chapters/10-straight-answers.md) · [Videos](chapters/videos.md) | The readiness self-assessment, 14 printable cards, 21 copy-paste templates, the skeptic's questions, and nine narrated videos, about 26 minutes in all |
+| **Toolkit** | [Where are you starting?](chapters/00-start.md) · [Cards](chapters/cards.md) · [Templates](chapters/r2-templates.md) · [Videos](chapters/videos.md) | The readiness self-assessment, 14 printable cards, 21 copy-paste templates and nine narrated videos, about 26 minutes in all |
 | **Research** | [What we found](chapters/r0-results.md) · [How we measured](chapters/r3-evidence.md) · [What others found](chapters/r6-field-research.md) | Every result with its cost, the misses and why, the benchmark method, and outside research next to ours |
 | **Reference** | [Failure modes](chapters/r1-failure-modes.md) · [Glossary](chapters/r4-glossary.md) · [Tooling](chapters/r5-tooling.md) · [Semantic layers compared](chapters/r7-semantic-layers.md) | A failure index you look up by symptom, the vocabulary, sources, how to contribute, and one model in six semantic-layer syntaxes |
 
@@ -111,7 +111,6 @@ The chapters follow one engagement, a sales domain, from the Phase 0 checklist t
 - **Read online:** the [published guide](https://analytics-playbook.atlan.com/), with diagrams, printable cards and checklists that remember your progress.
 - **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 44 minutes in all, and [ten narrated videos](https://analytics-playbook.atlan.com/#videos), about 31 minutes. The files are in [`media/`](media/).
 - **Read on GitHub:** every chapter is plain Markdown in [`chapters/`](chapters/).
-- **Build it yourself:** with pandoc 3.9 or newer, run `python3 build.py --check --site _site` and open `_site/index.html`. `python3 build.py` on its own writes `playbook.html`, a single-file edition you can send or print.
 
 ## Contribute
 
@@ -123,7 +122,7 @@ Found something wrong, or have a field result to add? Open an issue or a pull re
 
 ## Contact
 
-Questions about the playbook, a result you want to share, or a correction? [Open an issue](https://github.com/atlanai/analytics-playbook/issues) or a pull request.
+Questions about the playbook, a result you want to share, or a correction? [Open an issue](https://github.com/atlanai/analytics-playbook/issues) or a pull request, or email Himanshu Sikaria at himanshu@atlan.com.
 
 ## FAQ
 
