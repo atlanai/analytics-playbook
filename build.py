@@ -870,7 +870,7 @@ def transform_article(aid, inner, part_label, part_key, meta, ladder, collected_
         if meta.get(k):
             metas.append(f'<span><b>{esc(k.title() if k != "for" else "For")}</b> {esc(meta[k])}</span>')
     if aid == "listen":
-        metas.append('<span><b>Listen</b> 3 episodes · 9–20 min each</span>')
+        metas.append('<span><b>Listen</b> 3 episodes · 12–21 min each</span>')
     else:
         metas.append(f'<span><b>Read</b> {esc(minutes)} min</span>')
     cur = phase_index(meta.get("phase", ""), slot) if slot and (part_key == "part2" or slot in [p[0] for p in PHASES]) else None

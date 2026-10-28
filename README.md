@@ -24,7 +24,7 @@ Analytics agents pass the demo and fail on the tenth real question. The wrong an
 
 This playbook shows how to fix that. It covers what the agent has to know, how to build that knowledge and measure it, and who does what, phase by phase, until your team runs the loop on its own. It is written for whoever does the work: your own team, a partner, or a forward-deployed engineer.
 
-Prefer listening? [Choose a podcast for your role](https://analytics-playbook.atlan.com/#listen), 9–20 minutes each. Audio plays while you read; transcripts are available for every episode.
+Prefer listening? [Choose a podcast for your role](https://analytics-playbook.atlan.com/#listen), 12–21 minutes each. Audio plays while you read; transcripts are available for every episode.
 
 ## The problem in one query
 
@@ -108,7 +108,7 @@ The chapters follow one engagement, a sales domain, from the Phase 0 checklist t
 ## Use it
 
 - **Read online:** the [published guide](https://analytics-playbook.atlan.com/), with diagrams, printable cards and checklists that remember your progress.
-- **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 44 minutes in all, and [ten narrated videos](https://analytics-playbook.atlan.com/#videos), about 31 minutes. The files are in [`media/`](media/).
+- **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 46 minutes in all, and [ten narrated videos](https://analytics-playbook.atlan.com/#videos), about 31 minutes. The files are in [`media/`](media/).
 - **Read on GitHub:** every chapter is plain Markdown in [`chapters/`](chapters/).
 
 ## Contribute
