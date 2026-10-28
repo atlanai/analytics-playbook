@@ -111,6 +111,10 @@ The chapters follow one engagement, a sales domain, from the Phase 0 checklist t
 - **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 46 minutes in all, and [ten narrated videos](https://analytics-playbook.atlan.com/#videos), about 31 minutes. The files are in [`media/`](media/).
 - **Read on GitHub:** every chapter is plain Markdown in [`chapters/`](chapters/).
 
+## A Note To Our Readers
+
+We've been working on this problem since we were a data team ourselves. This playbook is our best attempt so far, not the final word. We've tried to show all our work: every result, how we measured it, and where it fell short. We'll keep updating it as we learn more, test new methods and as the AI ecosystem changes. If you build, lead or implement analytics agents, we want to hear what you find.
+
 ## Contribute
 
 Found something wrong, or have a field result to add? Open an issue or a pull request. The build check runs on every PR. It fails on broken links, unregistered evidence IDs, missing diagrams and banned phrasing.
