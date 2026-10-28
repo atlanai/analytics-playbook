@@ -31,6 +31,8 @@ TPL = ROOT / "template.html"
 TITLE = "The FDE Playbook for Analytics Agents"
 SITE_URL = os.environ.get("PB_SITE_URL", "")  # optional canonical base for the .md links; unset, they stay relative
 REPO_URL = os.environ.get("PB_REPO_URL", "https://github.com/atlanai/analytics-playbook")  # the public source repo; PB_REPO_URL overrides it
+SIGNUP_ORIGIN = "https://analytics-playbook.atlan.com"
+SIGNUP_PREVIEW = os.environ.get("PB_SIGNUP_PREVIEW", "") == "1"  # explicit loopback-only preview opt-in
 
 # (part label, part key, [slot]). A slot is (V3 stem, [V2 fallback stems], legacy). The exact V3 file wins; until a
 # writer creates it the build uses the first V2 fallback that exists and says so. A legacy slot is a V2 chapter
@@ -988,6 +990,7 @@ def build_nav(articles, parts_order):
 
     out = ['<div class="toc-tools"><input type="search" id="toc-q" placeholder="Filter contents  /" aria-label="Filter contents"><div id="toc-hits" hidden></div></div>',
            f'<a class="toc-home" href="#home">{icon("home")} Overview</a>',
+           '<a class="toc-signup" href="#updates">Read the playbook →</a>',
            '<div class="toc-path" id="toc-path"></div>', '<div class="toc-list">']
     for label, rows in groups:
         if label in NAV_SECTION:
@@ -1295,6 +1298,24 @@ def theme_css():
     return f"/* Bundled Geist fonts: {license_text} */\n{css}"
 
 
+def email_signup(mode):
+    """Canonical hosted pages use the signup gate; copies link to the hosted edition."""
+    link = f'<a href="{SIGNUP_ORIGIN}/#updates">Read the playbook on the website →</a>'
+    if mode not in ("site-index", "site") or SITE_URL.rstrip("/") != SIGNUP_ORIGIN:
+        return f'<p id="updates" class="signup-note signup-link">{link}</p>'
+    preview = ' data-local-preview="true"' if SIGNUP_PREVIEW else ""
+    return ('<dialog class="signup" id="updates" aria-labelledby="signup-title" aria-describedby="signup-description" closedby="none">'
+            '<h2 id="signup-title" tabindex="-1" autofocus>Unlock the Analytics Playbook</h2>'
+            '<p class="signup-intro" id="signup-description">Enter your email to read the full playbook.</p>'
+            f'<div id="signup-embed"{preview} hidden>'
+            '<p id="signup-status" class="signup-note" role="status" aria-live="polite"></p>'
+            '<div id="signup-mount" aria-busy="false"></div>'
+            '<button type="button" id="signup-retry" hidden>Reload form</button></div>'
+            f'<p id="signup-fallback" class="signup-note">{link}</p>'
+            '</dialog>'
+            f'<noscript><p class="signup-note">Enable JavaScript to open the email form. {link}</p></noscript>')
+
+
 def render(template, body, nav, home, idx, mode, articles):
     template = template.replace("/* {{DIAGRAM_CSS}} */", diagram_css())
     template = template.replace("/* {{THEME_CSS}} */", theme_css())
@@ -1303,6 +1324,7 @@ def render(template, body, nav, home, idx, mode, articles):
     md = MD if mode == "artifact" else {}
     out = (template.replace("{{TITLE}}", TITLE).replace("{{NAV}}", nav)
            .replace("{{HOME}}", home).replace("{{BODY}}", body).replace("{{MODE}}", mode)
+           .replace("{{EMAIL_SIGNUP}}", email_signup(mode))
            .replace("{{IDX}}", json.dumps(idx, ensure_ascii=False).replace("</", "<\\/"))
            .replace("{{CHAPTERS}}", chapter_list.replace("</", "<\\/"))
            .replace("{{SITE_URL}}", esc(SITE_URL)).replace("{{FAVICON}}", atlan_mark()).replace("{{MD}}", json.dumps(md, ensure_ascii=False).replace("</", "<\\/"))
@@ -1310,12 +1332,15 @@ def render(template, body, nav, home, idx, mode, articles):
     return out
 
 
-def site_wrap(fragment):
+def site_wrap(fragment, *, signup_preview=False):
     m = re.search(r"<title>.*?</title>", fragment, flags=re.S)
     title = m.group(0) if m else f"<title>{TITLE}</title>"
     frag = fragment.replace(title, "", 1)
+    # HubSpot inherits HTTP from localhost for nested resources; preview them over HTTPS.
+    preview_policy = ('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">'
+                      if signup_preview else "")
     return ('<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
-            f'{title}<style>:root{{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style></head><body>'
+            f'{preview_policy}{title}<style>:root{{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style></head><body>'
             f"{frag}</body></html>")
 
 
@@ -1324,9 +1349,12 @@ def write_site(outdir, template, articles, nav, home, idx):
     outdir.mkdir(parents=True, exist_ok=True)
     body = "".join(f'<article class="ch" id="{a["id"]}" data-part="{a["part_key"]}">{a["html"]}<footer class="ch-foot"></footer></article>' for a in articles)
     frag = render(template, body, nav, home, idx, "site-index", articles)
-    (outdir / "index.html").write_text(site_wrap(frag))
+    preview = SIGNUP_PREVIEW and SITE_URL.rstrip("/") == SIGNUP_ORIGIN
+    (outdir / "index.html").write_text(site_wrap(frag, signup_preview=preview))
     # anchor -> file map
     where = {"home": "index.html"}
+    for anchor in re.findall(r'(?<![\w-])id="([^"]+)"', home + email_signup("site-index")):
+        where.setdefault(anchor, "index.html")
     for a in articles:
         where[a["id"]] = f'{a["id"]}.html'
         for i in re.findall(r'(?<![\w-])id="([^"]+)"', a["html"]):
@@ -1348,7 +1376,7 @@ def write_site(outdir, template, articles, nav, home, idx):
         body = f'<article class="ch" id="{a["id"]}" data-part="{a["part_key"]}">{a["html"]}{foot}</article>'
         page = render(template, body, nav, "", idx, "site", articles)
         page = page.replace("<title>", f"<title>{esc(a['title'])} · ", 1)
-        (outdir / fname).write_text(site_wrap(rewrite(page, fname)))
+        (outdir / fname).write_text(site_wrap(rewrite(page, fname), signup_preview=preview))
     return len(articles) + 1
 
 
@@ -1365,7 +1393,8 @@ def write_gallery(outdir, template, nav, ladder_html):
             '<h1>Diagram gallery</h1></header>' + "".join(figs) + '<footer class="ch-foot"></footer></article>')
     FAIL_BUILD[:], WARN[:] = saved
     page = render(template, body, nav, "", [], "site", [])
-    (Path(outdir) / "gallery.html").write_text(site_wrap(page.replace("<title>", "<title>Gallery · ", 1)))
+    preview = SIGNUP_PREVIEW and SITE_URL.rstrip("/") == SIGNUP_ORIGIN
+    (Path(outdir) / "gallery.html").write_text(site_wrap(page.replace("<title>", "<title>Gallery · ", 1), signup_preview=preview))
 
 
 # ----------------------------------------------------------------------------- check

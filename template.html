@@ -1063,6 +1063,7 @@ body{overflow-x:clip}
 <main id="main" tabindex="-1">{{HOME}}{{BODY}}</main>
 <div class="rail-col"></div>
 </div>
+{{EMAIL_SIGNUP}}
 <aside id="podcast-player" class="audio-dock" aria-label="Podcast player" hidden>
   <audio id="podcast-audio" preload="none"></audio>
   <div class="audio-dock-row">
@@ -1088,6 +1089,82 @@ var store={get:function(k,d){try{var v=localStorage.getItem('pb.'+k);return v===
            set:function(k,v){try{localStorage.setItem('pb.'+k,JSON.stringify(v));}catch(e){}},
            del:function(k){try{localStorage.removeItem('pb.'+k);}catch(e){}}};
 var shell=$('.shell'), MODE=shell.getAttribute('data-mode')||'artifact', SPA=MODE!=='site';
+/* ---- signup gate: public embed identifiers, no credentials or email storage ---- */
+var signupUi=(function(){
+  var dialog=$('#updates'), box=$('#signup-embed'), returnFocus=null;
+  // This prevents accidental collection from forks and previews, not deliberate reuse of public IDs.
+  var localPreview=box&&box.getAttribute('data-local-preview')==='true'
+    &&(location.protocol==='http:'||location.protocol==='https:')
+    &&['localhost','127.0.0.1','[::1]'].indexOf(location.hostname)!==-1;
+  var eligible=box&&(MODE==='site-index'||MODE==='site')&&(location.origin==='https://analytics-playbook.atlan.com'||localPreview);
+  if(!eligible||!dialog||typeof dialog.showModal!=='function'){
+    $$('.toc-signup').forEach(function(link){ link.href='https://analytics-playbook.atlan.com/#updates'; });
+    // Canonical files can be copied to another host. Leave their link visible without loading a form.
+    if(box){ var fallback=$('#signup-fallback'); if(fallback){ dialog.replaceWith(fallback); fallback.id='updates'; } }
+    return null;
+  }
+  var formId='9fe9ec3a-eb26-44a4-abe2-63c057c856b9', sessionKey='pb.signup.submitted.'+formId;
+  var submitted=false, ready=false, timer;
+  try{ submitted=sessionStorage.getItem(sessionKey)==='1'; }catch(_){}
+  function locked(){ return !submitted; }
+  function open(opener){
+    if(submitted||dialog.open) return;
+    var drawerOpen=document.body.classList.contains('nav-open');
+    returnFocus=drawerOpen?$('.tb-nav'):(opener||document.activeElement);
+    if(drawerOpen) setDrawer(false);
+    dialog.showModal(); document.body.classList.add('signup-open','signup-locked');
+  }
+  var controls={open:open,auto:!submitted,locked:locked};
+  if(submitted){ $$('.toc-signup').forEach(function(link){ link.hidden=true; }); return controls; }
+  document.body.classList.add('signup-locked');
+  // Escape and browser close requests cannot dismiss the gate before a successful submission.
+  dialog.addEventListener('cancel',function(event){ event.preventDefault(); });
+  dialog.addEventListener('close',function(){
+    if(!submitted){ open(); return; }
+    document.body.classList.remove('signup-open');
+    if(location.hash==='#updates'){
+      try{ history.replaceState(null,'','#'+(current?current.id:'home')); }catch(_){}
+    }
+    var target=returnFocus&&returnFocus!==document.body&&returnFocus.isConnected&&returnFocus.getClientRects().length?returnFocus:$('#main');
+    if(target) target.focus({preventScroll:true});
+  });
+  // Keep reader shortcuts from changing the chapter behind the modal; native Tab still works.
+  document.addEventListener('keydown',function(event){
+    if(dialog.open){ if(event.key==='Escape') event.preventDefault(); event.stopPropagation(); }
+  },true);
+  var mount=$('#signup-mount'), status=$('#signup-status'), retry=$('#signup-retry');
+  box.hidden=false; $('#signup-fallback').hidden=true;
+  mount.setAttribute('aria-busy','true'); status.textContent='Loading signup form…';
+  function failed(){
+    if(ready||submitted) return;
+    clearTimeout(timer); mount.setAttribute('aria-busy','false');
+    status.textContent='The email form could not load. Check your connection and reload to try again.';
+    retry.hidden=false;
+  }
+  // Register before loading the embed. Readiness or submission failure never unlocks the playbook.
+  window.addEventListener('hs-form-event:on-ready',function(event){
+    if(!event.detail||event.detail.formId!==formId) return;
+    ready=true; clearTimeout(timer); mount.setAttribute('aria-busy','false');
+    status.textContent=''; retry.hidden=true;
+  });
+  window.addEventListener('hs-form-event:on-submission:success',function(event){
+    if(!event.detail||event.detail.formId!==formId||submitted) return;
+    submitted=true; controls.auto=false; clearTimeout(timer);
+    // Only a form-scoped success marker is retained for this tab; no submitted fields are accessed.
+    try{ sessionStorage.setItem(sessionKey,'1'); }catch(_){}
+    document.body.classList.remove('signup-locked','signup-open');
+    $$('.toc-signup').forEach(function(link){ link.hidden=true; });
+    if(dialog.open) dialog.close();
+  });
+  retry.addEventListener('click',function(){ location.reload(); });
+  var frame=document.createElement('div'); frame.className='hs-form-frame';
+  frame.setAttribute('data-region','na2'); frame.setAttribute('data-form-id',formId);
+  frame.setAttribute('data-portal-id','247826513'); mount.appendChild(frame);
+  var script=document.createElement('script');
+  script.src='https://js-na2.hsforms.net/forms/embed/247826513.js'; script.defer=true;
+  script.onerror=failed; timer=setTimeout(failed,15000); document.head.appendChild(script);
+  return controls;
+})();
 var articles=$$('article.ch'), byId={}; articles.forEach(function(a){byId[a.id]=a;});
 var chapters=[]; try{chapters=JSON.parse($('#chapters').textContent);}catch(e){}
 var idx=[]; try{idx=JSON.parse($('#idx').textContent);}catch(e){}
@@ -1178,6 +1255,8 @@ function show(a){
 function route(){
   var h=decodeURIComponent(location.hash.replace(/^#/,''))||'home';
   var parts=h.split('/'), target=document.getElementById(parts[0]);
+  // The signup is outside the articles: retain the reader behind it, including chapter deep links.
+  if(h==='updates') target=current||byId.home||articles[0];
   if(!target && parts[1]) target=document.getElementById(parts[1]);
   if(!target) target=byId.home||articles[0];
   var a=articleOf(target)||target;
@@ -1188,6 +1267,7 @@ function route(){
   if(target!==a && target.id){ target.classList.add('is-target'); }
   if(document.body.classList.contains('nav-open')) setDrawer(false);
   if(!SPA && current===null){ current=a; setNav(a.id); buildRail(a); }
+  if(h==='updates'&&signupUi) signupUi.open();
 }
 if(SPA){ addEventListener('hashchange',route); addEventListener('popstate',route); }
 /* Handle in-page anchor clicks ourselves: some hosts (the artifact viewer) intercept #links and
@@ -1198,13 +1278,18 @@ document.addEventListener('click',function(e){
   if(!a||a.hasAttribute('download')||(a.hasAttribute('data-podcast')&&document.body.classList.contains('audio-ready'))) return;
   var h=a.getAttribute('href'); if(!h||h==='#') return;
   e.preventDefault(); e.stopPropagation();
+  if(h==='#updates'&&signupUi){ signupUi.open(a); return; }
   if(a.matches('nav.toc a[data-ch].on')){ var rl=$('nav.toc .rail'); if(rl&&rl.parentNode===a.parentNode){ rl.classList.toggle('folded'); a.setAttribute('aria-expanded',String(!rl.classList.contains('folded'))); return; } }
   if(location.hash!==h){ try{ history.pushState(null,'',h); }catch(_){ try{ location.hash=h; }catch(__){} return; } }
   route();
 },true);
 route();
 if(!SPA){ current=articles[0]; setNav(current.id); buildRail(current); }
-addEventListener('beforeprint',function(){ articles.forEach(function(x){x.classList.remove('off');}); });
+if(signupUi&&signupUi.auto) signupUi.open();
+addEventListener('beforeprint',function(){
+  if(signupUi&&signupUi.locked()) return;
+  articles.forEach(function(x){x.classList.remove('off');});
+});
 addEventListener('afterprint',function(){ route(); });
 
 /* ---- page menu: copy, view or open the current page's Markdown in an agent. The site fetches <id>.md beside the

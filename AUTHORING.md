@@ -1,6 +1,77 @@
 # Authoring guide: V3 syntax, component contracts, diagrams
 
-Chapters are pandoc Markdown in `chapters/`. `python3 build.py` assembles them into `playbook.html` (the artifact fragment) and `PLAYBOOK.md`; `--check` lints; `--site DIR` writes the GitHub Pages files plus `DIR/gallery.html` (every diagram once, for review; not linked from the book). Needs pandoc. V3_SPEC.md wins over anything here that disagrees.
+Chapters are pandoc Markdown in `chapters/`. `python3 build.py` assembles them into `playbook.html` (the artifact fragment) and `PLAYBOOK.md`; `--check` lints; `--site DIR` writes the GitHub Pages files plus `DIR/gallery.html` (every diagram once, for review; not linked from the book). Needs Python 3.12+ and pandoc. V3_SPEC.md wins over anything here that disagrees.
+
+## Email signup gate
+
+The official hosted edition requires a successful HubSpot email signup before
+readers can use the playbook. The regular page loads behind a modal gate on both
+the single-page reader and individual chapter pages. There is no close button,
+**Not now**, Escape dismissal, or backdrop dismissal. Edit the dialog markup in `email_signup()` in `build.py`,
+the loader and dialog behavior in `template.html`, and styles in `theme.css`. Fields, consent,
+spam protection, and follow-up messages are managed in HubSpot. The website does
+not read, log, or store the entered fields itself. Only a matching
+`hs-form-event:on-submission:success` event unlocks the page. The browser stores
+the value `1` in `sessionStorage` under `pb.signup.submitted.<form-id>` so reloads
+and chapter navigation in the same tab stay unlocked; it does not store the email.
+
+The build includes the form mount only for `site-index` or `site` with `PB_SITE_URL` set to
+the canonical origin in `SIGNUP_ORIGIN`. The browser also checks that exact HTTPS
+origin before loading the embed script. Default local builds, forks on other origins,
+and standalone HTML offer a plain link to the official signup gate instead. These
+checks prevent accidental collection; public form identifiers are not credentials
+and the checks do not prevent deliberate reuse. Do not add API tokens or contact
+exports to the source, generated pages, or test output.
+
+This is a client-side email collection gate, not access control. The open-source
+repository and generated static files still contain the playbook content.
+
+For an explicit local preview, build with `PB_SIGNUP_PREVIEW=1` as well as the
+canonical `PB_SITE_URL`. The preview flag allows the embed only on exact
+`localhost`, `127.0.0.1`, or `[::1]` hostnames over HTTP or HTTPS. It does not enable
+the form on other hosts or in the standalone HTML edition. Serve the output on
+loopback:
+
+```sh
+PB_SITE_URL=https://analytics-playbook.atlan.com/ PB_SIGNUP_PREVIEW=1 python3 build.py --check --site _site
+python3 -m http.server 8765 --bind 127.0.0.1 --directory _site
+```
+
+Open `http://127.0.0.1:8765/#updates`. This loads the real HubSpot form; submitting
+it creates a real submission, so use an approved test address for submission
+checks. Leave `PB_SIGNUP_PREVIEW` unset for published builds.
+The preview HTML pages also use a `Content-Security-Policy` meta tag with
+`upgrade-insecure-requests`, so HubSpot's nested resources load over HTTPS even
+when localhost uses HTTP. Published builds and standalone HTML
+omit this preview-only policy.
+
+Keep the single native `<dialog id="updates">` outside all chapter and home
+articles, with its title and description connected through `aria-labelledby`
+and `aria-describedby`. The underlying articles remain regular page content.
+Handle `#updates` before the SPA article router so opening the dialog does not
+hide the current chapter; a direct `#updates` arrival loads the home page behind
+it. Individual chapter pages must show the same gate instead of providing an
+unguarded reading route. Keep the no-JavaScript fallback explicit.
+
+Load the HubSpot script and form once per document, preserving them when the
+gate completes or chapters change. Use HubSpot's documented
+`hs-form-event:on-ready` event to clear loading state;
+a downloaded script alone does not prove the form rendered. A blocked or slow
+embed shows a reload option and keeps the gate locked. Readiness, failed
+submissions, and success events for other forms must not unlock it.
+
+Before launch, verify the site domain, form copy, consent, CAPTCHA, marketing-contact
+status, and follow-up settings in HubSpot. Run the build check and
+`python3 -m unittest discover -s tests`, then check the rendered form on mobile and
+desktop. Check arrival on the index and chapter routes, blocked Escape/backdrop
+dismissal, direct `#updates` links, and focus after successful signup. Verify
+matching success unlocks the page and the same-tab session marker avoids a
+second request after reload or chapter navigation. Verify repeated opening does
+not duplicate the script or form. Test receipt with an approved test address.
+The repository tests simulate browser events in an isolated JavaScript runtime;
+they do not submit anything to HubSpot or make network requests. The lifecycle
+tests need Node.js on `PATH`, or an explicit `NODE_BINARY` path; they use only
+Node's built-in modules and Python's standard library.
 
 ## Files and order
 

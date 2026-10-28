@@ -62,6 +62,8 @@ nav.toc .toc-repo{margin-top:auto;bottom:0;padding-bottom:calc(14px + env(safe-a
 .toc-intro strong{display:block;font-size:13px;font-weight:500;line-height:1.4}
 .toc-intro small{display:block;color:var(--muted);font-size:11px;line-height:1.6}
 .toc-home{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid transparent;border-radius:8px;text-decoration:none;color:var(--text);margin-bottom:12px;font-size:13px}
+.toc-signup{display:block;padding:0 12px 16px;font-size:12px;color:var(--accent);text-decoration:none}
+.toc-signup:hover{text-decoration:underline}
 .shell:has(#home:not(.off)) .toc-home{background:var(--panel);border-color:var(--line);color:var(--ink)}
 .toc-tools{padding:0 6px}
 #toc-q{background:var(--bg);border-color:var(--line);font:12px/1.3 var(--body);min-height:38px;padding:10px;border-radius:8px}
@@ -96,6 +98,22 @@ main{background:var(--sheet);border:1px solid var(--line);border-radius:14px;min
 .listen-cta:hover{color:var(--ink)}
 .listen-cta small{font-size:11px}
 article.ch.home .home-h{font:500 22px/1.35 var(--body);letter-spacing:-.035em;margin:0}
+.signup-open{overflow:hidden}
+/* The hosted form uses a fixed light palette, so its modal stays readable in either reader theme. */
+dialog.signup{--ink:#191919;--muted:#686868;--line:#e3e3e3;--line-2:#c7c7c7;--sheet:#fcfcfc;--accent:#0960d9;color-scheme:light;box-sizing:border-box;width:min(560px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid var(--line);border-radius:16px;background:var(--sheet);color:var(--ink);box-shadow:0 24px 80px rgb(0 0 0 / .25);overflow:auto;overscroll-behavior:contain}
+dialog.signup::backdrop{background:rgb(7 8 10 / .48)}
+dialog.signup:not([open]){display:none}
+.signup h2{margin:32px 40px 0;font:500 28px/1.25 var(--body);letter-spacing:-.035em;text-wrap:balance}
+#signup-title:focus{outline:none}
+.signup-intro{margin:8px 40px 0;color:var(--muted);font-size:14px}
+.signup-note{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.signup-note:empty{display:none}
+/* HubSpot supplies 40px of internal padding; align the surrounding copy to it. */
+#signup-mount{min-width:0;min-height:216px;margin-top:-16px}
+#signup-status,#signup-fallback{margin:24px 40px 0}
+#signup-mount .hs-form-frame{max-width:100%}
+#signup-retry{margin:12px 40px 32px;padding:10px 16px;min-height:44px;border:1px solid var(--line-2);border-radius:999px;background:var(--sheet);color:var(--ink);font-size:13px;cursor:pointer}
+@media(max-width:480px){.signup h2{font-size:24px}}
 .doors{gap:0;margin-top:16px;border-bottom:1px solid var(--line)}
 details.door{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0}
 details.door[open],details.door.picked{border-color:var(--line);box-shadow:none;background:var(--plate)}
@@ -206,7 +224,9 @@ figure.file pre{background:var(--code-bg)}
   :root,:root[data-theme]{--bg:#fff;--sheet:#fff;--plate:#f6f6f6;--panel:#eee;--ink:#191919;--text:#363636;--muted:#606060;--line:#ccc;--line-2:#aaa;--accent:#174d91;--code-bg:#f6f6f6;color-scheme:light}
   body{background:#fff;color:#191919;font-size:10.5pt}
   .shell{display:block;padding:0}main{border:0;border-radius:0;padding:0;background:#fff;min-height:0}
-  .cover::before,.cover-listen,.skip-link{display:none!important}
+  .cover::before,.cover-listen,.skip-link,.signup,.toc-signup{display:none!important}
+  .signup-locked .shell{display:none!important}
+  .signup-locked::before{content:"Enter your email on the playbook website to open the book before printing.";display:block;padding:24px;font:14pt/1.5 var(--body)}
   .cover h1{font-family:var(--body);font-size:30pt}.cover{margin-block:24px}
   .hero{box-shadow:none;background:#fff}
   .toc-intro,.toc-home{display:none}
