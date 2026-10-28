@@ -46,7 +46,7 @@ Other teams have shipped analytics agents and written up what worked, and resear
 
 ## On our benchmark {#r6-results}
 
-We rebuilt each method and ran it once on 107 questions from our own go-to-market warehouse. Most methods ran on top of our metrics layer, so each row measures what the method adds to an already strong setup. That is a harder test than the papers set themselves. Treat a gap under about 8 questions as unresolved.
+We rebuilt each method and ran it once on 107 questions from our own go-to-market warehouse. Most methods ran on top of our metrics layer, so each row measures what the method adds to an already strong setup. That is a harder test than the papers set themselves. Treat a gap under about seven points as unresolved.
 
 | Approach | Source | How it works | Accuracy | Cost per run | Seconds per question |
 |---|---|---|---|---|---|

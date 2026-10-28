@@ -49,14 +49,14 @@ A business question like this hides about five such decisions: which stages coun
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/ladder-dark.svg">
-    <img alt="Same questions, bare schema plus one kind of context: bare schema 31.8%, descriptions and documentation 39.3% (measured on another model), usage patterns 43.9%, AI-generated metrics and queries 83.2%." src="assets/ladder-light.svg" width="100%">
+    <img alt="Same questions, bare schema plus one kind of context: bare schema 31.8%, descriptions and documentation 39.3%, usage patterns 43.9%, AI-generated metrics and queries 83.2%." src="assets/ladder-light.svg" width="100%">
   </picture>
 </p>
 
 We ran the method on our own go-to-market warehouse: 107 real questions our analysts had asked, graded by code. No person wrote the context behind these results: our systems built every metric, past query and term from the query log, the catalog and existing documentation.
 
 - **Context moved the score more than the model did.** Adding context took one model from 31.8% to 83.2% on the same questions, with the metrics-layer configuration we ship. Switching models moved it far less.
-- **Past SQL beats documentation.** Queries your analysts already ran carry the business rules. More documentation added about six points for seven times the context, and a join graph added nothing.
+- **Past SQL beats documentation.** Queries your analysts already ran carry the business rules. More documentation added a few points for about seven times the context, and a join graph added nothing.
 - **SQL beats a sentence.** On multi-table questions, a metric served as SQL beat the same metric written as prose by 16 points.
 - **Retrieve per question; don't load everything.** Served per question, the metrics layer scored 83.2%. Loaded whole into every prompt, it scored 52.3% and cost more than twice as much per right answer.
 - **Provenance settles most conflicts.** When two definitions disagree, the one most analysts ran recently, and that matches the warehouse, usually wins. The owner settles the rest.

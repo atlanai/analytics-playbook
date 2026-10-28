@@ -56,9 +56,9 @@ Code grades every answer. Nobody reads an answer and decides it is close enough.
 
 ## How to read the numbers {#method-reading}
 
-- **Runs vary.** The same setup run twice moved by about eight questions out of 107. Treat a smaller gap as unresolved.
+- **Runs vary.** The same setup run twice moved by six questions out of 107, and eight questions changed verdict. Treat a gap under about seven points as unresolved.
 - **We quote the configuration we ship.** Results for other configurations are separate comparisons.
-- **One model by default.** Most comparisons use GLM-5.2. The model chart in [The tenth question](#ch01-models) and the Sonnet ablation chart name their models.
+- **One model by default.** Most comparisons use GLM-5.2. The model chart in [Why analytics agents are hard](#ch01-models) and the Sonnet ablation chart name their models.
 - **Cost and time are recorded.** Every run logs tokens, cost and seconds per question, so a better score can be weighed against what it costs.
 
 ## What it can't tell you {#method-limits}
