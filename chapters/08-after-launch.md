@@ -11,10 +11,10 @@ produces: the production loop, drift triggers, the domain-two plan, the ceremoni
 ::: {.tldr}
 - **Short version.** After launch, real questions and corrections flow back into the context every week, a schema change triggers a regression run before it reaches users, and the next domain starts from what this one built. Once the numbers hold, the sponsor's why-questions get a second kind of context, kept small. That part is practice, not yet measured. Whoever runs the program keeps the calendar and never decides a definition.
 - **Do this.** Book a weekly trace hour and decide the queue in it.
-- **Skip if** you haven't launched yet, except [Run the ceremonies](#ceremonies): book that calendar at the kickoff.
+- **Skip if** you haven't launched yet, except [Run the ceremonies](#ceremonies) and [What to do when things stall](#ch09-stalls), which apply from the kickoff.
 :::
 
-Launch is where the agent meets questions nobody wrote down. From here the job changes: keep the context true as the business moves, use what domain one built to start the next one faster, and run the whole thing on gates rather than dates. Your team runs all of it, with no outside help.
+Launch is where the agent meets questions nobody wrote down. From here the job changes: keep the context true as the business moves, use what domain one built to start the next one faster, and run the whole thing on gates rather than dates. After the handover, your team runs the loop on its own.
 
 ## Run the production loop {#ch07-loop}
 

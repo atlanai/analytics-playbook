@@ -1232,8 +1232,6 @@ def landing(articles, ladder, collected=(), vids=()):
             f'<span class="meta"><span>Five phases</span><span>{nch} chapters</span>{f"<span>{ncards} cards</span>" if ncards else ""}</span></div>'
             f'<div class="cover-t"><h1>{TITLE}<span>From demo to production.</span></h1>'
             f'<p class="thesis">Your analytics agent gets questions wrong when it lacks your business context. It needs to know what each metric means, which tables join, and how your analysts already write the SQL. A better model leaves that gap open. We measured this on our own benchmark, with one model and one question set throughout. This playbook turns what worked into a method: build that context as a governed, measured asset, one domain at a time.</p></div>'
-            '<p class="cover-listen"><a class="listen-cta" href="#listen-sponsor" data-podcast="listen-sponsor">'
-            '<span aria-hidden="true">▶</span> Listen to the overview <small>14 min</small></a></p>'
             f'{hero}</header>{home_vid}{home_secs}'
             f'<h2 class="home-h">Pick your path</h2>{doors_html}{links}</article>'), paths
 
