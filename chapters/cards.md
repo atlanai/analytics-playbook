@@ -94,7 +94,7 @@ It comes back with five:
 - trusted past queries: the top matches, each as complete SQL
 - the rules that apply, as instructions
 - the business terms the question matched
-- the lane: governed when a metric covers the question, otherwise exploratory
+- the lane: governed if the brief marks this kind of question governed, otherwise exploratory. A governed question with no matching metric gets a refusal
 
 Fix the shape of the call on day one. In Phase 2 the metrics arrive behind the same call and nothing else changes, so later scores compare with the baseline.
 

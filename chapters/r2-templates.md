@@ -388,9 +388,12 @@ expected:     {accounts: 91, deals: 340, open_pipeline: 412000000}
 expected_sql: |   # a full copy, never a link, so the sealed answer never moves when a metric does
   WITH latest_term AS (
     SELECT account_id, arr, ROW_NUMBER() OVER (PARTITION BY subscription_id ORDER BY start_date DESC) AS rn
-    FROM billing.subscription_term WHERE status = 'active' AND start_date <= DATE '2026-06-30'),
-  top_accounts AS (
-    SELECT account_id FROM latest_term WHERE rn = 1 GROUP BY account_id ORDER BY SUM(arr) DESC LIMIT 100)
+    FROM billing.subscription_term
+    WHERE start_date <= DATE '2026-06-30' AND (end_date IS NULL OR end_date > DATE '2026-06-30')),  -- in force on the as-of date
+  top_accounts AS (                -- internal and test accounts never take a top-100 slot
+    SELECT lt.account_id FROM latest_term lt JOIN crm.account a ON a.id = lt.account_id
+    WHERE lt.rn = 1 AND NOT a.is_internal AND NOT a.is_test
+    GROUP BY lt.account_id ORDER BY SUM(lt.arr) DESC, lt.account_id LIMIT 100)
   SELECT COUNT(DISTINCT o.account_id) AS accounts, COUNT(*) AS deals, SUM(o.arr) AS open_pipeline
   FROM crm.opportunity_snapshot o
   JOIN top_accounts t ON t.account_id = o.account_id JOIN crm.account a ON a.id = o.account_id
@@ -550,11 +553,14 @@ sql: |
     WHERE h.old_close_date >= DATE '2026-01-01' AND h.old_close_date < DATE '2026-04-01'
       AND h.new_close_date >= DATE '2026-04-01'
       AND h.changed_at >= DATE '2026-01-01' AND h.changed_at < DATE '2026-04-01')
-  SELECT r.name AS rep, COUNT(*) AS slipped, SUM(o.arr) AS arr
+  SELECT r.id AS rep_id, r.name AS rep, COUNT(*) AS slipped, SUM(o.arr) AS arr
   FROM slipped s
   JOIN crm.opportunity o ON o.id = s.opportunity_id
+  JOIN crm.account a ON a.id = o.account_id
   JOIN crm.rep r ON r.id = o.owner_id
-  GROUP BY r.name
+  WHERE o.stage_order >= 2 AND o.type IN ('New Business', 'Upsell')   -- the first stage and renewals never count
+    AND NOT a.is_internal AND NOT a.is_test                           -- internal and test accounts are out
+  GROUP BY r.id, r.name            -- two reps can share a name
   ORDER BY slipped DESC;
 notes: Fiscal Q3 runs January to March; the fiscal year ends 30 June.
 ```
@@ -601,7 +607,7 @@ description: >
   Open new-business and upsell pipeline in ARR, on the 100 customers with the highest current ARR.
   Some early stages never count. Finance ranks the customers; Sales owns the deals.
 population: Open new-business and upsell deals past the first stage, on the top N customers by current ARR
-grain: One row per customer; each open deal counted once (key opportunity id)
+grain: One row per open deal at the as-of snapshot; each deal counted once (key opportunity id)
 time_rule: The quarter-end snapshot at the as-of date. Quarters are fiscal; the fiscal year ends 30 June.
 formula: SUM(o.arr)
 exclusions: [first-stage deals, renewals, internal and test accounts, closed deals]
@@ -623,9 +629,12 @@ sql: |
   -- dialect: duckdb; parameters: $as_of (date, required), $n (integer, default 100)
   WITH latest_term AS (
     SELECT account_id, arr, ROW_NUMBER() OVER (PARTITION BY subscription_id ORDER BY start_date DESC) AS rn
-    FROM billing.subscription_term WHERE status = 'active' AND start_date <= $as_of),
-  top_accounts AS (
-    SELECT account_id FROM latest_term WHERE rn = 1 GROUP BY account_id ORDER BY SUM(arr) DESC LIMIT $n)
+    FROM billing.subscription_term
+    WHERE start_date <= $as_of AND (end_date IS NULL OR end_date > $as_of)),  -- in force on the as-of date
+  top_accounts AS (                -- internal and test accounts never take a top-N slot
+    SELECT lt.account_id FROM latest_term lt JOIN crm.account a ON a.id = lt.account_id
+    WHERE lt.rn = 1 AND NOT a.is_internal AND NOT a.is_test
+    GROUP BY lt.account_id ORDER BY SUM(lt.arr) DESC, lt.account_id LIMIT $n)
   SELECT COUNT(DISTINCT o.account_id) AS accounts, COUNT(*) AS deals, SUM(o.arr) AS open_pipeline
   FROM crm.opportunity_snapshot o
   JOIN top_accounts t ON t.account_id = o.account_id JOIN crm.account a ON a.id = o.account_id

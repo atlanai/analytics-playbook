@@ -8,11 +8,11 @@
   <div class="d-mid"><span class="d-tag">Design</span><div class="d-flow">in ↓</div><h5>Context layer</h5><div class="d-mono" style="margin-top:6px">ranked by trust,<br>metrics first</div><div class="d-flow" style="margin-top:8px">out ↓</div></div>
   <div class="d-col">
     <span class="d-lab">Out · what the harness receives</span>
-    <div class="d-item"><b>metrics</b>name, version, complete <code>sql</code>, owner, approval label</div>
+    <div class="d-item"><b>metrics</b>name, version, complete <code>sql</code>, owner, provenance</div>
     <div class="d-item"><b>trusted past queries</b>top-k matches, each as complete SQL with its provenance</div>
     <div class="d-item"><b>rules</b>the ones that apply to this question, as instructions</div>
     <div class="d-item"><b>business terms</b>the terms the question matched</div>
-    <div class="d-item"><b>lane</b>governed when a metric covers the class; otherwise exploratory</div>
+    <div class="d-item"><b>lane</b>governed when the brief marks this kind of question governed; otherwise exploratory</div>
   </div>
-  <div class="d-rules">every call traced: each served item by ID and version<br>governed hint + no matching metric = no answer</div>
+  <div class="d-rules">every call traced: each served item by ID and version<br>governed question + no matching metric = no answer</div>
 </div>
