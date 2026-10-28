@@ -1,0 +1,50 @@
+name: Correction
+description: Something in the playbook is wrong, unclear or broken.
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - A number or result is wrong
+        - A method step is wrong or doesn't work in practice
+        - A step is unclear
+        - A broken link, diagram or site problem
+        - Wording or a typo
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: The chapter link on the site, or the file in `chapters/`.
+      placeholder: https://analytics-playbook.atlan.com/#ch06
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What does it say now?
+      description: Quote the line.
+    validations:
+      required: true
+  - type: textarea
+    id: should
+    attributes:
+      label: What should it say, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: Required for a number or a method step. A URL for an external claim, or what you measured (n and date) for your own result.
+  - type: checkboxes
+    id: names
+    attributes:
+      label: Before you submit
+      options:
+        - label: This issue names no customer, internal system or person. This repository is public.
+          required: true

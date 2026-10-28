@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question or share privately
+    url: mailto:ailabs@atlan.com
+    about: Questions about the playbook, or a result you can't post in public. Email the maintainers.
+  - name: Report a security issue
+    url: https://github.com/atlanai/analytics-playbook/blob/main/SECURITY.md
+    about: Report security issues privately. Don't open a public issue.
