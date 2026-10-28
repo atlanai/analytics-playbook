@@ -49,7 +49,7 @@ Every external source the book draws on. Any number quoted is the source's own.
 
 ## Contributing {#r5-changes}
 
-The playbook is versioned like the context it describes. Published by Atlan. Maintained by the playbook maintainers, who approve every merge and keep the source evidence current.
+The playbook is versioned like the context it describes. Published by Atlan. Maintained by Atlan AI Labs, who approve every merge and keep the source evidence current.
 
 ### How to propose a change
 

@@ -140,7 +140,7 @@ Five phases for the first domain: Phase 0, often about two weeks, then four buil
 
 ---
 
-<p align="center">Published by <a href="https://atlan.com">Atlan</a>. Maintained by the playbook maintainers.</p>
+<p align="center">Published by <a href="https://atlan.com">Atlan</a>. Maintained by Atlan AI Labs.</p>
 
 ## License
 
