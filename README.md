@@ -109,7 +109,7 @@ The chapters follow one engagement, a sales domain, from the Phase 0 checklist t
 ## Use it
 
 - **Read online:** the [published guide](https://analytics-playbook.atlan.com/), with diagrams, printable cards and checklists that remember your progress.
-- **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 44 minutes in all, and [nine narrated videos](https://analytics-playbook.atlan.com/#videos), about 26 minutes. The files are in [`media/`](media/).
+- **Listen or watch:** [three podcasts](https://analytics-playbook.atlan.com/#listen), about 44 minutes in all, and [ten narrated videos](https://analytics-playbook.atlan.com/#videos), about 28 minutes. The files are in [`media/`](media/).
 - **Read on GitHub:** every chapter is plain Markdown in [`chapters/`](chapters/).
 - **Build it yourself:** with pandoc 3.9 or newer, run `python3 build.py --check --site _site` and open `_site/index.html`. `python3 build.py` on its own writes `playbook.html`, a single-file edition you can send or print.
 

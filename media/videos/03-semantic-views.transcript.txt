@@ -1,17 +1,17 @@
-Give an agent semantic views as its only way in... and it scores 38.3% on our 107 questions. Now compare. The bare schema, with no context at all? 31.8%. Certified metrics, with their SQL? 83.2%. So, semantic views or metrics? In other words, how should an agent's context be organized?
+Give an agent semantic views as its only way in... and it scores 38.3% on our 107 questions. Now compare. The bare schema, with no context at all? 31.8%. Metrics, with their SQL? 83.2%. So, semantic views or metrics? In other words, how should an agent's context be organized?
 
-Start with your gold layer. It carries technical names. But it says nothing about joins, formulas or dimensions. So what fills it? A semantic layer... it fills that gap. It's got four parts... what the tables mean, how they join, the metrics, and the dimensions.
+Most teams already have a semantic layer. Semantic views, metric views, LookML, or a homegrown store. It's got four parts... what the tables mean, how they join, the metrics, and the dimensions.
 
 You can lay that context out three ways... and each one repeats something. First, per table, like a data dictionary. The joins and cross-table metrics get copied. Second, per logical table, like a semantic view. Now meanings, joins and metrics get copied across views. Or third, per metric. The metric's stored once... and only joins and dimensions repeat.
 
-Here's an illustrative case. Average order value lives in three views... orders, customers and stores. And each one defines it differently. Gross, or net of refunds. Per order, or per customer. So ask the agent, what was AOV last quarter? It can't tell which one to use.
+Here's an illustrative case. Average order value lives in three views... orders, sales and returns. And each view keeps its own copy of the definition. So ask the agent, what was AOV last quarter? It can't tell which one to use.
 
 For an agent, those copies are the first cost of views. And there are two more. Second, every question has to pick a view before it can start. Third, fixes land beside the view, as text... and the agent reinterprets them on every question.
 
 So what's the alternative? Make the metric the unit. It's defined once, with its formula, verified SQL, joins and dimensions. And it compiles to the same SQL every time. The business can read it, and correct it... and the fix lands in the definition.
 
-You don't have to replatform. Keep your views. Certified metrics sit beside them... and reach the agent in one context call, per question.
+You don't have to replatform. Keep your views. They're a source for metrics... and the metrics reach the agent in one context call, per question.
 
 How do you test any layer? Ask it five questions. Here they are.
 
-So that's the gap from the start. Views make the agent pick a copy... metrics give it one definition. Here's the rule. Organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the people who own its numbers.
+So that's the gap from the start. Views make the agent pick a copy... metrics give it one definition. So organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the people who own its numbers.
