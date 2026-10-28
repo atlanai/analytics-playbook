@@ -1,0 +1,54 @@
+name: Field result
+description: Share what happened when you used the method. Results that contradict the playbook are as welcome as ones that confirm it.
+title: "Field result: "
+labels: ["field-result"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is public. Anonymise the result before you post it. If you can't, email [ailabs@atlan.com](mailto:ailabs@atlan.com) instead. Results posted here may be quoted in the playbook, anonymised.
+  - type: dropdown
+    id: direction
+    attributes:
+      label: How does it compare with the playbook?
+      options:
+        - It confirms a claim
+        - It contradicts a claim
+        - It covers something the playbook doesn't
+    validations:
+      required: true
+  - type: input
+    id: claim
+    attributes:
+      label: Which part of the playbook?
+      description: The chapter link, and the claim or step if there is one.
+      placeholder: https://analytics-playbook.atlan.com/#results
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup
+      description: The domain in general terms (for example, sales or marketing), the phase you were in, the model, and the context the agent had.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      description: The number before and after, the number of questions (n), how you scored them, and the run date. Say how many times you ran it. Report the setup you kept, never the best run.
+      placeholder: "Before: 12/40 correct. After: 27/40. Scored against hand-written SQL. Two runs, 2026-10-01 and 2026-10-03."
+    validations:
+      required: true
+  - type: textarea
+    id: caveat
+    attributes:
+      label: Caveats
+      description: What could make this result not hold elsewhere?
+  - type: checkboxes
+    id: anon
+    attributes:
+      label: Before you submit
+      options:
+        - label: The result is anonymised. It names no customer, internal system or person.
+          required: true
