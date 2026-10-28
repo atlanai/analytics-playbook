@@ -113,7 +113,7 @@ The chapters follow one engagement, a sales domain, from the Phase 0 checklist t
 
 ## A Note To Our Readers
 
-We've been working on this problem since we were a data team ourselves. This playbook is our best attempt so far, not the final word. We've tried to show all our work: every result, how we measured it, and where it fell short. We'll keep updating it as we learn more, test new methods and as the AI ecosystem changes. If you build, lead or implement analytics agents, we want to hear what you find.
+We've been working on this problem since we were a data team ourselves. This playbook is our best attempt so far, not the final word. We've tried to show all our work: every result, how we measured it, and where it fell short. We'll keep updating it as we learn more, test new methods and as the AI ecosystem changes. If you build, lead or implement analytics agents, we want to hear what you find. [Get in touch](#contact).
 
 ## Contribute
 
