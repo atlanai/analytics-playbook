@@ -1,17 +1,29 @@
-Give an agent semantic views as its only way in... and it scores 38.3% on our 107 questions. Now compare. The bare schema, with no context at all? 31.8%. Metrics, with their SQL? 83.2%. So, semantic views or metrics? In other words, how should an agent's context be organized?
+Semantic views work. Build one carefully, for one use case, and your agent can be accurate. So this isn't about whether views can be accurate. It's about what happens at the tenth agent... and the hundredth view. Semantic views, or metrics? Here's where they split.
 
-Most teams already have a semantic layer. Semantic views, metric views, LookML, or a homegrown store. It's got four parts... what the tables mean, how they join, the metrics, and the dimensions.
+Both start with the same ingredients. Business names, joins, formulas and dimensions. A semantic view bundles them for one use case... a package built around a group of tables. Composable metrics store each metric once, with its own joins and dimensions... and assemble them per question.
 
-You can lay that context out three ways... and each one repeats something. First, per table, like a data dictionary. The joins and cross-table metrics get copied. Second, per logical table, like a semantic view. Now meanings, joins and metrics get copied across views. Or third, per metric. The metric's stored once... and only joins and dimensions repeat.
+And views get built one use case at a time. You build one for your first agent. Then a second use case... a second view. Another team builds a third. Soon, everyone has their own. It's like letting everyone with warehouse access build their own table. Lots of overlap, and nobody managing the mess.
 
-Here's an illustrative case. Average order value lives in three views... orders, sales and returns. And each view keeps its own copy of the definition. So ask the agent, what was AOV last quarter? It can't tell which one to use.
+So the same metric gets copied into every view that needs it. Orders, sales, returns. Ask for AOV, and the agent has to pick a copy. Change the formula, and you edit every view... 20 views, 20 edits. And when someone fixes one copy, nobody knows where that fix should flow.
 
-For an agent, those copies are the first cost of views. And there are two more. Second, every question has to pick a view before it can start. Third, fixes land beside the view, as text... and the agent reinterprets them on every question.
+And every view is also a fence. The agent can only reason inside the view it picked. Ask a question that crosses two views... and it has nowhere to go. On our benchmark, semantic views as the only way in scored 38.3%... and 16% on multi-table questions.
 
-So what's the alternative? Make the metric the unit. It's defined once, with its formula, verified SQL, joins and dimensions. And it compiles to the same SQL every time. The business can read it, and correct it... and the fix lands in the definition.
+Views also promise determinism. Same metric, same answer, every time. Now watch how teams improve one. Nobody fixes the formula or the join. They add a verified query, or an instruction, beside the view. Net sales by market, by channel, by division... each one its own query, in its own view. Add enough, and they pile up, inside the same view. It's text, so the agent reinterprets it on every question. And the determinism the view promised... is gone.
 
-You don't have to replatform. Keep your views. They're a source for metrics... and the metrics reach the agent in one context call, per question.
+Put it all together, and the real problem is management. With one agent and one view, it works. At 12 views, every metric lives in several of them. Change a definition, and you're chasing every copy. Fix one wrong answer, and the fix lands in one view. The feedback loop has nowhere to flow. You've solved for one agent today... and built a mess you can't manage at scale.
 
-How do you test any layer? Ask it five questions. Here they are.
+Here's how that shows up in today's tools. Snowflake semantic views and Genie Agents keep verified sequel for the whole view, or the whole agent... not for each metric. Databricks metric views are rooted on one source table. And a Genie Agent tops out at fifty tables. They're good BI layers. None was built for multi-agent context.
 
-So that's the gap from the start. Views make the agent pick a copy... metrics give it one definition. So organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the people who own its numbers.
+So how do composable metrics work? Start with how they're stored. Each metric is defined once. Its formula, its verified SQL, its joins and its dimensions. It's stored as SQL, not prose. With only its name and SQL, a metric scored 84.1%. With only prose, 74.8%. And each one has an owner, and a version.
+
+Next, they compose. Net sales, by market, for last quarter, excluding test stores. One metric, plus a dimension, a time window and a filter. No new view for every slice. The pieces combine on demand.
+
+Then the agent retrieves them. A question comes in, and the agent pulls only the metrics it needs, in one context call. Each metric compiles to the same SQL every time... so the answer doesn't drift from run to run.
+
+That's what makes them referenceable across every agent. Sales, finance, support... every agent reads the same definition. Change it once, and every agent follows. And when a trace shows a missing filter, someone fixes the metric, and the evals run again.
+
+And this isn't just our view. Lyft landed in the same place. Each widely used metric lives in one versioned package... a definition, a SQL template, and two owning teams. The same definitions feed dashboards, data quality checks, ML models... and an MCP server that hands agents the SQL. Lyft says agents answer metric questions more accurately with it.
+
+If you already have semantic views, keep them. They keep working for the analysts who use them. And in Phase 2, they're a source. Their measures and filters become candidate metrics.
+
+So, semantic views can be accurate... for one agent, and one use case. Composable metrics keep one definition across all of them. Stored once, composed per question, retrieved by every agent. So organize context around the metric, the unit the business asks in. Next, Phase 0, before the clock... picking one domain, and the people who own its numbers.
