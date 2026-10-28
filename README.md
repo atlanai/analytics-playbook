@@ -125,7 +125,7 @@ Found something wrong, or have a field result to add? Open an issue or a pull re
 
 ## Contact
 
-Questions about the playbook, a result you want to share, or a correction? [Open an issue](https://github.com/atlanai/analytics-playbook/issues) or a pull request, or email the team at ai-labs@atlan.com.
+Questions about the playbook, a result you want to share, or a correction? [Open an issue](https://github.com/atlanai/analytics-playbook/issues) or a pull request, or email the team at ailabs@atlan.com.
 
 ## FAQ
 

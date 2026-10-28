@@ -87,7 +87,7 @@ Press <kbd>?</kbd> anywhere for keyboard shortcuts.
 
 ## About this book {#colophon}
 
-Published by Atlan. The book is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): copy and adapt it with credit. The code that builds it is under the MIT License. Product names are their owners' trademarks. Maintained by the playbook maintainers. A change to any number must include its source evidence, and every change goes through [review by the maintainers](#r5-changes). Questions, corrections or a result to share: [open an issue](https://github.com/atlanai/analytics-playbook/issues) or email the team at ai-labs@atlan.com.
+Published by Atlan. The book is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): copy and adapt it with credit. The code that builds it is under the MIT License. Product names are their owners' trademarks. Maintained by the playbook maintainers. A change to any number must include its source evidence, and every change goes through [review by the maintainers](#r5-changes). Questions, corrections or a result to share: [open an issue](https://github.com/atlanai/analytics-playbook/issues) or email the team at ailabs@atlan.com.
 
 # Where are you starting? {#assess}
 
