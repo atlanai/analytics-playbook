@@ -51,6 +51,7 @@ ORDER = [
      [("r0-results", [], False), ("r3-evidence", [], False), ("r6-field-research", [], False)]),
     ("Reference", "ref",
      [("r1-failure-modes", [], False), ("r4-glossary", [], False), ("r5-tooling", [], False), ("r7-semantic-layers", [], False)]),
+    ("The Break Room", "play", [("break-room", [], False)]),
 ]
 # The phase strip at the top of Part II chapters: (slot stem, short label, what happens). Links resolve to whichever
 # file fills the slot, so the strip works on V2 fallbacks too.
@@ -919,12 +920,14 @@ NAV_GROUPS = [
                           ("After launch", ["ch-run"])]),
     ("Toolkit", ["assess", "cards", "r2", "videos", "listen"]),
     ("Research and reference", ["results", "r3", "r6", "r1", "r4", "r5", "r7"]),
+    ("The Break Room", ["play"]),
 ]
 NAV_BADGE = {"ch-evals": "1", "ch02": "2", "ch-retrieval": "3"}
 # A heading above the group it names: what the reader learns, then what they keep to hand.
 NAV_SECTION = {"Why it is hard": "Learn", "Toolkit": "Resources"}
 # Row icons, Lucide line icons (ISC licence), drawn on a 24-unit grid.
 ICONS = {
+    "gamepad": '<line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/>',
     "home": '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
     "alert": '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
     "hammer": '<path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/>',
@@ -936,7 +939,7 @@ ICONS = {
     "github": '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
 }
 NAV_ICON = {"Why it is hard": "alert", "How to build one": "hammer",
-            "Toolkit": "wrench", "Research and reference": "library"}
+            "Toolkit": "wrench", "Research and reference": "library", "The Break Room": "gamepad"}
 
 
 def icon(name, cls="toc-i"):
